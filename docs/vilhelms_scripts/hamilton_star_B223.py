@@ -28,7 +28,9 @@ def CVS_Shaker_DTU(name: str) -> ShakerCarrier:
     size_x=157.5,
     size_y=497.0,
     size_z=90.0, # original 90.0
-    sites=create_homogeneous_carrier_sites([
+    sites=create_homogeneous_carrier_sites(
+      klass=CarrierSite,
+      locations=[
         # Coordinate(1.1, 167.5, 25.5), # Site.1.(X,Y,Z) !!!
         # Coordinate(14.6, 172.1, 77), # Site.2.(X,Y,Z)
         # Coordinate(1.2, 48.5, 25.5), # Site.3.(X,Y,Z) !!!
@@ -55,7 +57,9 @@ def TIP_CAR_NTR_A00(name: str) -> TipCarrier:
     size_x=135.0,
     size_y=497.0,
     size_z=130.0, # 200.0 # 130
-    sites=create_homogeneous_carrier_sites([
+    sites=create_homogeneous_carrier_sites(
+      klass=CarrierSite,
+      locations=[
         Coordinate(6.2, 10.0, 82.4), # original z=29 63.4 all, change with -26 from 108.4
         Coordinate(6.2, 106.0, 82.4),
         Coordinate(6.2, 202.0, 82.4),
@@ -76,7 +80,9 @@ def MFX_CAR_DTU(name: str) -> MFXCarrier:
     size_x=135.0,
     size_y=497.0,
     size_z=130.0, # original 18.195
-    sites=create_homogeneous_carrier_sites([
+    sites=create_homogeneous_carrier_sites(
+      klass=CarrierSite,
+      locations=[
         Coordinate(x=6.3, y=10.2, z=131.0),   # Site.3.(X,Y,Z) original z=77.0
         Coordinate(x=6.3, y=106.2, z=131.0),  # Site.2.(X,Y,Z) original z=77.0
         Coordinate(x=6.3, y=202.2, z=114.7), # Site.1.(X,Y,Z)
@@ -98,7 +104,9 @@ def RGT_CAR_3R_A01(name: str) -> TubeCarrier:
     size_x = 22.5, # Dim.Dx
     size_y = 497, # Dim.Dy
     size_z = 136.0, # Dim.Dz
-    sites=create_homogeneous_carrier_sites([
+    sites=create_homogeneous_carrier_sites(
+      klass=CarrierSite,
+      locations=[
         Coordinate(x=0.75, y=9.1, z=18.5), # Site.1.(X,Y,Z)
         Coordinate(x=0.55, y=172.5, z=18.5),   # Site.3.(X,Y,Z)
         Coordinate(x=0.75, y=335.9, z=18.5),  # Site.2.(X,Y,Z)
@@ -118,7 +126,9 @@ def RGT_CAR_5R_A00(name: str) -> TubeCarrier:
     size_x = 22.5, # Dim.Dx
     size_y = 497, # Dim.Dy
     size_z = 82.0, # Dim.Dz
-    sites=create_homogeneous_carrier_sites([
+    sites=create_homogeneous_carrier_sites(
+      klass=CarrierSite,
+      locations=[
           Coordinate(x=1.25, y=6.5, z=18.5),   # Site.3.(X,Y,Z)
           Coordinate(x=1.25, y=102.5, z=18.5),  # Site.2.(X,Y,Z)
           Coordinate(x=1.25, y=198.5, z=18.5), # Site.1.(X,Y,Z)
@@ -140,7 +150,9 @@ def COOLER(name: str) -> TubeCarrier:
     size_x = 135, # Dim.Dx
     size_y = 497, # Dim.Dy
     size_z = 130, # Dim.Dz
-    sites=create_homogeneous_carrier_sites([
+    sites=create_homogeneous_carrier_sites(
+      klass=CarrierSite,
+      locations=[
           Coordinate(x=4, y=8.5, z=81.5),  # Site.2.(X,Y,Z)
           Coordinate(x=4, y=104.5, z=81.5), # Site.1.(X,Y,Z)
           Coordinate(x=4, y=200.5, z=81.5), # Site.5.(X,Y,Z)
