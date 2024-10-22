@@ -1,4 +1,24 @@
-from pylabrobot.resources.carrier import TubeCarrier, PlateCarrier, ShakerCarrier, TipCarrier, MFXCarrier, create_homogeneous_carrier_sites, Coordinate
+# from pylabrobot.resources.carrier import TubeCarrier, ShakerCarrier, TipCarrier, MFXCarrier, create_homogeneous_carrier_sites, Coordinate
+from pylabrobot.resources.carrier import TubeCarrier, TipCarrier, MFXCarrier, create_homogeneous_carrier_sites, Coordinate, Carrier, CarrierSite
+
+
+## This is taken from old pylabrobot.resources.carrier. Was deletet at some point
+from typing import List, Optional # needed for ShakerCarrier to work
+class ShakerCarrier(Carrier):
+  """ Base class for shaker carriers (i.e. 7-track carriers with mixed-use and/or specialized
+  sites). """
+  def __init__(
+    self,
+    name: str,
+    size_x: float,
+    size_y: float,
+    size_z: float,
+    sites: Optional[List[CarrierSite]] = None,
+    category="shaker_carrier",
+    model: Optional[str] = None):
+    super().__init__(name, size_x, size_y, size_z,
+      sites,category=category, model=model)
+
 
 # dummy CSV_Shaker0/vacume system
 def CVS_Shaker_DTU(name: str) -> ShakerCarrier:
