@@ -359,6 +359,7 @@ def MP_3Pos(name: str) -> TecanPlateCarrier:
       ],
       site_size_x=127.0,
       site_size_y=85.5,
+      pedestal_size_z=0,
     ),
     model="MP_3Pos",
   )
@@ -467,6 +468,7 @@ def MP_3Pos_Flat(name: str) -> TecanPlateCarrier:
       ],
       site_size_x=127.0,
       site_size_y=85.5,
+      pedestal_size_z=0,
     ),
     model="MP_3Pos_Flat",
   )
@@ -519,6 +521,7 @@ def MP_4Pos(name: str) -> TecanPlateCarrier:
       ],
       site_size_x=127.0,
       site_size_y=85.5,
+      pedestal_size_z=0,
     ),
     model="MP_4Pos",
   )
