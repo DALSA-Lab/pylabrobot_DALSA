@@ -217,6 +217,13 @@ class EVO(TecanLiquidHandler):
       raise RuntimeError("liha_connected not set, forgot to call `setup`?")
     return self._liha_connected
 
+  ## Added by Vilhelm, to have two LiHa arms
+  def setup_liha(self, arm_index: int):
+      """Enable a specific LiHa arm."""
+      if arm_index >= len(self._liha_connected):
+          raise ValueError(f"Invalid arm_index {arm_index}, only {len(self._liha_connected)} arms supported.")
+      self._liha_connected[arm_index] = True
+
   @property
   def roma_connected(self) -> bool:
     """Whether RoMa arm is present on the robot."""

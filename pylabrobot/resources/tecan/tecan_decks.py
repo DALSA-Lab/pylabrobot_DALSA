@@ -33,6 +33,7 @@ EVO200_SIZE_Y = 780
 EVO200_SIZE_Z = 765
 
 
+
 class TecanDeck(Deck):
   """Tecan decks"""
 
@@ -46,6 +47,7 @@ class TecanDeck(Deck):
     category: str = "deck",
     origin: Coordinate = Coordinate(0, 0, 0),
     with_wash_station: bool = True,
+    wash_station_rail: int = 1, #add to enable dynamic chnange of wash station
   ):
     super().__init__(
       name=name,
@@ -62,7 +64,7 @@ class TecanDeck(Deck):
       wash[0] = Wash_Station_Cleaner_deep(name="wash_clean_deep")
       wash[1] = Wash_Station_Waste(name="wash_waste")
       wash[2] = Wash_Station_Cleaner_shallow(name="wash_clean_shallow")
-      self.assign_child_resource(wash, rails=1)
+      self.assign_child_resource(wash, rails=wash_station_rail)
 
   def serialize(self) -> dict:
     return {**super().serialize(), "num_rails": self.num_rails}
@@ -212,7 +214,7 @@ class TecanDeck(Deck):
     return summary_
 
 
-def EVO100Deck(origin: Coordinate = Coordinate(0, 0, 0)) -> TecanDeck:
+def EVO100Deck(origin: Coordinate = Coordinate(0, 0, 0), wash_station_rail: int = 1) -> TecanDeck:
   """EVO100 deck.
 
   Sizes from operating manual
@@ -227,7 +229,7 @@ def EVO100Deck(origin: Coordinate = Coordinate(0, 0, 0)) -> TecanDeck:
   )
 
 
-def EVO150Deck(origin: Coordinate = Coordinate(0, 0, 0)) -> TecanDeck:
+def EVO150Deck(origin: Coordinate = Coordinate(0, 0, 0), wash_station_rail: int = 1) -> TecanDeck:
   """EVO150 deck.
 
   Sizes from operating manual
@@ -242,7 +244,7 @@ def EVO150Deck(origin: Coordinate = Coordinate(0, 0, 0)) -> TecanDeck:
   )
 
 
-def EVO200Deck(origin: Coordinate = Coordinate(0, 0, 0)) -> TecanDeck:
+def EVO200Deck(origin: Coordinate = Coordinate(0, 0, 0), wash_station_rail: int = 1) -> TecanDeck:
   """EVO200 deck.
 
   Sizes from operating manual
