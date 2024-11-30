@@ -1,6 +1,10 @@
 import asyncio
 
 from pylabrobot.machines.machine import Machine
+<<<<<<< HEAD
+=======
+
+>>>>>>> upstream/main
 from .backend import FanBackend
 
 

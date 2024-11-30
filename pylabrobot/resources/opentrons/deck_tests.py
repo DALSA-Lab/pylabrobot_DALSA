@@ -1,13 +1,22 @@
 import textwrap
 import unittest
 
+<<<<<<< HEAD
+=======
+from pylabrobot.resources.corning_costar.plates import (
+  Cor_96_wellplate_360ul_Fb,
+)
+>>>>>>> upstream/main
 from pylabrobot.resources.opentrons.deck import OTDeck
 from pylabrobot.resources.opentrons.tip_racks import (
   opentrons_96_tiprack_300ul,
 )
+<<<<<<< HEAD
 from pylabrobot.resources.corning_costar.plates import (
   Cor_96_wellplate_360ul_Fb,
 )
+=======
+>>>>>>> upstream/main
 
 
 class TestOTDeck(unittest.TestCase):

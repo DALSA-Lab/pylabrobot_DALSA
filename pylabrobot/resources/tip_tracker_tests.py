@@ -2,9 +2,15 @@ import unittest
 
 from pylabrobot.resources.tip import Tip
 from pylabrobot.resources.tip_tracker import (
+<<<<<<< HEAD
   TipTracker,
   HasTipError,
   NoTipError,
+=======
+  HasTipError,
+  NoTipError,
+  TipTracker,
+>>>>>>> upstream/main
 )
 
 

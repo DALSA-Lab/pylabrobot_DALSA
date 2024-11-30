@@ -17,6 +17,11 @@ Company history: [Hamilton Robotics history](https://www.hamiltoncompany.com/his
 | Description               | Image              | PLR definition |
 |--------------------|--------------------|--------------------|
 | 'PLT_CAR_L5AC_A00'<br>Part no.: 182090<br>[manufacturer website](https://www.hamiltoncompany.com/automated-liquid-handling/other-robotics/182090) <br>Carrier for 5x 96 Deep Well Plates or for 5x 384 tip racks (e.g.384HEAD_384TIPS_50μl) (6T) | ![](img/ml_star/PLT_CAR_L5AC_A00_182090.jpg) | `PLT_CAR_L5AC_A00` |
+<<<<<<< HEAD
+=======
+| 'PLT_CAR_L5MD_A00'<br>Part no.: 182365/02<br>[manufacturer website](https://www.hamiltoncompany.com/automated-liquid-handling/other-robotics/182365) <br>Carries five ANSI/SLAS footprint MTPs in landscape orientation. Occupies six tracks. | ![](img/ml_star/182365-Plate-Carrier.webp) | `PLT_CAR_L5MD_A00` |
+| 'PLT_CAR_P3AC'<br>Part no.: 182365/03<br>[manufacturer website](https://www.hamiltoncompany.com/automated-liquid-handling/other-robotics/182365) <br>Hamilton Deepwell Plate Carrier for 3 Plates (Portrait, 6 tracks wide) | ![](img/ml_star/PLT_CAR_P3AC.jpg) | `PLT_CAR_P3AC` |
+>>>>>>> upstream/main
 
 ### MFX carriers
 
@@ -31,6 +36,10 @@ Company history: [Hamilton Robotics history](https://www.hamiltoncompany.com/his
 |--------------------|--------------------|--------------------|
 | 'MFX_TIP_module'<br>Part no.: 188160 or 188040<br>[manufacturer website](https://www.hamiltoncompany.com/automated-liquid-handling/other-robotics/188040) <br>Module to position a high-, standard-, low volume or 5ml tip rack (but not a 384 tip rack) | ![](img/ml_star/MFX_TIP_module_188040.jpg) | `MFX_TIP_module` |
 | 'MFX_DWP_rackbased_module'<br>Part no.: 188229?<br>[manufacturer website](https://www.hamiltoncompany.com/automated-liquid-handling/other-robotics/188229) (<-non-functional link?) <br>MFX DWP module rack-based | ![](img/ml_star/MFX_DWP_RB_module_188229_.jpg) | `MFX_DWP_rackbased_module` |
+<<<<<<< HEAD
+=======
+| 'MFX_DWP_module_flat'<br>Part no.: 6601988-01<br>manufacturer website unknown | ![](img/ml_star/MFX_DWP_module_flat.jpg) | `MFX_DWP_module_flat` |
+>>>>>>> upstream/main
 
 ### Tube carriers
 

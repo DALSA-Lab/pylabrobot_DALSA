@@ -1,14 +1,24 @@
+<<<<<<< HEAD
 from typing import cast
 import unittest
 import unittest.mock
 
 from pylabrobot.liquid_handling import LiquidHandler
 from pylabrobot.liquid_handling.standard import Pickup, GripDirection
+=======
+import unittest
+import unittest.mock
+from typing import cast
+
+from pylabrobot.liquid_handling import LiquidHandler
+from pylabrobot.liquid_handling.standard import GripDirection, Pickup
+>>>>>>> upstream/main
 from pylabrobot.plate_reading import PlateReader
 from pylabrobot.plate_reading.plate_reader_tests import (
   MockPlateReaderBackend,
 )
 from pylabrobot.resources import (
+<<<<<<< HEAD
   Plate,
   Coordinate,
   Container,
@@ -25,10 +35,28 @@ from pylabrobot.resources import (
 from pylabrobot.resources.hamilton import STARLetDeck
 from pylabrobot.resources.ml_star import STF_L
 
+=======
+  HT,
+  HTF,
+  PLT_CAR_L5AC_A00,
+  TIP_CAR_288_C00,
+  TIP_CAR_480_A00,
+  Container,
+  Coordinate,
+  Cor_96_wellplate_360ul_Fb,
+  Lid,
+  Plate,
+  ResourceStack,
+  no_volume_tracking,
+)
+from pylabrobot.resources.hamilton import STARLetDeck
+from pylabrobot.resources.ml_star import STF
+>>>>>>> upstream/main
 from tests.usb import MockDev, MockEndpoint
 
 from .STAR import (
   STAR,
+<<<<<<< HEAD
   parse_star_fw_string,
   STARFirmwareError,
   CommandSyntaxError,
@@ -38,6 +66,16 @@ from .STAR import (
 )
 
 
+=======
+  CommandSyntaxError,
+  HamiltonNoTipError,
+  HardwareError,
+  STARFirmwareError,
+  UnknownHamiltonError,
+  parse_star_fw_string,
+)
+
+>>>>>>> upstream/main
 PICKUP_TIP_FORMAT = "xp##### (n)yp#### (n)tm# (n)tt##tp####tz####th####td#"
 DROP_TIP_FORMAT = "xp##### (n)yp#### (n)tm# (n)tp####tz####th####ti#"
 ASPIRATION_COMMAND_FORMAT = (
@@ -199,13 +237,23 @@ class STARCommandCatcher(STAR):
     self,
     module,
     command,
+<<<<<<< HEAD
+=======
+    auto_id=True,
+>>>>>>> upstream/main
     tip_pattern=None,
     fmt="",
     read_timeout=0,
     write_timeout=0,
     **kwargs,
   ):
+<<<<<<< HEAD
     cmd, _ = self._assemble_command(module, command, tip_pattern, **kwargs)
+=======
+    cmd, _ = self._assemble_command(
+      module=module, command=command, auto_id=auto_id, tip_pattern=tip_pattern, **kwargs
+    )
+>>>>>>> upstream/main
     self.commands.append(cmd)
 
   async def stop(self):
@@ -221,8 +269,13 @@ class TestSTARLiquidHandlerCommands(unittest.IsolatedAsyncioTestCase):
     self.lh = LiquidHandler(self.mockSTAR, deck=self.deck)
 
     self.tip_car = TIP_CAR_480_A00(name="tip carrier")
+<<<<<<< HEAD
     self.tip_car[1] = self.tip_rack = STF_L(name="tip_rack_01")
     self.tip_car[2] = self.tip_rack2 = HTF_L(name="tip_rack_02")
+=======
+    self.tip_car[1] = self.tip_rack = STF(name="tip_rack_01")
+    self.tip_car[2] = self.tip_rack2 = HTF(name="tip_rack_02")
+>>>>>>> upstream/main
     self.deck.assign_child_resource(self.tip_car, rails=1)
 
     self.plt_car = PLT_CAR_L5AC_A00(name="plate carrier")
@@ -864,6 +917,10 @@ class TestSTARLiquidHandlerCommands(unittest.IsolatedAsyncioTestCase):
     )
 
   async def test_iswap_move_with_intermediate_locations(self):
+<<<<<<< HEAD
+=======
+    self.plt_car[1].resource.unassign()
+>>>>>>> upstream/main
     await self.lh.move_plate(
       self.plate,
       self.plt_car[1],
@@ -900,12 +957,19 @@ class TestSTARLiquidHandlerCommands(unittest.IsolatedAsyncioTestCase):
     )
 
   async def test_portrait_tip_rack_handling(self):
+<<<<<<< HEAD
     # Test with an alternative setup.
 
     deck = STARLetDeck()
     lh = LiquidHandler(self.mockSTAR, deck=deck)
     tip_car = TIP_CAR_288_C00(name="tip carrier")
     tip_car[0] = tr = HT_P(name="tips_01")
+=======
+    deck = STARLetDeck()
+    lh = LiquidHandler(self.mockSTAR, deck=deck)
+    tip_car = TIP_CAR_288_C00(name="tip carrier")
+    tip_car[0] = tr = HT(name="tips_01").rotated(z=90)
+>>>>>>> upstream/main
     assert tr.rotation.z == 90
     assert tr.location == Coordinate(82.6, 0, 0)
     deck.assign_child_resource(tip_car, rails=2)
@@ -934,6 +998,10 @@ class TestSTARLiquidHandlerCommands(unittest.IsolatedAsyncioTestCase):
     self.assertEqual(deserialized.backend.__class__.__name__, "STAR")
 
   async def test_move_core(self):
+<<<<<<< HEAD
+=======
+    self.plt_car[1].resource.unassign()
+>>>>>>> upstream/main
     await self.lh.move_plate(
       self.plate,
       self.plt_car[1],

@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 from pylabrobot.resources import Coordinate, Resource
 from pylabrobot.liquid_handling.backends.hamilton.STAR import STAR
+=======
+from pylabrobot.liquid_handling.backends.hamilton.STAR import STAR
+from pylabrobot.resources import Coordinate, Resource
+>>>>>>> upstream/main
 
 
 class Pump(Resource):

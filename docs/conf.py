@@ -105,6 +105,14 @@ html_theme_options = {
       "url": "https://youtube.com/@pylabrobot",
       "icon": "fa-brands fa-youtube",
     },
+<<<<<<< HEAD
+=======
+    {
+      "name": "Bluesky",
+      "url": "https://bsky.app/profile/pylabrobot.bsky.social",
+      "icon": "fa-brands fa-bluesky",
+    },
+>>>>>>> upstream/main
   ],
   "logo": {
     "text": "PyLabRobot",
@@ -167,4 +175,7 @@ if tags.has("no-api"):
   suppress_warnings = ["toc.excluded"]
 
 html_favicon = "_static/favicon.ico"
+<<<<<<< HEAD
 
+=======
+>>>>>>> upstream/main

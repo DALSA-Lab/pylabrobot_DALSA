@@ -1,7 +1,15 @@
 from typing import Any, Dict, List, Sequence, Union, cast
+<<<<<<< HEAD
 from pylabrobot.machines.machine import Machine, need_setup_finished
 from .backend import PowderDispenserBackend, PowderDispense
 from pylabrobot.resources import Resource, Powder
+=======
+
+from pylabrobot.machines.machine import Machine, need_setup_finished
+from pylabrobot.resources import Powder, Resource
+
+from .backend import PowderDispense, PowderDispenserBackend
+>>>>>>> upstream/main
 
 
 class PowderDispenser(Machine):

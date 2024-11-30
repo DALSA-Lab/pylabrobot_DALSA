@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 from typing import Type, TypeVar, Optional
+=======
+from typing import Optional, Type, TypeVar
+>>>>>>> upstream/main
 
 T = TypeVar("T")
 

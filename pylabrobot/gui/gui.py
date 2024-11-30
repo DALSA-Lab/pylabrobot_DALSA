@@ -7,11 +7,19 @@ from flask import Flask, jsonify, render_template, request
 
 import pylabrobot.resources as resources_module
 from pylabrobot.resources import (
+<<<<<<< HEAD
   Resource,
   STARDeck,
   STARLetDeck,
   OTDeck,
   Deck,
+=======
+  Deck,
+  OTDeck,
+  Resource,
+  STARDeck,
+  STARLetDeck,
+>>>>>>> upstream/main
 )
 
 print("!" * 80)
@@ -50,6 +58,7 @@ def list_resources():
   return jsonify(
     plates=[
       "Cos_1536_10ul",
+<<<<<<< HEAD
       "Cos_1536_10ul_L",
       "Cos_1536_10ul_P",
       "Cos_384_DW",
@@ -102,6 +111,60 @@ def list_resources():
       "Cos_96_UV_P",
       "Cos_96_Vb",
       "Cos_96_Vb_L",
+=======
+      "Cos_1536_10ul",
+      "Cos_1536_10ul_P",
+      "Cos_384_DW",
+      "Cos_384_DW",
+      "Cos_384_DW_P",
+      "Cos_384_PCR",
+      "Cos_384_PCR",
+      "Cos_384_PCR_P",
+      "Cos_384_Sq",
+      "Cos_384_Sq",
+      "Cos_384_Sq_P",
+      "Cos_384_Sq_Rd",
+      "Cos_384_Sq_Rd",
+      "Cos_384_Sq_Rd_P",
+      "Cos_96_DW_1mL",
+      "Cos_96_DW_1mL",
+      "Cos_96_DW_1mL_P",
+      "Cos_96_DW_2mL",
+      "Cos_96_DW_2mL",
+      "Cos_96_DW_2mL_P",
+      "Cos_96_DW_500ul",
+      "Cos_96_DW_500ul",
+      "Cos_96_DW_500ul_P",
+      "Cor_96_wellplate_360ul_Fb",
+      "Cor_96_wellplate_360ul_Fb",
+      "Cor_96_wellplate_360ul_Fb_P",
+      "Cos_96_FL",
+      "Cos_96_Filter",
+      "Cos_96_Filter",
+      "Cos_96_Filter_P",
+      "Cos_96_Fl",
+      "Cos_96_Fl_P",
+      "Cos_96_HalfArea",
+      "Cos_96_HalfArea",
+      "Cos_96_HalfArea_P",
+      "Cos_96_PCR",
+      "Cos_96_PCR",
+      "Cos_96_PCR_P",
+      "Cos_96_ProtCryst",
+      "Cos_96_ProtCryst",
+      "Cos_96_ProtCryst_P",
+      "Cos_96_Rd",
+      "Cos_96_Rd",
+      "Cos_96_Rd_P",
+      "Cos_96_SpecOps",
+      "Cos_96_SpecOps",
+      "Cos_96_SpecOps_P",
+      "Cos_96_UV",
+      "Cos_96_UV",
+      "Cos_96_UV_P",
+      "Cos_96_Vb",
+      "Cos_96_Vb",
+>>>>>>> upstream/main
       "Cos_96_Vb_P",
     ],
     plate_carriers=[
@@ -197,6 +260,7 @@ def list_resources():
       "TIP_CAR_NTR_A00",
     ],
     tip_racks=[
+<<<<<<< HEAD
       "FourmlTF_L",
       "FourmlTF_P",
       "FivemlT_L",
@@ -212,6 +276,23 @@ def list_resources():
       "STF_L",
       "STF_P",
       "ST_L",
+=======
+      "FourmlTF",
+      "FourmlTF_P",
+      "FivemlT",
+      "FivemlT_P",
+      "HTF",
+      "HTF_P",
+      "HT",
+      "HT_P",
+      "LTF",
+      "LTF_P",
+      "LT",
+      "LT_P",
+      "STF",
+      "STF_P",
+      "ST",
+>>>>>>> upstream/main
       "ST_P",
     ],
   )

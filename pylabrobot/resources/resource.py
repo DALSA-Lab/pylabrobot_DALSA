@@ -6,12 +6,22 @@ import logging
 import sys
 from typing import Any, Callable, Dict, List, Optional, cast
 
+<<<<<<< HEAD
 from .coordinate import Coordinate
 from .errors import ResourceNotFoundError
 from .rotation import Rotation
 from pylabrobot.serializer import serialize, deserialize
 from pylabrobot.utils.linalg import matrix_vector_multiply_3x3
 from pylabrobot.utils.object_parsing import find_subclass
+=======
+from pylabrobot.serializer import deserialize, serialize
+from pylabrobot.utils.linalg import matrix_vector_multiply_3x3
+from pylabrobot.utils.object_parsing import find_subclass
+
+from .coordinate import Coordinate
+from .errors import ResourceNotFoundError
+from .rotation import Rotation
+>>>>>>> upstream/main
 
 if sys.version_info >= (3, 11):
   from typing import Self
@@ -211,6 +221,7 @@ class Resource:
       z: `"t"`/`"top"`, `"c"`/`"center"`, or `"b"`/`"bottom"`
     """
 
+<<<<<<< HEAD
     assert self.location is not None, "Resource has no location."
     if self.parent is None:
       return self.location
@@ -222,12 +233,30 @@ class Resource:
         self.location.vector(),
       )
     )
+=======
+    assert self.location is not None, f"Resource {self.name} has no location."
+
+>>>>>>> upstream/main
     rotated_anchor = Coordinate(
       *matrix_vector_multiply_3x3(
         self.get_absolute_rotation().get_rotation_matrix(),
         self.get_anchor(x=x, y=y, z=z).vector(),
       )
     )
+<<<<<<< HEAD
+=======
+
+    if self.parent is None:
+      return self.location + rotated_anchor
+
+    parent_pos = self.parent.get_absolute_location()
+    rotated_location = Coordinate(
+      *matrix_vector_multiply_3x3(
+        self.parent.get_absolute_rotation().get_rotation_matrix(),
+        self.location.vector(),
+      )
+    )
+>>>>>>> upstream/main
     return parent_pos + rotated_location + rotated_anchor
 
   def _get_rotated_corners(self) -> List[Coordinate]:
@@ -286,6 +315,10 @@ class Resource:
 
     # Check for unsupported resource assignment operations
     self._check_assignment(resource=resource, reassign=reassign)
+<<<<<<< HEAD
+=======
+    self.get_root()._check_naming_conflicts(resource=resource)
+>>>>>>> upstream/main
 
     # Call "will assign" callbacks
     for callback in self._will_assign_resource_callbacks:
@@ -358,6 +391,27 @@ class Resource:
       msg = " ".join(msgs)
       raise ValueError(msg)
 
+<<<<<<< HEAD
+=======
+  def get_root(self) -> Resource:
+    """Get the root of the resource tree."""
+    if self.parent is None:
+      return self
+    return self.parent.get_root()
+
+  def _check_naming_conflicts(self, resource: Resource):
+    """Recursively check for naming conflicts in the resource tree."""
+    if resource.name == self.name:
+      raise ValueError(f"Resource with name '{resource.name}' already exists in the tree.")
+
+    # check if the name of the resource we are currently checking already exists in this subtree
+    for child in self.children:
+      child._check_naming_conflicts(resource)
+    # check if the name of any of the children of the resource already exists in this subtree
+    for child in resource.children:
+      self._check_naming_conflicts(child)
+
+>>>>>>> upstream/main
   def unassign_child_resource(self, resource: Resource):
     """Unassign a child resource from this resource.
 
@@ -738,7 +792,11 @@ class Resource:
     for callback in self._resource_state_updated_callbacks:
       callback(self.serialize_state())
 
+<<<<<<< HEAD
   def get_heighest_known_point(self) -> float:
+=======
+  def get_highest_known_point(self) -> float:
+>>>>>>> upstream/main
     """Recursively finds the highest known point in absolute space. This ignores the top of the
     deck.
 
@@ -751,5 +809,9 @@ class Resource:
     if self.name == "deck":
       heighest_point = 0
     for resource in self.children:
+<<<<<<< HEAD
       heighest_point = max(heighest_point, resource.get_heighest_known_point())
+=======
+      heighest_point = max(heighest_point, resource.get_highest_known_point())
+>>>>>>> upstream/main
     return heighest_point

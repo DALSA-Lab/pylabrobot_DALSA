@@ -1,6 +1,7 @@
 """Tecan plates
 
 size_z are best approximations, see
+<<<<<<< HEAD
 https://forums.pylabrobot.org/t/pylabrobot-tecan-error-in-adding-labware-to-carrier/2987
 """
 
@@ -8,6 +9,16 @@ from typing import Dict, Optional
 from pylabrobot.resources.plate import Lid, Plate, Well
 from pylabrobot.resources.utils import create_ordered_items_2d
 from pylabrobot.resources.tecan.tecan_resource import TecanResource
+=======
+https://labautomation.io/t/pylabrobot-tecan-error-in-adding-labware-to-carrier/2987
+"""
+
+from typing import Dict, Optional
+
+from pylabrobot.resources.plate import Lid, Plate, Well
+from pylabrobot.resources.tecan.tecan_resource import TecanResource
+from pylabrobot.resources.utils import create_ordered_items_2d
+>>>>>>> upstream/main
 
 
 class TecanPlate(Plate, TecanResource):

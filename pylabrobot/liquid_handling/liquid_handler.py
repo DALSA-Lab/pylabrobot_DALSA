@@ -8,10 +8,15 @@ import inspect
 import json
 import logging
 import threading
+<<<<<<< HEAD
+=======
+import warnings
+>>>>>>> upstream/main
 from typing import (
   Any,
   Callable,
   Dict,
+<<<<<<< HEAD
   Union,
   Optional,
   List,
@@ -24,10 +29,24 @@ from typing import (
 import warnings
 
 from pylabrobot.machines.machine import Machine, need_setup_finished
+=======
+  List,
+  Optional,
+  Protocol,
+  Sequence,
+  Set,
+  Tuple,
+  Union,
+  cast,
+)
+
+from pylabrobot.liquid_handling.errors import ChannelizedError
+>>>>>>> upstream/main
 from pylabrobot.liquid_handling.strictness import (
   Strictness,
   get_strictness,
 )
+<<<<<<< HEAD
 from pylabrobot.liquid_handling.errors import ChannelizedError
 from pylabrobot.resources.errors import HasTipError
 from pylabrobot.plate_reading import PlateReader
@@ -55,11 +74,39 @@ from pylabrobot.resources import (
   does_volume_tracking,
   does_cross_contamination_tracking,
 )
+=======
+from pylabrobot.machines.machine import Machine, need_setup_finished
+from pylabrobot.plate_reading import PlateReader
+from pylabrobot.resources import (
+  Container,
+  Coordinate,
+  Deck,
+  Lid,
+  Plate,
+  PlateAdapter,
+  PlateHolder,
+  Resource,
+  ResourceHolder,
+  ResourceStack,
+  Tip,
+  TipRack,
+  TipSpot,
+  TipTracker,
+  Trash,
+  VolumeTracker,
+  Well,
+  does_cross_contamination_tracking,
+  does_tip_tracking,
+  does_volume_tracking,
+)
+from pylabrobot.resources.errors import CrossContaminationError, HasTipError
+>>>>>>> upstream/main
 from pylabrobot.resources.liquid import Liquid
 from pylabrobot.tilting.tilter import Tilter
 
 from .backends import LiquidHandlerBackend
 from .standard import (
+<<<<<<< HEAD
   Pickup,
   PickupTipRack,
   Drop,
@@ -75,6 +122,22 @@ from .standard import (
 )
 
 
+=======
+  Aspiration,
+  AspirationContainer,
+  AspirationPlate,
+  Dispense,
+  DispenseContainer,
+  DispensePlate,
+  Drop,
+  DropTipRack,
+  GripDirection,
+  Move,
+  Pickup,
+  PickupTipRack,
+)
+
+>>>>>>> upstream/main
 logger = logging.getLogger("pylabrobot")
 
 
@@ -462,7 +525,11 @@ class LiquidHandler(Resource, Machine):
   @need_setup_finished
   async def drop_tips(
     self,
+<<<<<<< HEAD
     tip_spots: List[Union[TipSpot, Trash]],
+=======
+    tip_spots: Sequence[Union[TipSpot, Trash]],
+>>>>>>> upstream/main
     use_channels: Optional[List[int]] = None,
     offsets: Optional[List[Coordinate]] = None,
     allow_nonzero_volume: bool = False,
@@ -594,7 +661,16 @@ class LiquidHandler(Resource, Machine):
       **backend_kwargs,
     )
 
+<<<<<<< HEAD
   async def return_tips(self, use_channels: Optional[list[int]] = None, **backend_kwargs):
+=======
+  async def return_tips(
+    self,
+    use_channels: Optional[list[int]] = None,
+    allow_nonzero_volume: bool = False,
+    **backend_kwargs,
+  ):
+>>>>>>> upstream/main
     """Return all tips that are currently picked up to their original place.
 
     Examples:
@@ -604,6 +680,12 @@ class LiquidHandler(Resource, Machine):
       >>> await lh.return_tips()
 
     Args:
+<<<<<<< HEAD
+=======
+      use_channels: List of channels to use. Index from front to back. If `None`, all that have
+        tips will be used.
+      allow_nonzero_volume: If `True`, tips will be returned even if their volumes are not zero.
+>>>>>>> upstream/main
       backend_kwargs: backend kwargs passed to `drop_tips`.
 
     Raises:
@@ -626,7 +708,16 @@ class LiquidHandler(Resource, Machine):
     if len(tip_spots) == 0:
       raise RuntimeError("No tips have been picked up.")
 
+<<<<<<< HEAD
     return await self.drop_tips(tip_spots=tip_spots, use_channels=channels, **backend_kwargs)
+=======
+    return await self.drop_tips(
+      tip_spots=tip_spots,
+      use_channels=channels,
+      allow_nonzero_volume=allow_nonzero_volume,
+      **backend_kwargs,
+    )
+>>>>>>> upstream/main
 
   async def discard_tips(
     self,
@@ -648,6 +739,10 @@ class LiquidHandler(Resource, Machine):
     Args:
       use_channels: List of channels to use. Index from front to back. If `None`, all that have
         tips will be used.
+<<<<<<< HEAD
+=======
+      allow_nonzero_volume: If `True`, tips will be returned even if their volumes are not zero.
+>>>>>>> upstream/main
       backend_kwargs: Additional keyword arguments for the backend, optional.
     """
 
@@ -1070,7 +1165,11 @@ class LiquidHandler(Resource, Machine):
     ratios: Optional[List[float]] = None,
     target_vols: Optional[List[float]] = None,
     aspiration_flow_rate: Optional[float] = None,
+<<<<<<< HEAD
     dispense_flow_rates: Optional[Union[float, List[Optional[float]]]] = None,
+=======
+    dispense_flow_rates: Optional[List[Optional[float]]] = None,
+>>>>>>> upstream/main
     **backend_kwargs,
   ):
     """Transfer liquid from one well to another.
@@ -1128,6 +1227,7 @@ class LiquidHandler(Resource, Machine):
     await self.aspirate(
       resources=[source],
       vols=[sum(target_vols)],
+<<<<<<< HEAD
       flow_rates=aspiration_flow_rate,
       **backend_kwargs,
     )
@@ -1136,6 +1236,17 @@ class LiquidHandler(Resource, Machine):
         resources=[target],
         vols=[vol],
         flow_rates=dispense_flow_rates,
+=======
+      flow_rates=[aspiration_flow_rate],
+      **backend_kwargs,
+    )
+    dispense_flow_rates = dispense_flow_rates or [None] * len(targets)
+    for target, vol, dfr in zip(targets, target_vols, dispense_flow_rates):
+      await self.dispense(
+        resources=[target],
+        vols=[vol],
+        flow_rates=[dfr],
+>>>>>>> upstream/main
         use_channels=[0],
         **backend_kwargs,
       )
@@ -1843,7 +1954,11 @@ class LiquidHandler(Resource, Machine):
   async def move_plate(
     self,
     plate: Plate,
+<<<<<<< HEAD
     to: Union[ResourceStack, CarrierSite, Resource, Coordinate],
+=======
+    to: Union[ResourceStack, ResourceHolder, Resource, Coordinate],
+>>>>>>> upstream/main
     intermediate_locations: Optional[List[Coordinate]] = None,
     resource_offset: Coordinate = Coordinate.zero(),
     destination_offset: Coordinate = Coordinate.zero(),
@@ -1878,8 +1993,13 @@ class LiquidHandler(Resource, Machine):
       ... ])
 
     Args:
+<<<<<<< HEAD
       plate: The plate to move. Can be either a Plate object or a CarrierSite object.
       to: The location to move the plate to, either a plate, CarrierSite or a Coordinate.
+=======
+      plate: The plate to move. Can be either a Plate object or a ResourceHolder object.
+      to: The location to move the plate to, either a plate, ResourceHolder or a Coordinate.
+>>>>>>> upstream/main
       resource_offset: The offset from the resource's origin, optional (rarely necessary).
       destination_offset: The offset from the location's origin, optional (rarely necessary).
     """
@@ -1889,9 +2009,17 @@ class LiquidHandler(Resource, Machine):
       to_location = to.get_absolute_location(z="top")
     elif isinstance(to, Coordinate):
       to_location = to
+<<<<<<< HEAD
     elif isinstance(to, (MFXModule, Tilter)):
       to_location = to.get_absolute_location() + to.child_resource_location
     elif isinstance(to, PlateCarrierSite):
+=======
+    elif isinstance(to, Tilter):
+      to_location = to.get_absolute_location() + to.child_resource_location
+    elif isinstance(to, PlateHolder):
+      if to.resource is not None and to.resource is not plate:
+        raise RuntimeError("Destination already has a plate")
+>>>>>>> upstream/main
       to_location = to.get_absolute_location()
       # Sanity check for equal well clearances / dz
       well_dz_set = {
@@ -1934,15 +2062,25 @@ class LiquidHandler(Resource, Machine):
     if isinstance(to, Coordinate):
       to_location -= self.deck.location  # passed as an absolute location, but stored as relative
       self.deck.assign_child_resource(plate, location=to_location)
+<<<<<<< HEAD
     elif isinstance(to, PlateCarrierSite):  # .zero() resources
       to.assign_child_resource(plate)
     elif isinstance(to, CarrierSite):  # .zero() resources
+=======
+    elif isinstance(to, PlateHolder):  # .zero() resources
+      to.assign_child_resource(plate)
+    elif isinstance(to, ResourceHolder):  # .zero() resources
+>>>>>>> upstream/main
       to.assign_child_resource(plate)
     elif isinstance(to, (ResourceStack, PlateReader)):  # manage its own resources
       if isinstance(to, ResourceStack) and to.direction != "z":
         raise ValueError("Only ResourceStacks with direction 'z' are currently supported")
       to.assign_child_resource(plate)
+<<<<<<< HEAD
     elif isinstance(to, (MFXModule, Tilter)):
+=======
+    elif isinstance(to, Tilter):
+>>>>>>> upstream/main
       to.assign_child_resource(plate, location=to.child_resource_location)
     elif isinstance(to, PlateAdapter):
       to.assign_child_resource(plate, location=to.compute_plate_location(plate))

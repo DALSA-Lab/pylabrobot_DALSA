@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 """
 
 Config module. Facilitates reading and writing module-level config files.
+=======
+"""Config module. Facilitates reading and writing module-level config files.
+>>>>>>> upstream/main
 Checks the current directory and all parent directories for a `pylabrobot.ini`
 config file. If the config file does not exist, a default Config object will be
 created and written to the project directory containing the .git directory. If

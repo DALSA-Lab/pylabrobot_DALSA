@@ -1,7 +1,15 @@
+<<<<<<< HEAD
 from typing import Literal
 from pylabrobot.heating_shaking.backend import HeaterShakerBackend
 from pylabrobot.machines.backends.usb import USBBackend
 from enum import Enum
+=======
+from enum import Enum
+from typing import Literal
+
+from pylabrobot.heating_shaking.backend import HeaterShakerBackend
+from pylabrobot.machines.backends.usb import USBBackend
+>>>>>>> upstream/main
 
 
 class PlateLockPosition(Enum):

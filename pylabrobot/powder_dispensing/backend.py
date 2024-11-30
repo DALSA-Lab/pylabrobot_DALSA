@@ -1,9 +1,17 @@
 from __future__ import annotations
+<<<<<<< HEAD
+=======
+
+>>>>>>> upstream/main
 from abc import ABCMeta, abstractmethod
 from typing import List
 
 from pylabrobot.machines.backends import MachineBackend
+<<<<<<< HEAD
 from pylabrobot.resources import Resource, Powder
+=======
+from pylabrobot.resources import Powder, Resource
+>>>>>>> upstream/main
 
 
 class PowderDispenserBackend(MachineBackend, metaclass=ABCMeta):

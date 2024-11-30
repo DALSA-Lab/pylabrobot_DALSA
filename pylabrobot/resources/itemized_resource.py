@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from abc import ABCMeta
 import sys
 from typing import (
@@ -13,6 +14,23 @@ from typing import (
   cast,
 )
 from string import ascii_uppercase as LETTERS
+=======
+import sys
+from abc import ABCMeta
+from string import ascii_uppercase as LETTERS
+from typing import (
+  Dict,
+  Generator,
+  Generic,
+  List,
+  Optional,
+  Sequence,
+  Tuple,
+  TypeVar,
+  Union,
+  cast,
+)
+>>>>>>> upstream/main
 
 import pylabrobot.utils
 

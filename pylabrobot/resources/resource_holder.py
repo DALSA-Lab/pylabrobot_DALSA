@@ -1,6 +1,13 @@
 from typing import Optional
+<<<<<<< HEAD
 from pylabrobot.resources.coordinate import Coordinate
 from pylabrobot.resources.resource import Resource
+=======
+
+from pylabrobot.resources.coordinate import Coordinate
+from pylabrobot.resources.resource import Resource
+from pylabrobot.serializer import serialize
+>>>>>>> upstream/main
 
 
 def get_child_location(resource: Resource) -> Coordinate:
@@ -29,8 +36,27 @@ class ResourceHolder(Resource):
   This applies a linear transformation after the rotation to correctly place the child resource.
   """
 
+<<<<<<< HEAD
   def get_default_child_location(self, resource: Resource) -> Coordinate:
     return get_child_location(resource)
+=======
+  def __init__(
+    self,
+    name,
+    size_x,
+    size_y,
+    size_z,
+    rotation=None,
+    category="resource_holder",
+    model=None,
+    child_location: Coordinate = Coordinate.zero(),
+  ):
+    super().__init__(name, size_x, size_y, size_z, rotation, category, model)
+    self.child_location = child_location
+
+  def get_default_child_location(self, resource: Resource) -> Coordinate:
+    return get_child_location(resource) + self.child_location
+>>>>>>> upstream/main
 
   def assign_child_resource(
     self,
@@ -39,5 +65,20 @@ class ResourceHolder(Resource):
     reassign: bool = True,
   ):
     location = location or self.get_default_child_location(resource)
+<<<<<<< HEAD
     # mypy doesn't play well with the Mixin pattern
     return super().assign_child_resource(resource, location, reassign)  # type: ignore
+=======
+    if len(self.children) > 0:
+      raise ValueError("ResourceHolders can only take one child at a time.")
+    return super().assign_child_resource(resource, location, reassign)
+
+  @property
+  def resource(self) -> Optional[Resource]:
+    if len(self.children) == 0:
+      return None
+    return self.children[0]
+
+  def serialize(self):
+    return {**super().serialize(), "child_location": serialize(self.child_location)}
+>>>>>>> upstream/main

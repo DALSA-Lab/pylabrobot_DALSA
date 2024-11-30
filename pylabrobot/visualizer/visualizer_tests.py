@@ -9,12 +9,21 @@ import websockets
 import websockets.client
 
 from pylabrobot.__version__ import STANDARD_FORM_JSON_VERSION
+<<<<<<< HEAD
 from pylabrobot.visualizer import Visualizer
 from pylabrobot.resources import (
   Coordinate,
   Resource,
   Cor_96_wellplate_360ul_Fb,
 )
+=======
+from pylabrobot.resources import (
+  Coordinate,
+  Cor_96_wellplate_360ul_Fb,
+  Resource,
+)
+from pylabrobot.visualizer import Visualizer
+>>>>>>> upstream/main
 
 
 class VisualizerSetupStopTests(unittest.IsolatedAsyncioTestCase):

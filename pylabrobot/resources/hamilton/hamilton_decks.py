@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+<<<<<<< HEAD
 from abc import ABCMeta, abstractmethod
 import logging
 from typing import Optional, cast
@@ -11,18 +12,39 @@ from pylabrobot.resources.resource import Resource
 from pylabrobot.resources.trash import Trash
 from pylabrobot.resources.ml_star.mfx_modules import MFXModule
 
+=======
+import logging
+from abc import ABCMeta, abstractmethod
+from typing import Optional, cast
+
+from pylabrobot.resources.carrier import ResourceHolder
+from pylabrobot.resources.coordinate import Coordinate
+from pylabrobot.resources.deck import Deck
+from pylabrobot.resources.ml_star.tip_creators import standard_volume_tip_with_filter
+from pylabrobot.resources.resource import Resource
+from pylabrobot.resources.tip_rack import TipRack, TipSpot
+from pylabrobot.resources.trash import Trash
+>>>>>>> upstream/main
 
 logger = logging.getLogger("pylabrobot")
 
 
 _RAILS_WIDTH = 22.5  # space between rails (mm)
 
+<<<<<<< HEAD
 STARLET_NUM_RAILS = 30
+=======
+STARLET_NUM_RAILS = 32
+>>>>>>> upstream/main
 STARLET_SIZE_X = 1360
 STARLET_SIZE_Y = 653.5
 STARLET_SIZE_Z = 900
 
+<<<<<<< HEAD
 STAR_NUM_RAILS = 55
+=======
+STAR_NUM_RAILS = 56
+>>>>>>> upstream/main
 STAR_SIZE_X = 1900
 STAR_SIZE_Y = 653.5
 STAR_SIZE_Z = 900
@@ -106,6 +128,10 @@ class HamiltonDeck(Deck, metaclass=ABCMeta):
     reassign: bool = False,
     rails: Optional[int] = None,
     replace=False,
+<<<<<<< HEAD
+=======
+    ignore_collision=False,
+>>>>>>> upstream/main
   ):
     """Assign a new deck resource.
 
@@ -133,6 +159,10 @@ class HamiltonDeck(Deck, metaclass=ABCMeta):
       replace: Replace the resource with the same name that was previously assigned, if it exists.
         If a resource is assigned with the same name and replace is False, a ValueError
         will be raised.
+<<<<<<< HEAD
+=======
+      ignore_collision: If True, ignore collision detection.
+>>>>>>> upstream/main
 
     Raises:
       ValueError: If a resource is assigned with the same name and replace is `False`.
@@ -156,6 +186,7 @@ class HamiltonDeck(Deck, metaclass=ABCMeta):
     elif location is not None:
       resource_location = location
     else:
+<<<<<<< HEAD
       resource_location = None  # unknown resource location
 
     if resource_location is not None:  # collision detection
@@ -195,6 +226,48 @@ class HamiltonDeck(Deck, metaclass=ABCMeta):
             f"'{og_resource.name}'."
           )
 
+=======
+      raise ValueError("Either rails or location must be provided.")
+
+    if not ignore_collision:
+      if resource_location is not None:  # collision detection
+        if (
+          resource_location.x + resource.get_absolute_size_x()
+          > self.rails_to_location(self.num_rails + 1).x
+          and rails is not None
+        ):
+          raise ValueError(
+            f"Resource with width {resource.get_absolute_size_x()} does not fit at rails {rails}."
+          )
+
+        # Check if there is space for this new resource.
+        for og_resource in self.children:
+          og_x = cast(Coordinate, og_resource.location).x
+          og_y = cast(Coordinate, og_resource.location).y
+
+          # A resource is not allowed to overlap with another resource. Resources overlap when a
+          # corner of one resource is inside the boundaries of another resource.
+          if any(
+            [
+              og_x <= resource_location.x < og_x + og_resource.get_absolute_size_x(),
+              og_x
+              < resource_location.x + resource.get_absolute_size_x()
+              < og_x + og_resource.get_absolute_size_x(),
+            ]
+          ) and any(
+            [
+              og_y <= resource_location.y < og_y + og_resource.get_absolute_size_y(),
+              og_y
+              < resource_location.y + resource.get_absolute_size_y()
+              < og_y + og_resource.get_absolute_size_y(),
+            ]
+          ):
+            raise ValueError(
+              f"Location {resource_location} is already occupied by resource "
+              f"'{og_resource.name}'."
+            )
+
+>>>>>>> upstream/main
     return super().assign_child_resource(resource, location=resource_location, reassign=reassign)
 
   def summary(self) -> str:
@@ -207,7 +280,11 @@ class HamiltonDeck(Deck, metaclass=ABCMeta):
       Rail     Resource                   Type                Coordinates (mm)
       =============================================================================================
       (1)  ├── tip_car                    TIP_CAR_480_A00     (x: 100.000, y: 240.800, z: 164.450)
+<<<<<<< HEAD
            │   ├── tip_rack_01            STF_L               (x: 117.900, y: 240.000, z: 100.000)
+=======
+           │   ├── tip_rack_01            STF                 (x: 117.900, y: 240.000, z: 100.000)
+>>>>>>> upstream/main
     """
 
     if len(self.get_all_resources()) == 0:
@@ -221,8 +298,13 @@ class HamiltonDeck(Deck, metaclass=ABCMeta):
       "well",
       "tube",
       "tip_spot",
+<<<<<<< HEAD
       "carrier_site",
       "plate_carrier_site",
+=======
+      "resource_holder",
+      "plate_holder",
+>>>>>>> upstream/main
     }
 
     def find_longest_child_name(resource: Resource, depth=0, depth_weight=4):
@@ -306,12 +388,17 @@ class HamiltonDeck(Deck, metaclass=ABCMeta):
     def print_tree(resource: Resource, depth=0):
       r_summary = print_resource_line(resource, depth=depth)
 
+<<<<<<< HEAD
       if isinstance(resource, MFXModule) and len(resource.children) == 0:
         r_summary += "\n"
         r_summary += print_empty_spot_line(depth=depth + 1)
 
       for child in resource.children:
         if isinstance(child, CarrierSite):
+=======
+      for child in resource.children:
+        if isinstance(child, ResourceHolder):
+>>>>>>> upstream/main
           r_summary += "\n"
           if child.resource is not None:
             r_summary += print_tree(child.resource, depth=depth + 1)
@@ -352,6 +439,10 @@ class HamiltonSTARDeck(HamiltonDeck):
     category: str = "deck",
     origin: Coordinate = Coordinate.zero(),
     no_trash: bool = False,
+<<<<<<< HEAD
+=======
+    no_teaching_rack: bool = False,
+>>>>>>> upstream/main
   ) -> None:
     """Create a new STAR(let) deck of the given size."""
 
@@ -383,6 +474,46 @@ class HamiltonSTARDeck(HamiltonDeck):
         location=Coordinate(x=-232.1, y=110.3, z=189.0),
       )  # 165.0 -> 189.0
 
+<<<<<<< HEAD
+=======
+    if not no_teaching_rack:
+      teaching_carrier = Resource(name="teaching_carrier", size_x=30, size_y=445.2, size_z=100)
+      tip_spots = [
+        TipSpot(
+          name=f"tip_spot_{i}",
+          size_x=9.0,
+          size_y=9.0,
+          size_z=0,
+          make_tip=standard_volume_tip_with_filter,
+        )
+        for i in range(8)
+      ]
+      for i, ts in enumerate(tip_spots):
+        ts.location = Coordinate(x=0, y=9 * i, z=23.1)
+      teaching_tip_rack = TipRack(
+        name="teaching_tip_rack",
+        size_x=9 * 8,
+        size_y=9,
+        size_z=50.4,
+        ordered_items={f"A{i}": tip_spots[i] for i in range(8)},
+        with_tips=True,
+        model="hamilton_teaching_tip_rack",
+      )
+      teaching_carrier.assign_child_resource(
+        teaching_tip_rack, location=Coordinate(x=5.9, y=400.3, z=0)
+      )
+      self.assign_child_resource(
+        teaching_carrier,
+        location=Coordinate(x=self.rails_to_location(self.num_rails - 1).x, y=51.8, z=100),
+      )
+
+  def serialize(self) -> dict:
+    return {
+      **super().serialize(),
+      "no_teaching_rack": True,  # data encoded as child. (not very pretty to have this key though...)
+    }
+
+>>>>>>> upstream/main
   def rails_to_location(self, rails: int) -> Coordinate:
     x = 100.0 + (rails - 1) * _RAILS_WIDTH
     return Coordinate(x=x, y=63, z=100)

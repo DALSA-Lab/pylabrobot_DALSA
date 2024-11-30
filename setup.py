@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 from setuptools import setup, find_packages
+=======
+from setuptools import find_packages, setup
+>>>>>>> upstream/main
 
 from pylabrobot.__version__ import __version__
 
@@ -14,7 +18,11 @@ extras_plate_reading = [
   "pylibftdi",
 ]
 
+<<<<<<< HEAD
 extras_websockets = ["websockets"]
+=======
+extras_websockets = ["websockets==12.0"]
+>>>>>>> upstream/main
 
 extras_visualizer = extras_websockets
 

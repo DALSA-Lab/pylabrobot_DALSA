@@ -2,7 +2,11 @@ from __future__ import annotations
 
 import csv
 import json
+<<<<<<< HEAD
 from typing import Union, Dict, List, Optional, Literal
+=======
+from typing import Dict, List, Literal, Optional, Union
+>>>>>>> upstream/main
 
 
 class PumpCalibration:

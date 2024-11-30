@@ -1,5 +1,6 @@
 """Thermo Fisher Scientific  Inc. (and all its brand) plates"""
 
+<<<<<<< HEAD
 from pylabrobot.resources.well import (
   Well,
   WellBottomType,
@@ -8,11 +9,23 @@ from pylabrobot.resources.well import (
 from pylabrobot.resources.utils import create_ordered_items_2d
 from pylabrobot.resources.plate import Lid, Plate
 
+=======
+>>>>>>> upstream/main
 from pylabrobot.resources.height_volume_functions import (
   calculate_liquid_height_in_container_2segments_square_ubottom,
   calculate_liquid_volume_container_2segments_square_ubottom,
 )
+<<<<<<< HEAD
 
+=======
+from pylabrobot.resources.plate import Lid, Plate
+from pylabrobot.resources.utils import create_ordered_items_2d
+from pylabrobot.resources.well import (
+  CrossSectionType,
+  Well,
+  WellBottomType,
+)
+>>>>>>> upstream/main
 
 # Please conform with the 'manufacturer-first, then brands' naming principle:
 
@@ -70,6 +83,7 @@ def Thermo_TS_96_wellplate_1200ul_Rb_Lid(name: str) -> Lid:
   #   size_y=85.48,
   #   size_z=5,
   #   nesting_z_height=None, # measure overlap between lid and plate
+<<<<<<< HEAD
   #   model="ThermoScientific_96_DWP_1200ul_Rd_Lid",
   # )
 
@@ -88,6 +102,12 @@ def ThermoScientific_96_wellplate_1200ul_Rd(name: str, with_lid: bool = False) -
   )
 
 
+=======
+  #   model="Thermo_TS_96_wellplate_1200ul_Rb_Lid",
+  # )
+
+
+>>>>>>> upstream/main
 def Thermo_TS_96_wellplate_1200ul_Rb(name: str, with_lid: bool = False) -> Plate:
   """Thermo Fisher Scientific/Fisher Scientific cat. no.: AB1127/10243223.
   - Material: Polypropylene (AB-1068, polystyrene).
@@ -133,11 +153,26 @@ def Thermo_TS_96_wellplate_1200ul_Rb(name: str, with_lid: bool = False) -> Plate
 
 
 def Thermo_TS_96_wellplate_1200ul_Rb_L(name: str, with_lid: bool = False) -> Plate:
+<<<<<<< HEAD
   return Thermo_TS_96_wellplate_1200ul_Rb(name=name, with_lid=with_lid)
 
 
 def Thermo_TS_96_wellplate_1200ul_Rb_P(name: str, with_lid: bool = False) -> Plate:
   return Thermo_TS_96_wellplate_1200ul_Rb(name=name, with_lid=with_lid).rotated(90)
+=======
+  # https://github.com/PyLabRobot/pylabrobot/issues/252
+  raise NotImplementedError(
+    "_L and _P definitions are deprecated. Use " "Thermo_TS_96_wellplate_1200ul_Rb instead."
+  )
+
+
+def Thermo_TS_96_wellplate_1200ul_Rb_P(name: str, with_lid: bool = False) -> Plate:
+  # https://github.com/PyLabRobot/pylabrobot/issues/252
+  raise NotImplementedError(
+    "_L and _P definitions are deprecated. Use "
+    "Thermo_TS_96_wellplate_1200ul_Rb().rotated(z=90) instead."
+  )
+>>>>>>> upstream/main
 
 
 # # # # # # # # # # Thermo_AB_96_wellplate_300ul_Vb_EnduraPlate # # # # # # # # # #
@@ -240,8 +275,22 @@ def Thermo_AB_96_wellplate_300ul_Vb_EnduraPlate(name: str, with_lid: bool = Fals
 
 
 def Thermo_AB_96_wellplate_300ul_Vb_EnduraPlate_L(name: str, with_lid: bool = False) -> Plate:
+<<<<<<< HEAD
   return Thermo_AB_96_wellplate_300ul_Vb_EnduraPlate(name=name, with_lid=with_lid)
 
 
 def Thermo_AB_96_wellplate_300ul_Vb_EnduraPlate_P(name: str, with_lid: bool = False) -> Plate:
   return Thermo_AB_96_wellplate_300ul_Vb_EnduraPlate(name=name, with_lid=with_lid).rotated(90)
+=======
+  raise NotImplementedError(
+    "_L and _P definitions are deprecated. Use "
+    "Thermo_AB_96_wellplate_300ul_Vb_EnduraPlate instead."
+  )
+
+
+def Thermo_AB_96_wellplate_300ul_Vb_EnduraPlate_P(name: str, with_lid: bool = False) -> Plate:
+  raise NotImplementedError(
+    "_L and _P definitions are deprecated. Use "
+    "Thermo_AB_96_wellplate_300ul_Vb_EnduraPlate.rotated(90) instead."
+  )
+>>>>>>> upstream/main

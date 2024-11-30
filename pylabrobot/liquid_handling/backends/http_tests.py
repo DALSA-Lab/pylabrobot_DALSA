@@ -5,15 +5,26 @@ from responses import matchers
 
 from pylabrobot.liquid_handling import LiquidHandler
 from pylabrobot.liquid_handling.backends import HTTPBackend
+<<<<<<< HEAD
 from pylabrobot.resources.hamilton import STARLetDeck
 from pylabrobot.resources import (
   PLT_CAR_L5AC_A00,
   TIP_CAR_480_A00,
   HTF_L,
+=======
+from pylabrobot.resources import (
+  HTF,
+  PLT_CAR_L5AC_A00,
+  TIP_CAR_480_A00,
+>>>>>>> upstream/main
   Cor_96_wellplate_360ul_Fb,
   no_tip_tracking,
   no_volume_tracking,
 )
+<<<<<<< HEAD
+=======
+from pylabrobot.resources.hamilton import STARLetDeck
+>>>>>>> upstream/main
 
 header_match = matchers.header_matcher({"User-Agent": "pylabrobot/0.1.0"})
 
@@ -74,7 +85,11 @@ class TestHTTPBackendOps(unittest.IsolatedAsyncioTestCase):
 
     self.deck = STARLetDeck()
     self.tip_carrier = TIP_CAR_480_A00(name="tip_carrier")
+<<<<<<< HEAD
     self.tip_carrier[0] = self.tip_rack = HTF_L(name="tiprack")
+=======
+    self.tip_carrier[0] = self.tip_rack = HTF(name="tiprack")
+>>>>>>> upstream/main
     self.plate_carrier = PLT_CAR_L5AC_A00(name="plate_carrier")
     self.plate_carrier[0] = self.plate = Cor_96_wellplate_360ul_Fb(name="plate")
     self.deck.assign_child_resource(self.tip_carrier, rails=3)

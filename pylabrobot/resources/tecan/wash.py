@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 """Tecan wash station"""
 
 from typing import List, Optional
@@ -9,6 +10,18 @@ from pylabrobot.resources.carrier import (
 from pylabrobot.resources.coordinate import Coordinate
 from pylabrobot.resources.trash import Trash
 from pylabrobot.resources.tecan.tecan_resource import TecanResource
+=======
+from typing import Dict, Optional
+
+from pylabrobot.resources.carrier import (
+  Carrier,
+  ResourceHolder,
+  create_resources,
+)
+from pylabrobot.resources.coordinate import Coordinate
+from pylabrobot.resources.tecan.tecan_resource import TecanResource
+from pylabrobot.resources.trash import Trash
+>>>>>>> upstream/main
 
 
 class TecanWashStation(Carrier, TecanResource):
@@ -22,7 +35,11 @@ class TecanWashStation(Carrier, TecanResource):
     size_z: float,
     off_x: float,
     off_y: float,
+<<<<<<< HEAD
     sites: Optional[List[CarrierSite]] = None,
+=======
+    sites: Optional[Dict[int, ResourceHolder]] = None,
+>>>>>>> upstream/main
     category="tecan_wash_station",
     model: Optional[str] = None,
   ):
@@ -49,19 +66,32 @@ def Wash_Station(name: str) -> TecanWashStation:
     size_z=0.0,
     off_x=12.5,
     off_y=24.7,
+<<<<<<< HEAD
     sites=create_carrier_sites(
       klass=CarrierSite,
+=======
+    sites=create_resources(
+      klass=ResourceHolder,
+>>>>>>> upstream/main
       locations=[
         Coordinate(12.2, 106.7, 0.0),
         Coordinate(11.0, 180.7, 0.0),
         Coordinate(12.2, 281.7, 0.0),
       ],
+<<<<<<< HEAD
       site_size_x=[
+=======
+      resource_size_x=[
+>>>>>>> upstream/main
         12.0,
         12.0,
         12.0,
       ],
+<<<<<<< HEAD
       site_size_y=[
+=======
+      resource_size_y=[
+>>>>>>> upstream/main
         73.0,
         100.0,
         73.0,

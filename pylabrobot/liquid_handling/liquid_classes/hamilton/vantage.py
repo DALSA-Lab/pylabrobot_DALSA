@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from typing import Dict, Tuple, Optional
 
 from pylabrobot.resources.liquid import Liquid
@@ -5,6 +6,14 @@ from pylabrobot.liquid_handling.liquid_classes.hamilton.base import (
   HamiltonLiquidClass,
 )
 
+=======
+from typing import Dict, Optional, Tuple
+
+from pylabrobot.liquid_handling.liquid_classes.hamilton.base import (
+  HamiltonLiquidClass,
+)
+from pylabrobot.resources.liquid import Liquid
+>>>>>>> upstream/main
 
 vantage_mapping: Dict[
   Tuple[int, bool, bool, bool, Liquid, bool, bool],

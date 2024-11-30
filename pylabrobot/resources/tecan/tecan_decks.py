@@ -1,5 +1,6 @@
 from typing import Optional, cast
 
+<<<<<<< HEAD
 from pylabrobot.resources.coordinate import Coordinate
 from pylabrobot.resources.carrier import Carrier
 from pylabrobot.resources.deck import Deck
@@ -14,6 +15,21 @@ from pylabrobot.resources.tecan.wash import (
   Wash_Station_Cleaner_deep,
 )
 
+=======
+from pylabrobot.resources.carrier import Carrier
+from pylabrobot.resources.coordinate import Coordinate
+from pylabrobot.resources.deck import Deck
+from pylabrobot.resources.plate import Plate
+from pylabrobot.resources.resource import Resource
+from pylabrobot.resources.tecan.tecan_resource import TecanResource
+from pylabrobot.resources.tecan.wash import (
+  Wash_Station,
+  Wash_Station_Cleaner_deep,
+  Wash_Station_Cleaner_shallow,
+  Wash_Station_Waste,
+)
+from pylabrobot.resources.tip_rack import TipRack
+>>>>>>> upstream/main
 
 _RAILS_WIDTH = 25
 
@@ -147,6 +163,7 @@ class TecanDeck(Deck):
     return round((x + _RAILS_WIDTH - 101) / _RAILS_WIDTH) + 1
 
   def summary(self) -> str:
+<<<<<<< HEAD
     """Return a summary of the deck.
 
     Example:
@@ -158,6 +175,9 @@ class TecanDeck(Deck):
       (1) ├── tip_car                    TIP_CAR_480_A00     (x: 100.000, y: 240.800, z: 164.450)
           │   ├── tip_rack_01            STF_L               (x: 117.900, y: 240.000, z: 100.000)
     """
+=======
+    """Return a summary of the deck."""
+>>>>>>> upstream/main
 
     if len(self.get_all_resources()) == 0:
       raise ValueError(
@@ -180,7 +200,11 @@ class TecanDeck(Deck):
       )
 
       if isinstance(resource, Carrier):
+<<<<<<< HEAD
         for site in resource.get_sites():
+=======
+        for site in resource.sites.values():
+>>>>>>> upstream/main
           if site.resource is None:
             r_summary += "     │   ├── <empty>\n"
           else:

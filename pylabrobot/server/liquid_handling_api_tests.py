@@ -1,8 +1,15 @@
 import logging
+<<<<<<< HEAD
 from pathlib import Path
 import time
 from typing import cast
 import unittest
+=======
+import time
+import unittest
+from pathlib import Path
+from typing import cast
+>>>>>>> upstream/main
 
 from pylabrobot import Config
 from pylabrobot.liquid_handling import LiquidHandler
@@ -10,12 +17,21 @@ from pylabrobot.liquid_handling.backends import (
   SerializingSavingBackend,
 )
 from pylabrobot.resources import (
+<<<<<<< HEAD
   Plate,
   TipRack,
   HTF_L,
   Cor_96_wellplate_360ul_Fb,
   TIP_CAR_480_A00,
   PLT_CAR_L5AC_A00,
+=======
+  HTF,
+  PLT_CAR_L5AC_A00,
+  TIP_CAR_480_A00,
+  Cor_96_wellplate_360ul_Fb,
+  Plate,
+  TipRack,
+>>>>>>> upstream/main
   no_tip_tracking,
 )
 from pylabrobot.resources.hamilton import HamiltonDeck, STARLetDeck
@@ -26,7 +42,11 @@ from pylabrobot.server.liquid_handling_server import create_app
 def build_layout() -> HamiltonDeck:
   # copied from liquid_handler_tests.py, can we make this shared?
   tip_car = TIP_CAR_480_A00(name="tip_carrier")
+<<<<<<< HEAD
   tip_car[0] = HTF_L(name="tip_rack_01")
+=======
+  tip_car[0] = HTF(name="tip_rack_01")
+>>>>>>> upstream/main
 
   plt_car = PLT_CAR_L5AC_A00(name="plate_carrier")
   plt_car[0] = plate = Cor_96_wellplate_360ul_Fb(name="aspiration plate")

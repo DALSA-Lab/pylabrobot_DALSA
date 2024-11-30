@@ -5,8 +5,13 @@ import logging
 import os
 import threading
 import time
+<<<<<<< HEAD
 from typing import Any, Dict, List, Optional, Tuple
 import webbrowser
+=======
+import webbrowser
+from typing import Any, Dict, List, Optional, Tuple
+>>>>>>> upstream/main
 
 try:
   import websockets
@@ -19,9 +24,14 @@ try:
 except ImportError:
   HAS_WEBSOCKETS = False
 
+<<<<<<< HEAD
 from pylabrobot.resources import Resource
 from pylabrobot.__version__ import STANDARD_FORM_JSON_VERSION
 
+=======
+from pylabrobot.__version__ import STANDARD_FORM_JSON_VERSION
+from pylabrobot.resources import Resource
+>>>>>>> upstream/main
 
 logger = logging.getLogger("pylabrobot")
 

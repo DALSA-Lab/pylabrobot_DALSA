@@ -12,6 +12,7 @@ from pylabrobot.liquid_handling.liquid_classes.hamilton import (
   get_vantage_liquid_class,
 )
 from pylabrobot.liquid_handling.standard import (
+<<<<<<< HEAD
   Pickup,
   PickupTipRack,
   Drop,
@@ -23,6 +24,19 @@ from pylabrobot.liquid_handling.standard import (
   DispensePlate,
   DispenseContainer,
   Move,
+=======
+  Aspiration,
+  AspirationContainer,
+  AspirationPlate,
+  Dispense,
+  DispenseContainer,
+  DispensePlate,
+  Drop,
+  DropTipRack,
+  Move,
+  Pickup,
+  PickupTipRack,
+>>>>>>> upstream/main
 )
 from pylabrobot.resources import (
   Coordinate,
@@ -37,7 +51,10 @@ from pylabrobot.resources.ml_star import (
   TipSize,
 )
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> upstream/main
 if sys.version_info >= (3, 8):
   from typing import Literal
 else:

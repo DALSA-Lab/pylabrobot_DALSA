@@ -2,8 +2,14 @@
 
 import unittest
 
+<<<<<<< HEAD
 from .coordinate import Coordinate
 from pylabrobot.serializer import serialize, deserialize
+=======
+from pylabrobot.serializer import deserialize, serialize
+
+from .coordinate import Coordinate
+>>>>>>> upstream/main
 
 
 class TestCoordinate(unittest.TestCase):
@@ -27,3 +33,10 @@ class TestCoordinate(unittest.TestCase):
       {"x": 1, "y": 2, "z": 3, "type": "Coordinate"},
     )
     self.assertEqual(self.a, deserialize(serialize(self.a)))
+<<<<<<< HEAD
+=======
+
+  def test_unpacking(self):
+    x, y, z = self.a
+    self.assertEqual((x, y, z), (1, 2, 3))
+>>>>>>> upstream/main

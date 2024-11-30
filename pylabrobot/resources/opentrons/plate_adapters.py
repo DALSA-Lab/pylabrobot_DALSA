@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 """Opentrons Plate Adapters"""
 
+=======
+>>>>>>> upstream/main
 from pylabrobot.resources.plate_adapter import PlateAdapter
 
 

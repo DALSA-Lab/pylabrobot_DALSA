@@ -4,7 +4,10 @@ import unittest
 import pylabrobot
 from pylabrobot.pumps.calibration import PumpCalibration
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> upstream/main
 plr_directory = os.path.join(pylabrobot.__path__[0], "testing", "test_data")
 
 

@@ -1,4 +1,8 @@
 from abc import ABCMeta, abstractmethod
+<<<<<<< HEAD
+=======
+
+>>>>>>> upstream/main
 from pylabrobot.machines.backends import MachineBackend
 
 

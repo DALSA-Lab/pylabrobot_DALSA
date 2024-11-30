@@ -1,5 +1,9 @@
 import re
+<<<<<<< HEAD
 from typing import Dict, Tuple, Optional
+=======
+from typing import Dict, Optional, Tuple
+>>>>>>> upstream/main
 
 from pylabrobot.resources.liquid import Liquid
 from pylabrobot.resources.tecan import TipType

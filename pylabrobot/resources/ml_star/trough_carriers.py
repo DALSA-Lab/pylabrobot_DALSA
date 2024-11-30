@@ -1,8 +1,14 @@
 from pylabrobot.resources.carrier import (
   Coordinate,
+<<<<<<< HEAD
   CarrierSite,
   TroughCarrier,
   create_homogeneous_carrier_sites,
+=======
+  ResourceHolder,
+  TroughCarrier,
+  create_homogeneous_resources,
+>>>>>>> upstream/main
 )
 
 
@@ -25,16 +31,26 @@ def Trough_CAR_4R200_A00(name: str) -> TroughCarrier:
     size_y=497.0,
     size_z=71.5,
     # pedestal_size_z=1.5 mm
+<<<<<<< HEAD
     sites=create_homogeneous_carrier_sites(
       klass=CarrierSite,
+=======
+    sites=create_homogeneous_resources(
+      klass=ResourceHolder,
+>>>>>>> upstream/main
       locations=[
         Coordinate(4.0, 2.0, 34.0 + 1.5),
         Coordinate(4.0, 123.0, 34.0 + 1.5),  # TODO: properly define troughs to remove dependency
         Coordinate(4.0, 245.0, 34.0 + 1.5),  # on this 1.5mm offset (material_z_thickness)
         Coordinate(4.0, 366.0, 34.0 + 1.5),
       ],
+<<<<<<< HEAD
       site_size_x=37.0,
       site_size_y=118.0,
+=======
+      resource_size_x=37.0,
+      resource_size_y=118.0,
+>>>>>>> upstream/main
     ),
     model="Trough_CAR_4R200_A00",
   )

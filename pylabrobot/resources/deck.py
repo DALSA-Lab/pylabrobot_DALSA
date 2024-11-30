@@ -39,7 +39,10 @@ class Deck(Resource):
     self.location = origin
     self.resources: Dict[str, Resource] = {}
 
+<<<<<<< HEAD
     self.register_will_assign_resource_callback(self._check_name_exists)
+=======
+>>>>>>> upstream/main
     self.register_did_assign_resource_callback(self._register_resource)
     self.register_did_unassign_resource_callback(self._deregister_resource)
 
@@ -49,6 +52,7 @@ class Deck(Resource):
     del super_serialized["model"]  # deck's don't typically have a model
     return super_serialized
 
+<<<<<<< HEAD
   def _check_name_exists(self, resource: Resource):
     """Callback called before a resource is assigned to the deck. (will_assign_resource_callback)
     Raises a ValueError if the resource name already exists. This method is recursive, and
@@ -59,6 +63,12 @@ class Deck(Resource):
       raise ValueError(f"Resource '{resource.name}' already assigned to deck")
     for child in resource.children:
       self._check_name_exists(child)
+=======
+  def _check_naming_conflicts(self, resource: Resource):
+    """overwrite for speed"""
+    if self.has_resource(resource.name):
+      raise ValueError(f"Resource '{resource.name}' already assigned to deck")
+>>>>>>> upstream/main
 
   def _register_resource(self, resource: Resource):
     """Recursively assign the given resource and all child resources to the `self.resources`

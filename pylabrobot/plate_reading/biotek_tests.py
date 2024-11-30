@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 from typing import Iterator
 import unittest
 import unittest.mock
+=======
+import unittest
+import unittest.mock
+from typing import Iterator
+>>>>>>> upstream/main
 
 from pylabrobot.plate_reading.biotek_backend import Cytation5Backend
 

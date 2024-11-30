@@ -1,11 +1,19 @@
 import contextlib
 import sys
+<<<<<<< HEAD
 from typing import Callable, Optional, TYPE_CHECKING, cast
 
 from pylabrobot.resources.errors import HasTipError, NoTipError
 from pylabrobot.serializer import deserialize
 
 from pylabrobot.resources.tip import Tip
+=======
+from typing import TYPE_CHECKING, Callable, Optional, cast
+
+from pylabrobot.resources.errors import HasTipError, NoTipError
+from pylabrobot.resources.tip import Tip
+from pylabrobot.serializer import deserialize
+>>>>>>> upstream/main
 
 if TYPE_CHECKING:
   from pylabrobot.resources.tip_rack import TipSpot

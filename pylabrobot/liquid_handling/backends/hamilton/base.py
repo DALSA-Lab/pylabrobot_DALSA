@@ -1,12 +1,22 @@
+<<<<<<< HEAD
 from abc import ABCMeta, abstractmethod
+=======
+>>>>>>> upstream/main
 import asyncio
 import datetime
 import logging
 import threading
 import time
+<<<<<<< HEAD
 from typing import (
   Any,
   Dict,
+=======
+from abc import ABCMeta, abstractmethod
+from dataclasses import dataclass
+from typing import (
+  Any,
+>>>>>>> upstream/main
   List,
   Optional,
   Sequence,
@@ -32,6 +42,20 @@ T = TypeVar("T")
 logger = logging.getLogger("pylabrobot")
 
 
+<<<<<<< HEAD
+=======
+@dataclass
+class HamiltonTask:
+  """A command that has been sent, awaiting a response."""
+
+  id_: Optional[int]
+  loop: asyncio.AbstractEventLoop
+  fut: asyncio.Future
+  cmd: str
+  timeout_time: float
+
+
+>>>>>>> upstream/main
 class HamiltonLiquidHandler(LiquidHandlerBackend, USBBackend, metaclass=ABCMeta):
   """
   Abstract base class for Hamilton liquid handling robot backends.
@@ -48,7 +72,10 @@ class HamiltonLiquidHandler(LiquidHandlerBackend, USBBackend, metaclass=ABCMeta)
     write_timeout: int = 30,
   ):
     """
+<<<<<<< HEAD
 
+=======
+>>>>>>> upstream/main
     Args:
       device_address: The USB address of the Hamilton device. Only useful if using more than one
         Hamilton device.
@@ -74,10 +101,14 @@ class HamiltonLiquidHandler(LiquidHandlerBackend, USBBackend, metaclass=ABCMeta)
     self.id_ = 0
 
     self._reading_thread: Optional[threading.Thread] = None
+<<<<<<< HEAD
     self._waiting_tasks: Dict[
       int,
       Tuple[asyncio.AbstractEventLoop, asyncio.Future, str, float],
     ] = {}
+=======
+    self._waiting_tasks: List[HamiltonTask] = []
+>>>>>>> upstream/main
     self._tth2tti: dict[int, int] = {}  # hash to tip type index
 
     # Whether to allow the firmware to plan liquid handling operations when the y positions are
@@ -91,6 +122,11 @@ class HamiltonLiquidHandler(LiquidHandlerBackend, USBBackend, metaclass=ABCMeta)
     await USBBackend.setup(self)
 
   async def stop(self):
+<<<<<<< HEAD
+=======
+    for task in self._waiting_tasks:
+      task.fut.set_exception(RuntimeError("Stopping HamiltonLiquidHandler."))
+>>>>>>> upstream/main
     self._waiting_tasks.clear()
     await super().stop()
 
@@ -150,9 +186,16 @@ class HamiltonLiquidHandler(LiquidHandlerBackend, USBBackend, metaclass=ABCMeta)
     self,
     module: str,
     command: str,
+<<<<<<< HEAD
     tip_pattern: Optional[List[bool]],
     **kwargs,
   ) -> Tuple[str, int]:
+=======
+    auto_id: bool,
+    tip_pattern: Optional[List[bool]],
+    **kwargs,
+  ) -> Tuple[str, Optional[int]]:
+>>>>>>> upstream/main
     """Assemble a firmware command to the Hamilton machine.
 
     Args:
@@ -168,8 +211,16 @@ class HamiltonLiquidHandler(LiquidHandlerBackend, USBBackend, metaclass=ABCMeta)
     """
 
     cmd = module + command
+<<<<<<< HEAD
     cmd_id = self._generate_id()
     cmd += f"id{cmd_id:04}"  # id has to be the first param
+=======
+    if auto_id:
+      cmd_id = self._generate_id()
+      cmd += f"id{cmd_id:04}"  # id has to be the first param
+    else:
+      cmd_id = None
+>>>>>>> upstream/main
 
     for k, v in kwargs.items():
       if isinstance(v, datetime.datetime):
@@ -200,6 +251,10 @@ class HamiltonLiquidHandler(LiquidHandlerBackend, USBBackend, metaclass=ABCMeta)
     self,
     module: str,
     command: str,
+<<<<<<< HEAD
+=======
+    auto_id=True,
+>>>>>>> upstream/main
     tip_pattern: Optional[List[bool]] = None,
     write_timeout: Optional[int] = None,
     read_timeout: Optional[int] = None,
@@ -212,6 +267,10 @@ class HamiltonLiquidHandler(LiquidHandlerBackend, USBBackend, metaclass=ABCMeta)
     Args:
       module: 2 character module identifier (C0 for master, ...)
       command: 2 character command identifier (QM for request status)
+<<<<<<< HEAD
+=======
+      auto_id: auto generate id if True, otherwise use the id in kwargs (or None if not present)
+>>>>>>> upstream/main
       write_timeout: write timeout in seconds. If None, `self.write_timeout` is used.
       read_timeout: read timeout in seconds. If None, `self.read_timeout` is used.
       wait: If True, wait for a response. If False, return `None` immediately after sending the
@@ -228,6 +287,10 @@ class HamiltonLiquidHandler(LiquidHandlerBackend, USBBackend, metaclass=ABCMeta)
       module=module,
       command=command,
       tip_pattern=tip_pattern,
+<<<<<<< HEAD
+=======
+      auto_id=auto_id,
+>>>>>>> upstream/main
       **kwargs,
     )
     resp = await self._write_and_read_command(
@@ -243,7 +306,11 @@ class HamiltonLiquidHandler(LiquidHandlerBackend, USBBackend, metaclass=ABCMeta)
 
   async def _write_and_read_command(
     self,
+<<<<<<< HEAD
     id_: int,
+=======
+    id_: Optional[int],
+>>>>>>> upstream/main
     cmd: str,
     write_timeout: Optional[int] = None,
     read_timeout: Optional[int] = None,
@@ -267,7 +334,11 @@ class HamiltonLiquidHandler(LiquidHandlerBackend, USBBackend, metaclass=ABCMeta)
 
   def _start_reading(
     self,
+<<<<<<< HEAD
     id_: int,
+=======
+    id_: Optional[int],
+>>>>>>> upstream/main
     loop: asyncio.AbstractEventLoop,
     fut: asyncio.Future,
     cmd: str,
@@ -276,7 +347,13 @@ class HamiltonLiquidHandler(LiquidHandlerBackend, USBBackend, metaclass=ABCMeta)
     """Submit a task to the reading thread. Starts reading thread if it is not already running."""
 
     timeout_time = time.time() + timeout
+<<<<<<< HEAD
     self._waiting_tasks[id_] = (loop, fut, cmd, timeout_time)
+=======
+    self._waiting_tasks.append(
+      HamiltonTask(id_=id_, loop=loop, fut=fut, cmd=cmd, timeout_time=timeout_time)
+    )
+>>>>>>> upstream/main
 
     # Start reading thread if it is not already running.
     if len(self._waiting_tasks) == 1:
@@ -298,18 +375,28 @@ class HamiltonLiquidHandler(LiquidHandlerBackend, USBBackend, metaclass=ABCMeta)
   def _continuously_read(self) -> None:
     """Continuously read from the USB port until all tasks are completed.
 
+<<<<<<< HEAD
     Tasks are stored in the `self._waiting_tasks` dictionary, and contain a future that will be
     completed when the task is finished. Tasks are submitted to the dictionary using the
+=======
+    Tasks are stored in the `self._waiting_tasks` list, and contain a future that will be
+    completed when the task is finished. Tasks are submitted to the list using the
+>>>>>>> upstream/main
     `self._start_reading` method.
 
     On each iteration, read the USB port. If a response is received, parse it and check if it is
     relevant to any of the tasks. If so, complete the future and remove the task from the
+<<<<<<< HEAD
     dictionary. If a task has timed out, complete the future with a `TimeoutError`.
+=======
+    list. If a task has timed out, complete the future with a `TimeoutError`.
+>>>>>>> upstream/main
     """
 
     logger.debug("Starting reading thread...")
 
     while len(self._waiting_tasks) > 0:
+<<<<<<< HEAD
       for id_, (
         loop,
         fut,
@@ -323,6 +410,17 @@ class HamiltonLiquidHandler(LiquidHandlerBackend, USBBackend, metaclass=ABCMeta)
             TimeoutError(f"Timeout while waiting for response to command {cmd}."),
           )
           del self._waiting_tasks[id_]
+=======
+      for idx in range(len(self._waiting_tasks) - 1, -1, -1):  # reverse order to allow deletion
+        task = self._waiting_tasks[idx]
+        if time.time() > task.timeout_time:
+          logger.warning("Timeout while waiting for response to command %s.", task.cmd)
+          task.loop.call_soon_threadsafe(
+            task.fut.set_exception,
+            TimeoutError(f"Timeout while waiting for response to command {task.cmd}."),
+          )
+          del self._waiting_tasks[idx]
+>>>>>>> upstream/main
           break
 
       try:
@@ -342,6 +440,7 @@ class HamiltonLiquidHandler(LiquidHandlerBackend, USBBackend, metaclass=ABCMeta)
         logger.warning("Could not parse response: %s (%s)", resp, e)
         continue
 
+<<<<<<< HEAD
       for id_, (
         loop,
         fut,
@@ -356,6 +455,22 @@ class HamiltonLiquidHandler(LiquidHandlerBackend, USBBackend, metaclass=ABCMeta)
           else:
             loop.call_soon_threadsafe(fut.set_result, resp)
           del self._waiting_tasks[id_]
+=======
+      module_and_command = resp[: self.module_id_length + 2]
+      for idx in range(len(self._waiting_tasks)):
+        task = self._waiting_tasks[idx]
+        # if the command has no id, we have to check the command itself
+        if response_id == task.id_ or (
+          task.id_ is None and task.cmd.startswith(module_and_command)
+        ):
+          try:
+            self.check_fw_string_error(resp)
+          except Exception as e:
+            task.loop.call_soon_threadsafe(task.fut.set_exception, e)
+          else:
+            task.loop.call_soon_threadsafe(task.fut.set_result, resp)
+          del self._waiting_tasks[idx]
+>>>>>>> upstream/main
           break
 
     self._reading_thread = None
@@ -480,12 +595,22 @@ class HamiltonLiquidHandler(LiquidHandlerBackend, USBBackend, metaclass=ABCMeta)
   ) -> Optional[str]:
     """Send a raw command to the machine."""
     id_index = command.find("id")
+<<<<<<< HEAD
     if id_index == -1:
       raise ValueError("Command must contain an id.")
     id_str = command[id_index + 2 : id_index + 6]
     if not id_str.isdigit():
       raise ValueError("Id must be a 4 digit int.")
     id_ = int(id_str)
+=======
+    if id_index != -1:
+      id_str = command[id_index + 2 : id_index + 6]
+      if not id_str.isdigit():
+        raise ValueError("Id must be a 4 digit int.")
+      id_ = int(id_str)
+    else:
+      id_ = None
+>>>>>>> upstream/main
 
     return await self._write_and_read_command(
       id_=id_,

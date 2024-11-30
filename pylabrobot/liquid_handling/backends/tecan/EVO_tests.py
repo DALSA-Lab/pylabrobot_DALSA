@@ -9,6 +9,7 @@ from pylabrobot.liquid_handling.backends.tecan.EVO import (
   RoMa,
 )
 from pylabrobot.liquid_handling.standard import (
+<<<<<<< HEAD
   Pickup,
   Aspiration,
   Dispense,
@@ -21,6 +22,20 @@ from pylabrobot.resources import (
   DeepWell_96_Well,
   DiTi_100ul_Te_MO,
   DiTi_SBS_3_Pos_MCA96,
+=======
+  Aspiration,
+  Dispense,
+  GripDirection,
+  Move,
+  Pickup,
+)
+from pylabrobot.resources import (
+  Coordinate,
+  DeepWell_96_Well,
+  DiTi_100ul_Te_MO,
+  DiTi_SBS_3_Pos_MCA96,
+  EVO150Deck,
+>>>>>>> upstream/main
   MP_3Pos_PCR,
 )
 

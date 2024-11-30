@@ -2,6 +2,7 @@ import asyncio
 import ctypes
 import logging
 import math
+<<<<<<< HEAD
 import time
 import struct
 import sys
@@ -10,6 +11,17 @@ from typing import List, Optional, Union
 from .backend import PlateReaderBackend
 from pylabrobot import utils
 
+=======
+import struct
+import sys
+import time
+from typing import List, Optional, Union
+
+from pylabrobot import utils
+
+from .backend import PlateReaderBackend
+
+>>>>>>> upstream/main
 if sys.version_info >= (3, 8):
   from typing import Literal
 else:

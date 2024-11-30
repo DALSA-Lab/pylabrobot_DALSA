@@ -1,11 +1,19 @@
 import unittest
 
+<<<<<<< HEAD
 from pylabrobot.resources.liquid import Liquid
 from pylabrobot.resources.volume_tracker import VolumeTracker
+=======
+>>>>>>> upstream/main
 from pylabrobot.resources.errors import (
   TooLittleLiquidError,
   TooLittleVolumeError,
 )
+<<<<<<< HEAD
+=======
+from pylabrobot.resources.liquid import Liquid
+from pylabrobot.resources.volume_tracker import VolumeTracker
+>>>>>>> upstream/main
 
 
 class TestVolumeTracker(unittest.TestCase):

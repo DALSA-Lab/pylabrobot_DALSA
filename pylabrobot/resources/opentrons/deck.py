@@ -1,5 +1,9 @@
 import textwrap
+<<<<<<< HEAD
 from typing import Optional, List
+=======
+from typing import List, Optional
+>>>>>>> upstream/main
 
 from pylabrobot.resources.coordinate import Coordinate
 from pylabrobot.resources.deck import Deck

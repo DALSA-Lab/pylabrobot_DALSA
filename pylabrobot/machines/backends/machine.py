@@ -1,4 +1,8 @@
 from abc import ABC, ABCMeta, abstractmethod
+<<<<<<< HEAD
+=======
+
+>>>>>>> upstream/main
 from pylabrobot.utils.object_parsing import find_subclass
 
 

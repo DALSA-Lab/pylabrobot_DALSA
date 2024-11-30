@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 """Alpaqua magnetic racks"""
+=======
+>>>>>>> upstream/main
 # currently implemented as PlateAdapter to enable simple and fast assignment
 # of plates to them, with self-correcting location placement
 

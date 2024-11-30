@@ -5,6 +5,10 @@
 :caption: Getting started
 
 installation
+<<<<<<< HEAD
+=======
+rpi
+>>>>>>> upstream/main
 ```
 
 ```{toctree}
@@ -17,6 +21,11 @@ using-trackers
 writing-robot-agnostic-methods
 hamilton-star/hamilton-star
 moving-channels-around
+<<<<<<< HEAD
+=======
+tip-spot-generators
+96head
+>>>>>>> upstream/main
 ```
 
 ```{toctree}

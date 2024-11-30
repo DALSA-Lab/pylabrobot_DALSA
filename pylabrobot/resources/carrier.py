@@ -1,19 +1,30 @@
 from __future__ import annotations
 
 import logging
+<<<<<<< HEAD
 from typing import Generic, List, Optional, Type, TypeVar, Union
+=======
+from typing import Dict, Generic, List, Optional, Type, TypeVar, Union, cast
+>>>>>>> upstream/main
 
 from pylabrobot.resources.resource_holder import ResourceHolder
 
 from .coordinate import Coordinate
 from .plate import Plate
+<<<<<<< HEAD
 from .resource import Resource
 from .resource_stack import ResourceStack
 from .plate_adapter import PlateAdapter
+=======
+from .plate_adapter import PlateAdapter
+from .resource import Resource
+from .resource_stack import ResourceStack
+>>>>>>> upstream/main
 
 logger = logging.getLogger("pylabrobot")
 
 
+<<<<<<< HEAD
 class CarrierSite(ResourceHolder, Resource):
   """A single site within a carrier."""
 
@@ -89,6 +100,13 @@ class Carrier(Resource, Generic[S]):
   Attributes:
     capacity: The maximum number of items that can be stored in this carrier.
   """
+=======
+S = TypeVar("S", bound=ResourceHolder)
+
+
+class Carrier(Resource, Generic[S]):
+  """Base class for all carriers."""
+>>>>>>> upstream/main
 
   def __init__(
     self,
@@ -96,7 +114,11 @@ class Carrier(Resource, Generic[S]):
     size_x: float,
     size_y: float,
     size_z: float,
+<<<<<<< HEAD
     sites: Optional[List[S]] = None,
+=======
+    sites: Optional[Dict[int, S]] = None,
+>>>>>>> upstream/main
     category: Optional[str] = "carrier",
     model: Optional[str] = None,
   ):
@@ -109,6 +131,7 @@ class Carrier(Resource, Generic[S]):
       model=model,
     )
 
+<<<<<<< HEAD
     sites = sites or []
 
     self.sites: List[CarrierSite] = []
@@ -120,6 +143,20 @@ class Carrier(Resource, Generic[S]):
 
   @property
   def capacity(self):
+=======
+    sites = sites or {}
+
+    self.sites: Dict[int, S] = {}
+    for spot, site in sites.items():
+      site.name = f"carrier-{self.name}-spot-{spot}"
+      if site.location is None:
+        raise ValueError(f"site {site} has no location")
+      self.assign_child_resource(site, location=site.location, spot=spot)
+
+  @property
+  def capacity(self):
+    """The number of sites on this carrier."""
+>>>>>>> upstream/main
     return len(self.sites)
 
   def assign_child_resource(
@@ -127,6 +164,7 @@ class Carrier(Resource, Generic[S]):
     resource: Resource,
     location: Coordinate,
     reassign: bool = True,
+<<<<<<< HEAD
   ):
     """Assign a resource to this carrier.
 
@@ -146,21 +184,44 @@ class Carrier(Resource, Generic[S]):
   def assign_resource_to_site(self, resource: Resource, spot: int):
     if spot < 0 or spot >= self.capacity:
       raise IndexError(f"Invalid spot {spot}")
+=======
+    spot: Optional[int] = None,
+  ):
+    if not isinstance(resource, ResourceHolder):
+      raise TypeError(f"Invalid resource {resource}")
+
+    # see if we have an index for the resource name (eg from deserialization or user specification),
+    # otherwise add in first available spot
+    idx = spot or len(self.sites)
+    if not reassign and self.sites[idx] is not None:
+      raise ValueError(f"a site with index {idx} already exists")
+    self.sites[idx] = cast(S, resource)
+
+    super().assign_child_resource(resource, location=location, reassign=reassign)
+
+  def assign_resource_to_site(self, resource: Resource, spot: int):
+>>>>>>> upstream/main
     if self.sites[spot].resource is not None:
       raise ValueError(f"spot {spot} already has a resource")
     self.sites[spot].assign_child_resource(resource)
 
+<<<<<<< HEAD
   def unassign_child_resource(self, resource):
     """Unassign a resource from this carrier, checked by name.
     Also see :meth:`~Resource.assign_child_resource`
 
     Args:
       resource: The resource to unassign.
+=======
+  def unassign_child_resource(self, resource: Resource):
+    """Unassign a resource from this carrier, checked by name.
+>>>>>>> upstream/main
 
     Raises:
       ValueError: If the resource is not assigned to this carrier.
     """
 
+<<<<<<< HEAD
     if not isinstance(resource.parent, CarrierSite) or not resource.parent.parent == self:
       raise ValueError(f"Resource {resource} is not assigned to this carrier")
     resource.unassign()
@@ -190,6 +251,35 @@ class Carrier(Resource, Generic[S]):
   def get_sites(self) -> List[CarrierSite]:
     """Get all sites."""
     return self.sites
+=======
+    if not isinstance(resource.parent, ResourceHolder) or not resource.parent.parent == self:
+      raise ValueError(f"Resource {resource} is not assigned to this carrier")
+    resource.unassign()
+
+  def __getitem__(self, idx: int) -> S:
+    """Get a site by index."""
+    return self.sites[idx]
+
+  def __setitem__(self, idx: int, resource: Optional[Resource]):
+    """Assign a resource to this carrier."""
+    if resource is None:  # setting to None
+      assigned_resource = self[idx].resource
+      if assigned_resource is not None:
+        self.unassign_child_resource(assigned_resource)
+    else:
+      self.assign_resource_to_site(resource, spot=idx)
+
+  def __delitem__(self, idx: int):
+    """Unassign a resource from this carrier."""
+    assigned_resource = self[idx].resource
+    if assigned_resource is not None:
+      self.unassign_child_resource(assigned_resource)
+
+  def get_resources(self) -> List[Resource]:
+    """Get all resources, using self.__getitem__ (so that the location is within this carrier)."""
+    all_resources = [site.resource for site in self.sites.values()]
+    return [resource for resource in all_resources if resource is not None]
+>>>>>>> upstream/main
 
   def __eq__(self, other):
     return super().__eq__(other) and self.sites == other.sites
@@ -206,7 +296,11 @@ class TipCarrier(Carrier):
     size_x: float,
     size_y: float,
     size_z: float,
+<<<<<<< HEAD
     sites: Optional[List[CarrierSite]] = None,
+=======
+    sites: Optional[Dict[int, ResourceHolder]] = None,
+>>>>>>> upstream/main
     category="tip_carrier",
     model: Optional[str] = None,
   ):
@@ -221,7 +315,11 @@ class TipCarrier(Carrier):
     )
 
 
+<<<<<<< HEAD
 class PlateCarrierSite(CarrierSite):
+=======
+class PlateHolder(ResourceHolder):
+>>>>>>> upstream/main
   """A single site within a plate carrier."""
 
   def __init__(
@@ -231,7 +329,12 @@ class PlateCarrierSite(CarrierSite):
     size_y: float,
     size_z: float,
     pedestal_size_z: float = None,  # type: ignore
+<<<<<<< HEAD
     category="plate_carrier_site",
+=======
+    child_location=Coordinate.zero(),
+    category="plate_holder",
+>>>>>>> upstream/main
     model: Optional[str] = None,
   ):
     super().__init__(name, size_x, size_y, size_z, category=category, model=model)
@@ -243,7 +346,12 @@ class PlateCarrierSite(CarrierSite):
       )
 
     self.pedestal_size_z = pedestal_size_z
+<<<<<<< HEAD
     self.resource: Optional[Plate] = None  # fix type
+=======
+    self.child_location = child_location
+    # self.resource: Optional[Plate] = None  # fix type
+>>>>>>> upstream/main
     # TODO: add self.pedestal_2D_offset if necessary in the future
 
   def assign_child_resource(
@@ -254,15 +362,26 @@ class PlateCarrierSite(CarrierSite):
   ):
     if isinstance(resource, ResourceStack):
       if not resource.direction == "z":
+<<<<<<< HEAD
         raise ValueError("ResourceStack assigned to PlateCarrierSite must have direction 'z'")
       if not all(isinstance(c, Plate) for c in resource.children):
         raise TypeError(
           "If a ResourceStack is assigned to a PlateCarrierSite, the items "
+=======
+        raise ValueError("ResourceStack assigned to PlateHolder must have direction 'z'")
+      if not all(isinstance(c, Plate) for c in resource.children):
+        raise TypeError(
+          "If a ResourceStack is assigned to a PlateHolder, the items "
+>>>>>>> upstream/main
           + f"must be Plates, not {type(resource.children[-1])}"
         )
     elif not isinstance(resource, (Plate, PlateAdapter)):
       raise TypeError(
+<<<<<<< HEAD
         "PlateCarrierSite can only store Plate, PlateAdapter or ResourceStack "
+=======
+        "PlateHolder can only store Plate, PlateAdapter or ResourceStack "
+>>>>>>> upstream/main
         + f"resources, not {type(resource)}"
       )
     return super().assign_child_resource(resource, location, reassign)
@@ -312,7 +431,11 @@ class PlateCarrierSite(CarrierSite):
       resource_stack.location = self.get_default_child_location(resource)
 
   def _deregister_resource_stack_callback(self, resource: Resource):
+<<<<<<< HEAD
     """Callback called when a ResourceStack (or child) is unassigned from this PlateCarrierSite."""
+=======
+    """Callback called when a ResourceStack (or child) is unassigned from this PlateHolder."""
+>>>>>>> upstream/main
     if isinstance(resource, ResourceStack):  # the ResourceStack itself is unassigned
       resource.deregister_did_assign_resource_callback(self._update_resource_stack_location)
 
@@ -334,7 +457,11 @@ class PlateCarrier(Carrier):
     size_x: float,
     size_y: float,
     size_z: float,
+<<<<<<< HEAD
     sites: Optional[List[PlateCarrierSite]] = None,
+=======
+    sites: Optional[Dict[int, PlateHolder]] = None,
+>>>>>>> upstream/main
     category="plate_carrier",
     model: Optional[str] = None,
   ):
@@ -349,27 +476,43 @@ class PlateCarrier(Carrier):
     )
 
 
+<<<<<<< HEAD
 class MFXCarrier(Carrier):
   r"""Base class for multiflex carriers (i.e. carriers with mixed-use and/or specialized sites).
   Name prefix: 'MFX\_'
   """
 
+=======
+class MFXCarrier(Carrier[ResourceHolder]):
+>>>>>>> upstream/main
   def __init__(
     self,
     name: str,
     size_x: float,
     size_y: float,
     size_z: float,
+<<<<<<< HEAD
     sites: Optional[List[CarrierSite]] = None,
+=======
+    sites: Dict[int, ResourceHolder],
+>>>>>>> upstream/main
     category="mfx_carrier",
     model: Optional[str] = None,
   ):
     super().__init__(
+<<<<<<< HEAD
       name,
       size_x,
       size_y,
       size_z,
       sites,
+=======
+      name=name,
+      size_x=size_x,
+      size_y=size_y,
+      size_z=size_z,
+      sites=sites,
+>>>>>>> upstream/main
       category=category,
       model=model,
     )
@@ -386,7 +529,11 @@ class TubeCarrier(Carrier):
     size_x: float,
     size_y: float,
     size_z: float,
+<<<<<<< HEAD
     sites: Optional[List[CarrierSite]] = None,
+=======
+    sites: Optional[Dict[int, ResourceHolder]] = None,
+>>>>>>> upstream/main
     category="tube_carrier",
     model: Optional[str] = None,
   ):
@@ -412,7 +559,11 @@ class TroughCarrier(Carrier):
     size_x: float,
     size_y: float,
     size_z: float,
+<<<<<<< HEAD
     sites: Optional[List[CarrierSite]] = None,
+=======
+    sites: Optional[Dict[int, ResourceHolder]] = None,
+>>>>>>> upstream/main
     category="trough_carrier",
     model: Optional[str] = None,
   ):
@@ -427,6 +578,7 @@ class TroughCarrier(Carrier):
     )
 
 
+<<<<<<< HEAD
 T = TypeVar("T", bound=CarrierSite)
 
 
@@ -443,12 +595,32 @@ def create_carrier_sites(
   for spot, (location, x, y) in enumerate(zip(locations, site_size_x, site_size_y)):
     site = klass(
       name=f"carrier-site-{spot}",
+=======
+T = TypeVar("T", bound=ResourceHolder)
+
+
+def create_resources(
+  klass: Type[T],
+  locations: List[Coordinate],
+  resource_size_x: List[Union[float, int]],
+  resource_size_y: List[Union[float, int]],
+  **kwargs,
+) -> Dict[int, T]:
+  """Create a list of resource with the given sizes and locations."""
+  # TODO: should be possible to merge with create_equally_spaced_y
+
+  sites = {}
+  for idx, (location, x, y) in enumerate(zip(locations, resource_size_x, resource_size_y)):
+    site = klass(
+      name=f"resource-{idx}",
+>>>>>>> upstream/main
       size_x=x,
       size_y=y,
       size_z=0,
       **kwargs,
     )
     site.location = location
+<<<<<<< HEAD
     sites.append(site)
   return sites
 
@@ -468,5 +640,27 @@ def create_homogeneous_carrier_sites(
     locations=locations,
     site_size_x=[site_size_x] * n,
     site_size_y=[site_size_y] * n,
+=======
+    sites[idx] = site
+  return sites
+
+
+def create_homogeneous_resources(
+  klass: Type[T],
+  locations: List[Coordinate],
+  resource_size_x: float,
+  resource_size_y: float,
+  **kwargs,
+) -> Dict[int, T]:
+  """Create a list of resources with the same size at specified locations."""
+  # TODO: should be possible to merge with create_equally_spaced_y
+
+  n = len(locations)
+  return create_resources(
+    klass=klass,
+    locations=locations,
+    resource_size_x=[resource_size_x] * n,
+    resource_size_y=[resource_size_y] * n,
+>>>>>>> upstream/main
     **kwargs,
   )

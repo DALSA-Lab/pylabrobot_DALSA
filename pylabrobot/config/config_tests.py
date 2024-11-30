@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from pathlib import Path
 import tempfile
 import unittest
@@ -5,12 +6,24 @@ import unittest
 from pylabrobot import load_config
 from pylabrobot.config.config import Config
 from pylabrobot.config.io.file import FileReader, FileWriter
+=======
+import tempfile
+import unittest
+from pathlib import Path
+
+from pylabrobot import load_config
+from pylabrobot.config.config import Config
+>>>>>>> upstream/main
 from pylabrobot.config.formats import ConfigLoader, ConfigSaver
 from pylabrobot.config.formats.ini_config import IniLoader, IniSaver
 from pylabrobot.config.formats.json_config import (
   JsonLoader,
   JsonSaver,
 )
+<<<<<<< HEAD
+=======
+from pylabrobot.config.io.file import FileReader, FileWriter
+>>>>>>> upstream/main
 
 
 class ConfigTests(unittest.TestCase):

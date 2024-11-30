@@ -1,5 +1,9 @@
 import enum
+<<<<<<< HEAD
 from typing import Union, Literal
+=======
+from typing import Literal, Union
+>>>>>>> upstream/main
 
 
 class ImagingMode(enum.Enum):

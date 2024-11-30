@@ -1,4 +1,8 @@
 from __future__ import annotations
+<<<<<<< HEAD
+=======
+
+>>>>>>> upstream/main
 from dataclasses import dataclass
 
 
@@ -46,3 +50,9 @@ class Coordinate:
 
   def vector(self) -> list[float]:
     return [self.x, self.y, self.z]
+<<<<<<< HEAD
+=======
+
+  def __iter__(self):
+    return iter((self.x, self.y, self.z))
+>>>>>>> upstream/main

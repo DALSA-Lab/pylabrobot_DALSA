@@ -7,12 +7,18 @@ from typing import (
   Dict,
   List,
   Optional,
+<<<<<<< HEAD
   Tuple,
   Sequence,
+=======
+  Sequence,
+  Tuple,
+>>>>>>> upstream/main
   TypeVar,
   Union,
 )
 
+<<<<<<< HEAD
 from pylabrobot.machines.backends import USBBackend
 from pylabrobot.liquid_handling.backends.backend import (
   LiquidHandlerBackend,
@@ -21,10 +27,16 @@ from pylabrobot.liquid_handling.liquid_classes.tecan import (
   TecanLiquidClass,
   get_liquid_class,
 )
+=======
+from pylabrobot.liquid_handling.backends.backend import (
+  LiquidHandlerBackend,
+)
+>>>>>>> upstream/main
 from pylabrobot.liquid_handling.backends.tecan.errors import (
   TecanError,
   error_code_to_exception,
 )
+<<<<<<< HEAD
 from pylabrobot.liquid_handling.standard import (
   Pickup,
   PickupTipRack,
@@ -46,6 +58,34 @@ from pylabrobot.resources import (
   TecanTipRack,
   TecanPlate,
   TecanTip,
+=======
+from pylabrobot.liquid_handling.liquid_classes.tecan import (
+  TecanLiquidClass,
+  get_liquid_class,
+)
+from pylabrobot.liquid_handling.standard import (
+  Aspiration,
+  AspirationContainer,
+  AspirationPlate,
+  Dispense,
+  DispenseContainer,
+  DispensePlate,
+  Drop,
+  DropTipRack,
+  Move,
+  Pickup,
+  PickupTipRack,
+)
+from pylabrobot.machines.backends import USBBackend
+from pylabrobot.resources import (
+  Coordinate,
+  Liquid,
+  Resource,
+  TecanPlate,
+  TecanPlateCarrier,
+  TecanTip,
+  TecanTipRack,
+>>>>>>> upstream/main
   Trash,
 )
 

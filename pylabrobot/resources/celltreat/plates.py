@@ -1,11 +1,18 @@
 from typing import Optional
+<<<<<<< HEAD
+=======
+
+>>>>>>> upstream/main
 from pylabrobot.resources.height_volume_functions import (
   compute_height_from_volume_conical_frustum,
   compute_height_from_volume_cylinder,
   compute_volume_from_height_conical_frustum,
   compute_volume_from_height_cylinder,
 )
+<<<<<<< HEAD
 
+=======
+>>>>>>> upstream/main
 from pylabrobot.resources.plate import Lid, Plate
 from pylabrobot.resources.utils import create_ordered_items_2d
 from pylabrobot.resources.well import (
@@ -18,19 +25,49 @@ from pylabrobot.resources.well import (
 def CellTreat_96_wellplate_350ul_Ub(name: str, lid: Optional[Lid] = None) -> Plate:
   """
   CellTreat cat. no.: 229591
+<<<<<<< HEAD
+=======
+
+  Same as 229590 (229590 is sold with lids)
+
+>>>>>>> upstream/main
   - Material: Polystyrene
   - Tissue culture treated: No
   """
   # WELL_UBOTTOM_HEIGHT = 2.81 # absolute height of cylindrical segment, measured
   # WELL_DIAMETER = 6.69 # measured
 
+<<<<<<< HEAD
+=======
+  WELL_RADIUS = 3.175
+
+>>>>>>> upstream/main
   well_kwargs = {
     "size_x": 6.35,
     "size_y": 6.35,
     "size_z": 10.04,
     "bottom_type": WellBottomType.U,
+<<<<<<< HEAD
   }
 
+=======
+    "compute_volume_from_height": lambda liquid_height: compute_volume_from_height_cylinder(
+      liquid_height, WELL_RADIUS
+    ),
+    "compute_height_from_volume": lambda liquid_volume: compute_height_from_volume_cylinder(
+      liquid_volume, WELL_RADIUS
+    ),
+    "material_z_thickness": 1.55,
+    "cross_section_type": CrossSectionType.CIRCLE,
+    "max_volume": 300,
+  }
+
+  # in 229590, which should be the same.
+  # dx=10.7,  # measured
+  # dy=8.75,  # measured
+  # dz=2.6,  # calibrated manually
+
+>>>>>>> upstream/main
   return Plate(
     name=name,
     size_x=127.76,
@@ -124,6 +161,7 @@ def CellTreat_6_wellplate_16300ul_Fb_Lid(name: str) -> Lid:
 
 
 def CellTreat_96_wellplate_U(name: str, lid: Optional[Lid] = None) -> Plate:
+<<<<<<< HEAD
   """
   CellTreat cat. no.: 229590
   - Material: Polystyrene
@@ -165,4 +203,9 @@ def CellTreat_96_wellplate_U(name: str, lid: Optional[Lid] = None) -> Plate:
       item_dy=9,
       **well_kwargs,
     ),
+=======
+  raise NotImplementedError(
+    "This plate is the same as CellTreat_96_wellplate_350ul_Ub. This "
+    "function will be removed in the future."
+>>>>>>> upstream/main
   )

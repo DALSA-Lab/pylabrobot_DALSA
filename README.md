@@ -83,7 +83,11 @@ data = await pr.read_luminescence()
 
 For Cytation5, use the `Cytation5` backend.
 
+<<<<<<< HEAD
 ### Centrifuges
+=======
+### Centrifuges ([docs](https://docs.pylabrobot.org/user_guide/centrifuge.html))
+>>>>>>> upstream/main
 
 Centrifugation at 800g for 60 seconds:
 

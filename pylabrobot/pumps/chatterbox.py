@@ -1,6 +1,10 @@
 from typing import List
 
+<<<<<<< HEAD
 from pylabrobot.pumps.backend import PumpBackend, PumpArrayBackend
+=======
+from pylabrobot.pumps.backend import PumpArrayBackend, PumpBackend
+>>>>>>> upstream/main
 
 
 class PumpChatterboxBackend(PumpBackend):

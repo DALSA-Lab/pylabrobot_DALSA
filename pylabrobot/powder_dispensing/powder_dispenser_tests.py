@@ -1,4 +1,5 @@
 import unittest
+<<<<<<< HEAD
 from unittest.mock import AsyncMock
 from pylabrobot.powder_dispensing.powder_dispenser import (
   PowderDispenser,
@@ -10,6 +11,20 @@ from pylabrobot.powder_dispensing.backend import (
 )
 from pylabrobot.resources import Powder, Cor_96_wellplate_360ul_Fb
 from typing import List
+=======
+from typing import List
+from unittest.mock import AsyncMock
+
+from pylabrobot.powder_dispensing.backend import (
+  DispenseResults,
+  PowderDispense,
+  PowderDispenserBackend,
+)
+from pylabrobot.powder_dispensing.powder_dispenser import (
+  PowderDispenser,
+)
+from pylabrobot.resources import Cor_96_wellplate_360ul_Fb, Powder
+>>>>>>> upstream/main
 
 
 class MockPowderDispenserBackend(PowderDispenserBackend):
@@ -52,7 +67,11 @@ class TestPowderDispenser(unittest.IsolatedAsyncioTestCase):
 
   async def test_dispense_multiple_resources(self):
     plate = Cor_96_wellplate_360ul_Fb(name="test_resource")
+<<<<<<< HEAD
     resources = [plate["A1"], plate["A2"]]
+=======
+    resources = plate["A1"] + plate["A2"]
+>>>>>>> upstream/main
     powders = [Powder("salt"), Powder("salt")]
     amounts = [0.005, 0.010]
     await self.dispenser.dispense(resources, powders, amounts)

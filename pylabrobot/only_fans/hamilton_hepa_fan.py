@@ -1,4 +1,8 @@
 import asyncio
+<<<<<<< HEAD
+=======
+
+>>>>>>> upstream/main
 from .backend import FanBackend
 
 try:

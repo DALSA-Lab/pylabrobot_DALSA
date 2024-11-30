@@ -2,6 +2,10 @@ import asyncio
 from typing import Optional, Union
 
 from pylabrobot.machines.machine import Machine
+<<<<<<< HEAD
+=======
+
+>>>>>>> upstream/main
 from .backend import PumpBackend
 from .calibration import PumpCalibration
 

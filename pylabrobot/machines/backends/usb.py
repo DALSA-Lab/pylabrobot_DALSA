@@ -1,14 +1,27 @@
+<<<<<<< HEAD
 from abc import ABCMeta, abstractmethod
 import logging
 import time
 from typing import List, Optional, TYPE_CHECKING
+=======
+import logging
+import time
+from abc import ABCMeta, abstractmethod
+from typing import TYPE_CHECKING, List, Optional
+>>>>>>> upstream/main
 
 from pylabrobot.machines.backends.machine import MachineBackend
 
 try:
+<<<<<<< HEAD
   import usb.core
   import usb.util
   import libusb_package
+=======
+  import libusb_package
+  import usb.core
+  import usb.util
+>>>>>>> upstream/main
 
   USE_USB = True
 except ImportError:

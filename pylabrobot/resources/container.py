@@ -1,11 +1,20 @@
 from typing import Any, Callable, Dict, Optional
 
+<<<<<<< HEAD
 from .resource import Resource
 from .coordinate import Coordinate
 from .volume_tracker import VolumeTracker
 
 from pylabrobot.serializer import serialize
 
+=======
+from pylabrobot.serializer import serialize
+
+from .coordinate import Coordinate
+from .resource import Resource
+from .volume_tracker import VolumeTracker
+
+>>>>>>> upstream/main
 
 class Container(Resource):
   """A container is an abstract base class for a resource that can hold liquid."""

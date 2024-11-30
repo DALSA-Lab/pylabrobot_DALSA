@@ -4,7 +4,11 @@ PyLabRobot is a hardware agnostic, pure Python SDK for liquid handling robots an
 
 - GitHub repository: [https://github.com/PyLabRobot/pylabrobot](https://github.com/PyLabRobot/pylabrobot)
 - Community: [https://discuss.pylabrobot.org](https://discuss.pylabrobot.org)
+<<<<<<< HEAD
 - Paper: [https://www.cell.com/device/fulltext/S2666-9986(23)00170-9](https://www.cell.com/device/fulltext/S2666-9986(23)00170-9)
+=======
+- Paper: [https://www.cell.com/device/fulltext/S2666-9986(23)00170-9](<https://www.cell.com/device/fulltext/S2666-9986(23)00170-9>)
+>>>>>>> upstream/main
 
 ![Graphical abstract of PyLabRobot](/img/plr.jpg)
 
@@ -17,16 +21,33 @@ PyLabRobot is different from [PyHamilton](https://github.com/dgretton/pyhamilton
 ```{image} /img/used_by/mit.jpg
 :alt: MIT
 :class: company
+<<<<<<< HEAD
+=======
+:target: https://www.mit.edu/
+>>>>>>> upstream/main
 ```
 
 ```{image} /img/used_by/retrobio.webp
 :alt: Retro
 :class: company
+<<<<<<< HEAD
+=======
+:target: https://www.retro.bio/
+>>>>>>> upstream/main
 ```
 
 ```{image} /img/used_by/tt.png
 :alt: T-Therapeutics
 :class: company tt
+<<<<<<< HEAD
+=======
+:target: https://www.t-therapeutics.com/
+```
+
+```{image} /img/used_by/duke.png
+:alt: Duke
+:class: company
+>>>>>>> upstream/main
 ```
 
 ```{raw} html

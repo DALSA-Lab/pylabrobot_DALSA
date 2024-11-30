@@ -2,10 +2,17 @@ import math
 import unittest
 
 from pylabrobot.resources.height_volume_functions import (
+<<<<<<< HEAD
   calculate_liquid_volume_container_2segments_square_vbottom,
   calculate_liquid_volume_container_2segments_round_vbottom,
   calculate_liquid_volume_container_2segments_round_ubottom,
   calculate_liquid_volume_container_2segments_square_ubottom,
+=======
+  calculate_liquid_volume_container_2segments_round_ubottom,
+  calculate_liquid_volume_container_2segments_round_vbottom,
+  calculate_liquid_volume_container_2segments_square_ubottom,
+  calculate_liquid_volume_container_2segments_square_vbottom,
+>>>>>>> upstream/main
 )
 
 

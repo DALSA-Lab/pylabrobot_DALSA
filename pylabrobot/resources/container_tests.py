@@ -1,8 +1,15 @@
 import unittest
 
+<<<<<<< HEAD
 from .container import Container
 from pylabrobot.serializer import serialize
 
+=======
+from pylabrobot.serializer import serialize
+
+from .container import Container
+
+>>>>>>> upstream/main
 
 class TestContainer(unittest.TestCase):
   def test_serialize(self):

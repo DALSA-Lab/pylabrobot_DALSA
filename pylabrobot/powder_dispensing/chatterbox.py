@@ -1,9 +1,15 @@
 from typing import List
 
 from pylabrobot.powder_dispensing.backend import (
+<<<<<<< HEAD
   PowderDispenserBackend,
   PowderDispense,
   DispenseResults,
+=======
+  DispenseResults,
+  PowderDispense,
+  PowderDispenserBackend,
+>>>>>>> upstream/main
 )
 
 

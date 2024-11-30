@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 from typing import cast
 import unittest
+=======
+import unittest
+from typing import cast
+>>>>>>> upstream/main
 
 from pylabrobot.resources import (
   Coordinate,

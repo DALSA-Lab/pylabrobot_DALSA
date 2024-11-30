@@ -1,14 +1,25 @@
+<<<<<<< HEAD
 import logging
 import threading
 import time
 import asyncio
 from typing import Optional, List, Dict, Union
+=======
+import asyncio
+import logging
+import threading
+import time
+from typing import Dict, List, Optional, Union
+>>>>>>> upstream/main
 
 from pymodbus.client import AsyncModbusSerialClient  # type: ignore
 
 from pylabrobot.pumps.backend import PumpArrayBackend
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> upstream/main
 logger = logging.getLogger("pylabrobot")
 
 

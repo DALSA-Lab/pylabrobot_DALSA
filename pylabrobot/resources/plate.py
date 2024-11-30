@@ -1,15 +1,23 @@
+<<<<<<< HEAD
 """Base classes for Plate and Lid resources."""
 
+=======
+>>>>>>> upstream/main
 from __future__ import annotations
 
 from typing import (
   Dict,
   List,
+<<<<<<< HEAD
+=======
+  Literal,
+>>>>>>> upstream/main
   Optional,
   Sequence,
   Tuple,
   Union,
   cast,
+<<<<<<< HEAD
   Literal,
 )
 
@@ -19,6 +27,15 @@ from pylabrobot.resources.resource_holder import ResourceHolder
 from .liquid import Liquid
 from .itemized_resource import ItemizedResource
 from .resource import Resource, Coordinate
+=======
+)
+
+from pylabrobot.resources.resource_holder import get_child_location
+
+from .itemized_resource import ItemizedResource
+from .liquid import Liquid
+from .resource import Coordinate, Resource
+>>>>>>> upstream/main
 from .well import Well
 
 
@@ -63,7 +80,11 @@ class Lid(Resource):
     }
 
 
+<<<<<<< HEAD
 class Plate(ResourceHolder, ItemizedResource[Well]):
+=======
+class Plate(ItemizedResource[Well]):
+>>>>>>> upstream/main
   """Base class for Plate resources."""
 
   def __init__(
@@ -120,12 +141,15 @@ class Plate(ResourceHolder, ItemizedResource[Well]):
   def _get_lid_location(self, lid: Lid) -> Coordinate:
     return Coordinate(0, 0, self.get_size_z() - lid.nesting_z_height)
 
+<<<<<<< HEAD
   def get_default_child_location(self, resource: Resource) -> Coordinate:
     child_location = super().get_default_child_location(resource)
     if isinstance(resource, Lid):
       child_location += self._get_lid_location(resource)
     return child_location
 
+=======
+>>>>>>> upstream/main
   def assign_child_resource(
     self,
     resource: Resource,
@@ -136,6 +160,11 @@ class Plate(ResourceHolder, ItemizedResource[Well]):
       if self.has_lid():
         raise ValueError(f"Plate '{self.name}' already has a lid.")
       self._lid = resource
+<<<<<<< HEAD
+=======
+      default_location = get_child_location(resource) + self._get_lid_location(resource)
+      location = location or default_location
+>>>>>>> upstream/main
     else:
       assert location is not None, "Location must be specified for if resource is not a lid."
     return super().assign_child_resource(resource, location=location, reassign=reassign)

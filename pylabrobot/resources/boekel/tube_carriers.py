@@ -1,7 +1,13 @@
 from pylabrobot.resources.carrier import (
+<<<<<<< HEAD
   CarrierSite,
   TubeCarrier,
   create_carrier_sites,
+=======
+  ResourceHolder,
+  TubeCarrier,
+  create_resources,
+>>>>>>> upstream/main
 )
 from pylabrobot.resources.coordinate import Coordinate
 
@@ -22,11 +28,19 @@ def boekel_50mL_falcon_carrier(name: str) -> TubeCarrier:
     size_x=174,
     size_y=52,
     size_z=95,
+<<<<<<< HEAD
     sites=create_carrier_sites(
       klass=CarrierSite,
       locations=[Coordinate(x=x, y=11, z=5) for x in [11, 46, 91, 127]],
       site_size_x=[30] * 4,
       site_size_y=[30] * 4,
+=======
+    sites=create_resources(
+      klass=ResourceHolder,
+      locations=[Coordinate(x=x, y=11, z=5) for x in [11, 46, 91, 127]],
+      resource_size_x=[30] * 4,
+      resource_size_y=[30] * 4,
+>>>>>>> upstream/main
     ),
     model="Boekel Scientific Tube Carrier",
   )
@@ -48,12 +62,21 @@ def boekel_15mL_falcon_carrier(name: str) -> TubeCarrier:
     size_x=174,
     size_y=52,
     size_z=95,
+<<<<<<< HEAD
     sites=create_carrier_sites(
       klass=CarrierSite,
       locations=[Coordinate(x=x, y=27, z=5) for x in [5, 34, 63, 88, 118, 147]]
       + [Coordinate(x=x, y=4.5, z=5) for x in [5, 34, 63, 88, 118, 147]],
       site_size_x=[17] * 16,
       site_size_y=[17] * 16,
+=======
+    sites=create_resources(
+      klass=ResourceHolder,
+      locations=[Coordinate(x=x, y=27, z=5) for x in [5, 34, 63, 88, 118, 147]]
+      + [Coordinate(x=x, y=4.5, z=5) for x in [5, 34, 63, 88, 118, 147]],
+      resource_size_x=[17] * 16,
+      resource_size_y=[17] * 16,
+>>>>>>> upstream/main
     ),
     model="Boekel Scientific Tube Carrier",
   )
@@ -77,14 +100,24 @@ def boekel_1_5mL_microcentrifuge_carrier(name: str) -> TubeCarrier:
     size_x=174,
     size_y=52,
     size_z=95,
+<<<<<<< HEAD
     sites=create_carrier_sites(
       klass=CarrierSite,
+=======
+    sites=create_resources(
+      klass=ResourceHolder,
+>>>>>>> upstream/main
       locations=[Coordinate(x=x, y=57, z=5) for x in x_locs]
       + [Coordinate(x=x, y=48, z=5) for x in x_locs]
       + [Coordinate(x=x, y=39, z=5) for x in x_locs]
       + [Coordinate(x=x, y=10, z=5) for x in x_locs],
+<<<<<<< HEAD
       site_size_x=[13] * 32,
       site_size_y=[13] * 32,
+=======
+      resource_size_x=[13] * 32,
+      resource_size_y=[13] * 32,
+>>>>>>> upstream/main
     ),
     model="Boekel Scientific Tube Carrier",
   )
@@ -108,14 +141,24 @@ def boekel_mini_microcentrifuge_carrier(name: str) -> TubeCarrier:
     size_x=174,
     size_y=52,
     size_z=95,
+<<<<<<< HEAD
     sites=create_carrier_sites(
       klass=CarrierSite,
+=======
+    sites=create_resources(
+      klass=ResourceHolder,
+>>>>>>> upstream/main
       locations=[Coordinate(x=x, y=68.5, z=5) for x in x_locs]
       + [Coordinate(x=x, y=50, z=5) for x in x_locs]
       + [Coordinate(x=x, y=31, z=5) for x in x_locs]
       + [Coordinate(x=x, y=12, z=5) for x in x_locs],
+<<<<<<< HEAD
       site_size_x=[9] * 32,
       site_size_y=[9] * 32,
+=======
+      resource_size_x=[9] * 32,
+      resource_size_y=[9] * 32,
+>>>>>>> upstream/main
     ),
     model="Boekel Scientific Tube Carrier",
   )

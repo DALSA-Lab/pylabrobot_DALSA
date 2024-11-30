@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from typing import Any, List, Optional
 import unittest
 
@@ -12,6 +13,22 @@ from pylabrobot.resources import (
 )
 from pylabrobot.resources.hamilton import VantageDeck
 from pylabrobot.liquid_handling.standard import Pickup
+=======
+import unittest
+from typing import Any, List, Optional
+
+from pylabrobot.liquid_handling import LiquidHandler
+from pylabrobot.liquid_handling.standard import Pickup
+from pylabrobot.resources import (
+  HT,
+  LT,
+  PLT_CAR_L5AC_A00,
+  TIP_CAR_480_A00,
+  Coordinate,
+  Cor_96_wellplate_360ul_Fb,
+)
+from pylabrobot.resources.hamilton import VantageDeck
+>>>>>>> upstream/main
 
 from .vantage import (
   Vantage,
@@ -20,7 +37,10 @@ from .vantage import (
   vantage_response_string_to_error,
 )
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> upstream/main
 PICKUP_TIP_FORMAT = {
   "xp": "[int]",
   "yp": "[int]",
@@ -221,6 +241,10 @@ class VantageCommandCatcher(Vantage):
     self,
     module: str,
     command: str,
+<<<<<<< HEAD
+=======
+    auto_id: bool = True,
+>>>>>>> upstream/main
     tip_pattern: Optional[List[bool]] = None,
     write_timeout: Optional[int] = None,
     read_timeout: Optional[int] = None,
@@ -228,7 +252,13 @@ class VantageCommandCatcher(Vantage):
     fmt: Optional[Any] = None,
     **kwargs,
   ):
+<<<<<<< HEAD
     cmd, _ = self._assemble_command(module, command, tip_pattern, **kwargs)
+=======
+    cmd, _ = self._assemble_command(
+      module=module, command=command, auto_id=auto_id, tip_pattern=tip_pattern, **kwargs
+    )
+>>>>>>> upstream/main
     self.commands.append(cmd)
 
   async def stop(self):
@@ -244,8 +274,13 @@ class TestVantageLiquidHandlerCommands(unittest.IsolatedAsyncioTestCase):
     self.lh = LiquidHandler(self.mockVantage, deck=self.deck)
 
     self.tip_car = TIP_CAR_480_A00(name="tip carrier")
+<<<<<<< HEAD
     self.tip_car[0] = self.tip_rack = HT_L(name="tip_rack_01")
     self.tip_car[1] = self.small_tip_rack = LT_L(name="tip_rack_02")
+=======
+    self.tip_car[0] = self.tip_rack = HT(name="tip_rack_01")
+    self.tip_car[1] = self.small_tip_rack = LT(name="tip_rack_02")
+>>>>>>> upstream/main
     self.deck.assign_child_resource(self.tip_car, rails=18)
 
     self.plt_car = PLT_CAR_L5AC_A00(name="plate carrier")
@@ -532,6 +567,10 @@ class TestVantageLiquidHandlerCommands(unittest.IsolatedAsyncioTestCase):
     await self.lh.dispense96(self.plate, volume=0)
 
   async def test_move_plate(self):
+<<<<<<< HEAD
+=======
+    self.plt_car[1].resource.unassign()
+>>>>>>> upstream/main
     await self.lh.move_plate(self.plate, self.plt_car[1], pickup_distance_from_top=5.2 - 3.33)
 
     # pickup

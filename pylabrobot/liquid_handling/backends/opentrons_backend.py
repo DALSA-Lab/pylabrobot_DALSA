@@ -1,11 +1,18 @@
 import sys
+<<<<<<< HEAD
 from typing import Dict, Optional, List, cast, Union
 
+=======
+from typing import Dict, List, Optional, Union, cast
+
+from pylabrobot import utils
+>>>>>>> upstream/main
 from pylabrobot.liquid_handling.backends.backend import (
   LiquidHandlerBackend,
 )
 from pylabrobot.liquid_handling.errors import NoChannelError
 from pylabrobot.liquid_handling.standard import (
+<<<<<<< HEAD
   Pickup,
   PickupTipRack,
   Drop,
@@ -17,6 +24,19 @@ from pylabrobot.liquid_handling.standard import (
   DispensePlate,
   DispenseContainer,
   Move,
+=======
+  Aspiration,
+  AspirationContainer,
+  AspirationPlate,
+  Dispense,
+  DispenseContainer,
+  DispensePlate,
+  Drop,
+  DropTipRack,
+  Move,
+  Pickup,
+  PickupTipRack,
+>>>>>>> upstream/main
 )
 from pylabrobot.resources import (
   Coordinate,
@@ -27,7 +47,10 @@ from pylabrobot.resources import (
   TipSpot,
 )
 from pylabrobot.resources.opentrons import OTDeck, OTModule
+<<<<<<< HEAD
 from pylabrobot import utils
+=======
+>>>>>>> upstream/main
 
 PYTHON_VERSION = sys.version_info[:2]
 
@@ -42,7 +65,11 @@ else:
   USE_OT = False
 
 # https://github.com/Opentrons/opentrons/issues/14590
+<<<<<<< HEAD
 # https://forums.pylabrobot.org/t/connect-pylabrobot-to-ot2/2862/18
+=======
+# https://labautomation.io/t/connect-pylabrobot-to-ot2/2862/18
+>>>>>>> upstream/main
 _OT_DECK_IS_ADDRESSABLE_AREA_VERSION = "7.1.0"
 
 
@@ -284,7 +311,11 @@ class OpentronsBackend(LiquidHandlerBackend):
     del self.defined_labware[name]
 
     # The OT-api does not support removing labware definitions
+<<<<<<< HEAD
     # https://forums.pylabrobot.org/t/feature-request-support-unloading-labware-in-the-http-api/3098
+=======
+    # https://labautomation.io/t/feature-request-support-unloading-labware-in-the-http-api/3098
+>>>>>>> upstream/main
     # instead, we move the labware off deck as a workaround
     ot_api.labware.move_labware(labware_id=name, off_deck=True)
 

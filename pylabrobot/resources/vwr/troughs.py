@@ -2,6 +2,10 @@ from pylabrobot.resources.trough import Trough
 
 
 def VWRReagentReservoirs25mL(name: str) -> Trough:
+<<<<<<< HEAD
+=======
+  """part number 89094"""
+>>>>>>> upstream/main
   return Trough(
     name=name,
     size_x=44,

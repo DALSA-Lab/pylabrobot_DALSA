@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 """Tecan tip carriers"""
 
 from typing import List, Optional
@@ -6,6 +7,15 @@ from pylabrobot.resources.carrier import (
   CarrierSite,
   create_carrier_sites,
   create_homogeneous_carrier_sites,
+=======
+from typing import Dict, Optional
+
+from pylabrobot.resources.carrier import (
+  ResourceHolder,
+  TipCarrier,
+  create_homogeneous_resources,
+  create_resources,
+>>>>>>> upstream/main
 )
 from pylabrobot.resources.coordinate import Coordinate
 from pylabrobot.resources.tecan.tecan_resource import TecanResource
@@ -22,7 +32,11 @@ class TecanTipCarrier(TipCarrier, TecanResource):
     size_z: float,
     off_x: float,
     off_y: float,
+<<<<<<< HEAD
     sites: Optional[List[CarrierSite]] = None,
+=======
+    sites: Optional[Dict[int, ResourceHolder]] = None,
+>>>>>>> upstream/main
     category="tecan_tip_carrier",
     model: Optional[str] = None,
   ):
@@ -49,8 +63,13 @@ def Washstation_2Grid_Trough_DiTi(name: str) -> TecanTipCarrier:
     size_z=6.0,
     off_x=12.5,
     off_y=14.5,
+<<<<<<< HEAD
     sites=create_carrier_sites(
       klass=CarrierSite,
+=======
+    sites=create_resources(
+      klass=ResourceHolder,
+>>>>>>> upstream/main
       locations=[
         Coordinate(0.0, 352.0, 6.0),
         Coordinate(0.0, -15.0, 6.0),
@@ -61,7 +80,11 @@ def Washstation_2Grid_Trough_DiTi(name: str) -> TecanTipCarrier:
         Coordinate(0.0, 184.0, 6.0),
         Coordinate(0.0, 278.0, 6.0),
       ],
+<<<<<<< HEAD
       site_size_x=[
+=======
+      resource_size_x=[
+>>>>>>> upstream/main
         0.0,
         50.0,
         24.0,
@@ -71,7 +94,11 @@ def Washstation_2Grid_Trough_DiTi(name: str) -> TecanTipCarrier:
         25.0,
         25.0,
       ],
+<<<<<<< HEAD
       site_size_y=[
+=======
+      resource_size_y=[
+>>>>>>> upstream/main
         0.0,
         93.0,
         84.0,
@@ -94,14 +121,24 @@ def MCA384_DiTi_Carrier(name: str) -> TecanTipCarrier:
     size_z=154.0,
     off_x=13.3,
     off_y=22.2,
+<<<<<<< HEAD
     sites=create_homogeneous_carrier_sites(
       klass=CarrierSite,
+=======
+    sites=create_homogeneous_resources(
+      klass=ResourceHolder,
+>>>>>>> upstream/main
       locations=[
         Coordinate(11.7, 46.7, 31.0),
         Coordinate(11.7, 186.8, 31.0),
       ],
+<<<<<<< HEAD
       site_size_x=122.0,
       site_size_y=86.0,
+=======
+      resource_size_x=122.0,
+      resource_size_y=86.0,
+>>>>>>> upstream/main
     ),
     model="MCA384_DiTi_Carrier",
   )
@@ -116,19 +153,32 @@ def DiTi_2Pos___Waste(name: str) -> TecanTipCarrier:
     size_z=4.5,
     off_x=12.0,
     off_y=24.7,
+<<<<<<< HEAD
     sites=create_carrier_sites(
       klass=CarrierSite,
+=======
+    sites=create_resources(
+      klass=ResourceHolder,
+>>>>>>> upstream/main
       locations=[
         Coordinate(3.0, 0.0, 4.5),
         Coordinate(13.3, 170.0, 4.5),
         Coordinate(13.3, 270.0, 4.5),
       ],
+<<<<<<< HEAD
       site_size_x=[
+=======
+      resource_size_x=[
+>>>>>>> upstream/main
         143.0,
         127.0,
         127.0,
       ],
+<<<<<<< HEAD
       site_size_y=[
+=======
+      resource_size_y=[
+>>>>>>> upstream/main
         155.0,
         88.5,
         88.5,
@@ -147,15 +197,25 @@ def DiTi_3Pos(name: str) -> TecanTipCarrier:
     size_z=4.5,
     off_x=12.0,
     off_y=24.7,
+<<<<<<< HEAD
     sites=create_homogeneous_carrier_sites(
       klass=CarrierSite,
+=======
+    sites=create_homogeneous_resources(
+      klass=ResourceHolder,
+>>>>>>> upstream/main
       locations=[
         Coordinate(13.3, 70.0, 4.5),
         Coordinate(13.3, 170.0, 4.5),
         Coordinate(13.3, 270.0, 4.5),
       ],
+<<<<<<< HEAD
       site_size_x=127.0,
       site_size_y=88.5,
+=======
+      resource_size_x=127.0,
+      resource_size_y=88.5,
+>>>>>>> upstream/main
     ),
     model="DiTi_3Pos",
   )
@@ -170,15 +230,25 @@ def DiTi_SBS_3_Pos_MCA96(name: str) -> TecanTipCarrier:
     size_z=6.0,
     off_x=12.0,
     off_y=11.0,
+<<<<<<< HEAD
     sites=create_homogeneous_carrier_sites(
       klass=CarrierSite,
+=======
+    sites=create_homogeneous_resources(
+      klass=ResourceHolder,
+>>>>>>> upstream/main
       locations=[
         Coordinate(10.5, 12.0, 6.0),
         Coordinate(10.5, 108.0, 6.0),
         Coordinate(10.5, 204.0, 6.0),
       ],
+<<<<<<< HEAD
       site_size_x=127.0,
       site_size_y=85.5,
+=======
+      resource_size_x=127.0,
+      resource_size_y=85.5,
+>>>>>>> upstream/main
     ),
     model="DiTi_SBS_3_Pos_MCA96",
   )
@@ -193,15 +263,25 @@ def LI___DiTi_3Pos(name: str) -> TecanTipCarrier:
     size_z=4.5,
     off_x=12.0,
     off_y=24.7,
+<<<<<<< HEAD
     sites=create_homogeneous_carrier_sites(
       klass=CarrierSite,
+=======
+    sites=create_homogeneous_resources(
+      klass=ResourceHolder,
+>>>>>>> upstream/main
       locations=[
         Coordinate(13.4, 42.5, -2.5),
         Coordinate(13.3, 138.7, -2.5),
         Coordinate(13.3, 234.1, -2.5),
       ],
+<<<<<<< HEAD
       site_size_x=127.0,
       site_size_y=88.5,
+=======
+      resource_size_x=127.0,
+      resource_size_y=88.5,
+>>>>>>> upstream/main
     ),
     model="LI___DiTi_3Pos",
   )
@@ -216,19 +296,32 @@ def DiTi_SBS_2P_Waste_MCA96(name: str) -> TecanTipCarrier:
     size_z=6.0,
     off_x=25.0,
     off_y=11.0,
+<<<<<<< HEAD
     sites=create_carrier_sites(
       klass=CarrierSite,
+=======
+    sites=create_resources(
+      klass=ResourceHolder,
+>>>>>>> upstream/main
       locations=[
         Coordinate(20.0, -41.0, 125.0),
         Coordinate(23.5, 184.0, 6.0),
         Coordinate(23.5, 280.0, 6.0),
       ],
+<<<<<<< HEAD
       site_size_x=[
+=======
+      resource_size_x=[
+>>>>>>> upstream/main
         138.0,
         127.0,
         127.0,
       ],
+<<<<<<< HEAD
       site_size_y=[
+=======
+      resource_size_y=[
+>>>>>>> upstream/main
         155.0,
         88.5,
         88.5,
@@ -247,16 +340,26 @@ def DiTi_SBS_4_Pos_MCA96(name: str) -> TecanTipCarrier:
     size_z=6.0,
     off_x=12.5,
     off_y=51.5,
+<<<<<<< HEAD
     sites=create_homogeneous_carrier_sites(
       klass=CarrierSite,
+=======
+    sites=create_homogeneous_resources(
+      klass=ResourceHolder,
+>>>>>>> upstream/main
       locations=[
         Coordinate(10.0, 3.0, 6.0),
         Coordinate(10.0, 99.0, 6.0),
         Coordinate(10.0, 195.0, 6.0),
         Coordinate(10.0, 291.0, 6.0),
       ],
+<<<<<<< HEAD
       site_size_x=127.0,
       site_size_y=85.5,
+=======
+      resource_size_x=127.0,
+      resource_size_y=85.5,
+>>>>>>> upstream/main
     ),
     model="DiTi_SBS_4_Pos_MCA96",
   )
@@ -270,8 +373,13 @@ def DiTi_Nest_2P_W_MCA384(name: str) -> TecanTipCarrier:
     size_z=4.0,
     off_x=12.0,
     off_y=11.0,
+<<<<<<< HEAD
     sites=create_carrier_sites(
       klass=CarrierSite,
+=======
+    sites=create_resources(
+      klass=ResourceHolder,
+>>>>>>> upstream/main
       locations=[
         Coordinate(-7.0, -97.0, 4.0),
         Coordinate(10.5, 105.0, 4.0),
@@ -301,7 +409,11 @@ def DiTi_Nest_2P_W_MCA384(name: str) -> TecanTipCarrier:
         Coordinate(10.5, 105.0, 144.0),
         Coordinate(10.5, 201.0, 144.0),
       ],
+<<<<<<< HEAD
       site_size_x=[
+=======
+      resource_size_x=[
+>>>>>>> upstream/main
         155.0,
         127.0,
         127.0,
@@ -330,7 +442,11 @@ def DiTi_Nest_2P_W_MCA384(name: str) -> TecanTipCarrier:
         127.0,
         127.0,
       ],
+<<<<<<< HEAD
       site_size_y=[
+=======
+      resource_size_y=[
+>>>>>>> upstream/main
         142.0,
         88.5,
         88.5,
@@ -373,8 +489,13 @@ def DiTi_Nest_2P_W_MCA384_Indiv(name: str) -> TecanTipCarrier:
     size_z=4.0,
     off_x=12.5,
     off_y=51.5,
+<<<<<<< HEAD
     sites=create_carrier_sites(
       klass=CarrierSite,
+=======
+    sites=create_resources(
+      klass=ResourceHolder,
+>>>>>>> upstream/main
       locations=[
         Coordinate(-7.0, -52.0, 4.0),
         Coordinate(10.5, 144.0, 4.0),
@@ -404,7 +525,11 @@ def DiTi_Nest_2P_W_MCA384_Indiv(name: str) -> TecanTipCarrier:
         Coordinate(10.5, 144.0, 144.0),
         Coordinate(10.5, 288.0, 144.0),
       ],
+<<<<<<< HEAD
       site_size_x=[
+=======
+      resource_size_x=[
+>>>>>>> upstream/main
         155.0,
         127.0,
         127.0,
@@ -433,7 +558,11 @@ def DiTi_Nest_2P_W_MCA384_Indiv(name: str) -> TecanTipCarrier:
         127.0,
         127.0,
       ],
+<<<<<<< HEAD
       site_size_y=[
+=======
+      resource_size_y=[
+>>>>>>> upstream/main
         142.0,
         88.5,
         88.5,
@@ -476,8 +605,13 @@ def DiTi_Nest_3_Pos_MCA384_Indiv(name: str) -> TecanTipCarrier:
     size_z=4.0,
     off_x=12.5,
     off_y=51.5,
+<<<<<<< HEAD
     sites=create_homogeneous_carrier_sites(
       klass=CarrierSite,
+=======
+    sites=create_homogeneous_resources(
+      klass=ResourceHolder,
+>>>>>>> upstream/main
       locations=[
         Coordinate(10.5, 3.0, 4.0),
         Coordinate(10.5, 147.0, 4.0),
@@ -507,8 +641,13 @@ def DiTi_Nest_3_Pos_MCA384_Indiv(name: str) -> TecanTipCarrier:
         Coordinate(10.5, 147.0, 144.0),
         Coordinate(10.5, 291.0, 144.0),
       ],
+<<<<<<< HEAD
       site_size_x=127.0,
       site_size_y=85.5,
+=======
+      resource_size_x=127.0,
+      resource_size_y=85.5,
+>>>>>>> upstream/main
     ),
     model="DiTi_Nest_3_Pos_MCA384_Indiv",
   )
@@ -523,8 +662,13 @@ def DiTi_Nested_3_Pos_MCA384(name: str) -> TecanTipCarrier:
     size_z=4.0,
     off_x=12.0,
     off_y=11.0,
+<<<<<<< HEAD
     sites=create_homogeneous_carrier_sites(
       klass=CarrierSite,
+=======
+    sites=create_homogeneous_resources(
+      klass=ResourceHolder,
+>>>>>>> upstream/main
       locations=[
         Coordinate(10.5, 12.0, 4.0),
         Coordinate(10.5, 108.0, 4.0),
@@ -554,8 +698,13 @@ def DiTi_Nested_3_Pos_MCA384(name: str) -> TecanTipCarrier:
         Coordinate(10.5, 108.0, 144.0),
         Coordinate(10.5, 204.0, 144.0),
       ],
+<<<<<<< HEAD
       site_size_x=127.0,
       site_size_y=85.5,
+=======
+      resource_size_x=127.0,
+      resource_size_y=85.5,
+>>>>>>> upstream/main
     ),
     model="DiTi_Nested_3_Pos_MCA384",
   )
@@ -570,8 +719,13 @@ def DiTi_Nested_4_Pos_MCA384(name: str) -> TecanTipCarrier:
     size_z=4.0,
     off_x=12.5,
     off_y=51.5,
+<<<<<<< HEAD
     sites=create_homogeneous_carrier_sites(
       klass=CarrierSite,
+=======
+    sites=create_homogeneous_resources(
+      klass=ResourceHolder,
+>>>>>>> upstream/main
       locations=[
         Coordinate(10.5, 3.0, 4.0),
         Coordinate(10.5, 99.0, 4.0),
@@ -610,8 +764,13 @@ def DiTi_Nested_4_Pos_MCA384(name: str) -> TecanTipCarrier:
         Coordinate(10.5, 195.0, 144.0),
         Coordinate(10.5, 291.0, 144.0),
       ],
+<<<<<<< HEAD
       site_size_x=127.0,
       site_size_y=85.5,
+=======
+      resource_size_x=127.0,
+      resource_size_y=85.5,
+>>>>>>> upstream/main
     ),
     model="DiTi_Nested_4_Pos_MCA384",
   )
@@ -626,19 +785,32 @@ def DiTi_SBS_2P_W_MCA38_Indiv(name: str) -> TecanTipCarrier:
     size_z=4.0,
     off_x=12.0,
     off_y=51.5,
+<<<<<<< HEAD
     sites=create_carrier_sites(
       klass=CarrierSite,
+=======
+    sites=create_resources(
+      klass=ResourceHolder,
+>>>>>>> upstream/main
       locations=[
         Coordinate(-7.0, -53.5, 164.0),
         Coordinate(10.5, 144.0, 4.0),
         Coordinate(10.5, 288.0, 4.0),
       ],
+<<<<<<< HEAD
       site_size_x=[
+=======
+      resource_size_x=[
+>>>>>>> upstream/main
         155.0,
         127.0,
         127.0,
       ],
+<<<<<<< HEAD
       site_size_y=[
+=======
+      resource_size_y=[
+>>>>>>> upstream/main
         142.0,
         88.5,
         88.5,
@@ -657,19 +829,32 @@ def DiTi_SBS_2P_W_MCA384(name: str) -> TecanTipCarrier:
     size_z=4.0,
     off_x=12.0,
     off_y=11.0,
+<<<<<<< HEAD
     sites=create_carrier_sites(
       klass=CarrierSite,
+=======
+    sites=create_resources(
+      klass=ResourceHolder,
+>>>>>>> upstream/main
       locations=[
         Coordinate(-7.0, -97.0, 164.0),
         Coordinate(10.5, 105.0, 4.0),
         Coordinate(10.5, 201.0, 4.0),
       ],
+<<<<<<< HEAD
       site_size_x=[
+=======
+      resource_size_x=[
+>>>>>>> upstream/main
         155.0,
         127.0,
         127.0,
       ],
+<<<<<<< HEAD
       site_size_y=[
+=======
+      resource_size_y=[
+>>>>>>> upstream/main
         142.0,
         88.5,
         88.5,
@@ -688,15 +873,25 @@ def DiTi_SBS_3_Pos_MCA384(name: str) -> TecanTipCarrier:
     size_z=4.0,
     off_x=12.0,
     off_y=11.0,
+<<<<<<< HEAD
     sites=create_homogeneous_carrier_sites(
       klass=CarrierSite,
+=======
+    sites=create_homogeneous_resources(
+      klass=ResourceHolder,
+>>>>>>> upstream/main
       locations=[
         Coordinate(10.5, 12.0, 4.0),
         Coordinate(10.5, 108.0, 4.0),
         Coordinate(10.5, 204.0, 4.0),
       ],
+<<<<<<< HEAD
       site_size_x=127.0,
       site_size_y=85.5,
+=======
+      resource_size_x=127.0,
+      resource_size_y=85.5,
+>>>>>>> upstream/main
     ),
     model="DiTi_SBS_3_Pos_MCA384",
   )
@@ -711,15 +906,25 @@ def DiTi_SBS_3_Pos_MCA384_Indiv(name: str) -> TecanTipCarrier:
     size_z=4.0,
     off_x=12.5,
     off_y=51.5,
+<<<<<<< HEAD
     sites=create_homogeneous_carrier_sites(
       klass=CarrierSite,
+=======
+    sites=create_homogeneous_resources(
+      klass=ResourceHolder,
+>>>>>>> upstream/main
       locations=[
         Coordinate(10.5, 3.0, 4.0),
         Coordinate(10.5, 147.0, 4.0),
         Coordinate(10.5, 291.0, 4.0),
       ],
+<<<<<<< HEAD
       site_size_x=127.0,
       site_size_y=85.5,
+=======
+      resource_size_x=127.0,
+      resource_size_y=85.5,
+>>>>>>> upstream/main
     ),
     model="DiTi_SBS_3_Pos_MCA384_Indiv",
   )
@@ -734,16 +939,26 @@ def DiTi_SBS_4_Pos_MCA384(name: str) -> TecanTipCarrier:
     size_z=4.0,
     off_x=12.5,
     off_y=51.5,
+<<<<<<< HEAD
     sites=create_homogeneous_carrier_sites(
       klass=CarrierSite,
+=======
+    sites=create_homogeneous_resources(
+      klass=ResourceHolder,
+>>>>>>> upstream/main
       locations=[
         Coordinate(10.5, 3.0, 4.0),
         Coordinate(10.5, 99.0, 4.0),
         Coordinate(10.5, 195.0, 4.0),
         Coordinate(10.5, 291.0, 4.0),
       ],
+<<<<<<< HEAD
       site_size_x=127.0,
       site_size_y=85.5,
+=======
+      resource_size_x=127.0,
+      resource_size_y=85.5,
+>>>>>>> upstream/main
     ),
     model="DiTi_SBS_4_Pos_MCA384",
   )
@@ -758,8 +973,13 @@ def DiTi_Nest_2_W_MCA96_100(name: str) -> TecanTipCarrier:
     size_z=6.0,
     off_x=25.0,
     off_y=11.0,
+<<<<<<< HEAD
     sites=create_carrier_sites(
       klass=CarrierSite,
+=======
+    sites=create_resources(
+      klass=ResourceHolder,
+>>>>>>> upstream/main
       locations=[
         Coordinate(20.0, -41.0, 6.0),
         Coordinate(23.5, 184.0, 6.0),
@@ -789,7 +1009,11 @@ def DiTi_Nest_2_W_MCA96_100(name: str) -> TecanTipCarrier:
         Coordinate(23.5, 184.0, 146.0),
         Coordinate(23.5, 280.0, 146.0),
       ],
+<<<<<<< HEAD
       site_size_x=[
+=======
+      resource_size_x=[
+>>>>>>> upstream/main
         138.0,
         127.0,
         127.0,
@@ -818,7 +1042,11 @@ def DiTi_Nest_2_W_MCA96_100(name: str) -> TecanTipCarrier:
         127.0,
         127.0,
       ],
+<<<<<<< HEAD
       site_size_y=[
+=======
+      resource_size_y=[
+>>>>>>> upstream/main
         155.0,
         88.5,
         88.5,
@@ -861,8 +1089,13 @@ def DiTi_Nest_2_W_MCA96_200(name: str) -> TecanTipCarrier:
     size_z=6.0,
     off_x=25.0,
     off_y=11.0,
+<<<<<<< HEAD
     sites=create_carrier_sites(
       klass=CarrierSite,
+=======
+    sites=create_resources(
+      klass=ResourceHolder,
+>>>>>>> upstream/main
       locations=[
         Coordinate(20.0, -41.0, 6.0),
         Coordinate(23.5, 184.0, 6.0),
@@ -892,7 +1125,11 @@ def DiTi_Nest_2_W_MCA96_200(name: str) -> TecanTipCarrier:
         Coordinate(23.5, 184.0, 146.0),
         Coordinate(23.5, 280.0, 146.0),
       ],
+<<<<<<< HEAD
       site_size_x=[
+=======
+      resource_size_x=[
+>>>>>>> upstream/main
         138.0,
         127.0,
         127.0,
@@ -921,7 +1158,11 @@ def DiTi_Nest_2_W_MCA96_200(name: str) -> TecanTipCarrier:
         127.0,
         127.0,
       ],
+<<<<<<< HEAD
       site_size_y=[
+=======
+      resource_size_y=[
+>>>>>>> upstream/main
         155.0,
         88.5,
         88.5,
@@ -964,8 +1205,13 @@ def DiTi_Nest_2_W_MCA96_50(name: str) -> TecanTipCarrier:
     size_z=6.0,
     off_x=25.0,
     off_y=11.0,
+<<<<<<< HEAD
     sites=create_carrier_sites(
       klass=CarrierSite,
+=======
+    sites=create_resources(
+      klass=ResourceHolder,
+>>>>>>> upstream/main
       locations=[
         Coordinate(20.0, -41.0, 6.0),
         Coordinate(23.5, 184.0, 6.0),
@@ -995,7 +1241,11 @@ def DiTi_Nest_2_W_MCA96_50(name: str) -> TecanTipCarrier:
         Coordinate(23.5, 184.0, 146.0),
         Coordinate(23.5, 280.0, 146.0),
       ],
+<<<<<<< HEAD
       site_size_x=[
+=======
+      resource_size_x=[
+>>>>>>> upstream/main
         138.0,
         127.0,
         127.0,
@@ -1024,7 +1274,11 @@ def DiTi_Nest_2_W_MCA96_50(name: str) -> TecanTipCarrier:
         127.0,
         127.0,
       ],
+<<<<<<< HEAD
       site_size_y=[
+=======
+      resource_size_y=[
+>>>>>>> upstream/main
         155.0,
         88.5,
         88.5,
@@ -1067,8 +1321,13 @@ def DiTi_Nest_3_Pos_MCA96_100(name: str) -> TecanTipCarrier:
     size_z=6.0,
     off_x=12.0,
     off_y=11.0,
+<<<<<<< HEAD
     sites=create_homogeneous_carrier_sites(
       klass=CarrierSite,
+=======
+    sites=create_homogeneous_resources(
+      klass=ResourceHolder,
+>>>>>>> upstream/main
       locations=[
         Coordinate(10.5, 12.0, 6.0),
         Coordinate(10.5, 108.0, 6.0),
@@ -1098,8 +1357,13 @@ def DiTi_Nest_3_Pos_MCA96_100(name: str) -> TecanTipCarrier:
         Coordinate(10.5, 108.0, 146.0),
         Coordinate(10.5, 204.0, 146.0),
       ],
+<<<<<<< HEAD
       site_size_x=127.0,
       site_size_y=85.5,
+=======
+      resource_size_x=127.0,
+      resource_size_y=85.5,
+>>>>>>> upstream/main
     ),
     model="DiTi_Nest_3_Pos_MCA96_100",
   )
@@ -1114,8 +1378,13 @@ def DiTi_Nest_3_Pos_MCA96_200(name: str) -> TecanTipCarrier:
     size_z=6.0,
     off_x=12.0,
     off_y=11.0,
+<<<<<<< HEAD
     sites=create_homogeneous_carrier_sites(
       klass=CarrierSite,
+=======
+    sites=create_homogeneous_resources(
+      klass=ResourceHolder,
+>>>>>>> upstream/main
       locations=[
         Coordinate(10.5, 12.0, 6.0),
         Coordinate(10.5, 108.0, 6.0),
@@ -1145,8 +1414,13 @@ def DiTi_Nest_3_Pos_MCA96_200(name: str) -> TecanTipCarrier:
         Coordinate(10.5, 108.0, 146.0),
         Coordinate(10.5, 204.0, 146.0),
       ],
+<<<<<<< HEAD
       site_size_x=127.0,
       site_size_y=85.5,
+=======
+      resource_size_x=127.0,
+      resource_size_y=85.5,
+>>>>>>> upstream/main
     ),
     model="DiTi_Nest_3_Pos_MCA96_200",
   )
@@ -1161,8 +1435,13 @@ def DiTi_Nest_3_Pos_MCA96_50(name: str) -> TecanTipCarrier:
     size_z=6.0,
     off_x=12.0,
     off_y=11.0,
+<<<<<<< HEAD
     sites=create_homogeneous_carrier_sites(
       klass=CarrierSite,
+=======
+    sites=create_homogeneous_resources(
+      klass=ResourceHolder,
+>>>>>>> upstream/main
       locations=[
         Coordinate(10.5, 12.0, 6.0),
         Coordinate(10.5, 108.0, 6.0),
@@ -1192,8 +1471,13 @@ def DiTi_Nest_3_Pos_MCA96_50(name: str) -> TecanTipCarrier:
         Coordinate(10.5, 108.0, 146.0),
         Coordinate(10.5, 204.0, 146.0),
       ],
+<<<<<<< HEAD
       site_size_x=127.0,
       site_size_y=85.5,
+=======
+      resource_size_x=127.0,
+      resource_size_y=85.5,
+>>>>>>> upstream/main
     ),
     model="DiTi_Nest_3_Pos_MCA96_50",
   )
@@ -1208,8 +1492,13 @@ def DiTi_Nest_4_Pos_MCA96_100(name: str) -> TecanTipCarrier:
     size_z=6.0,
     off_x=12.5,
     off_y=51.5,
+<<<<<<< HEAD
     sites=create_homogeneous_carrier_sites(
       klass=CarrierSite,
+=======
+    sites=create_homogeneous_resources(
+      klass=ResourceHolder,
+>>>>>>> upstream/main
       locations=[
         Coordinate(10.0, 3.0, 6.0),
         Coordinate(10.0, 99.0, 6.0),
@@ -1248,8 +1537,13 @@ def DiTi_Nest_4_Pos_MCA96_100(name: str) -> TecanTipCarrier:
         Coordinate(10.0, 195.0, 146.0),
         Coordinate(10.0, 291.0, 146.0),
       ],
+<<<<<<< HEAD
       site_size_x=127.0,
       site_size_y=85.5,
+=======
+      resource_size_x=127.0,
+      resource_size_y=85.5,
+>>>>>>> upstream/main
     ),
     model="DiTi_Nest_4_Pos_MCA96_100",
   )
@@ -1264,8 +1558,13 @@ def DiTi_Nest_4_Pos_MCA96_200(name: str) -> TecanTipCarrier:
     size_z=6.0,
     off_x=12.5,
     off_y=51.5,
+<<<<<<< HEAD
     sites=create_homogeneous_carrier_sites(
       klass=CarrierSite,
+=======
+    sites=create_homogeneous_resources(
+      klass=ResourceHolder,
+>>>>>>> upstream/main
       locations=[
         Coordinate(10.0, 3.0, 6.0),
         Coordinate(10.0, 99.0, 6.0),
@@ -1304,8 +1603,13 @@ def DiTi_Nest_4_Pos_MCA96_200(name: str) -> TecanTipCarrier:
         Coordinate(10.0, 195.0, 146.0),
         Coordinate(10.0, 291.0, 146.0),
       ],
+<<<<<<< HEAD
       site_size_x=127.0,
       site_size_y=85.5,
+=======
+      resource_size_x=127.0,
+      resource_size_y=85.5,
+>>>>>>> upstream/main
     ),
     model="DiTi_Nest_4_Pos_MCA96_200",
   )
@@ -1320,8 +1624,13 @@ def DiTi_Nest_4_Pos_MCA96_50(name: str) -> TecanTipCarrier:
     size_z=6.0,
     off_x=12.5,
     off_y=51.5,
+<<<<<<< HEAD
     sites=create_homogeneous_carrier_sites(
       klass=CarrierSite,
+=======
+    sites=create_homogeneous_resources(
+      klass=ResourceHolder,
+>>>>>>> upstream/main
       locations=[
         Coordinate(10.0, 3.0, 6.0),
         Coordinate(10.0, 99.0, 6.0),
@@ -1360,8 +1669,13 @@ def DiTi_Nest_4_Pos_MCA96_50(name: str) -> TecanTipCarrier:
         Coordinate(10.0, 195.0, 146.0),
         Coordinate(10.0, 291.0, 146.0),
       ],
+<<<<<<< HEAD
       site_size_x=127.0,
       site_size_y=85.5,
+=======
+      resource_size_x=127.0,
+      resource_size_y=85.5,
+>>>>>>> upstream/main
     ),
     model="DiTi_Nest_4_Pos_MCA96_50",
   )
@@ -1376,21 +1690,34 @@ def DiTi_3Pos___Waste(name: str) -> TecanTipCarrier:
     size_z=4.5,
     off_x=12.0,
     off_y=24.7,
+<<<<<<< HEAD
     sites=create_carrier_sites(
       klass=CarrierSite,
+=======
+    sites=create_resources(
+      klass=ResourceHolder,
+>>>>>>> upstream/main
       locations=[
         Coordinate(6.0, 20.0, 4.5),
         Coordinate(13.3, 167.0, 4.5),
         Coordinate(13.3, 256.5, 4.5),
         Coordinate(13.3, 346.0, 4.5),
       ],
+<<<<<<< HEAD
       site_size_x=[
+=======
+      resource_size_x=[
+>>>>>>> upstream/main
         137.0,
         127.0,
         127.0,
         127.0,
       ],
+<<<<<<< HEAD
       site_size_y=[
+=======
+      resource_size_y=[
+>>>>>>> upstream/main
         155.0,
         88.5,
         88.5,
@@ -1410,8 +1737,13 @@ def DiTi_Nest_2_W_MCA384_100(name: str) -> TecanTipCarrier:
     size_z=6.0,
     off_x=25.0,
     off_y=11.0,
+<<<<<<< HEAD
     sites=create_carrier_sites(
       klass=CarrierSite,
+=======
+    sites=create_resources(
+      klass=ResourceHolder,
+>>>>>>> upstream/main
       locations=[
         Coordinate(20.0, -41.0, 6.0),
         Coordinate(23.5, 184.0, 6.0),
@@ -1441,7 +1773,11 @@ def DiTi_Nest_2_W_MCA384_100(name: str) -> TecanTipCarrier:
         Coordinate(23.5, 184.0, 146.0),
         Coordinate(23.5, 280.0, 146.0),
       ],
+<<<<<<< HEAD
       site_size_x=[
+=======
+      resource_size_x=[
+>>>>>>> upstream/main
         138.0,
         127.0,
         127.0,
@@ -1470,7 +1806,11 @@ def DiTi_Nest_2_W_MCA384_100(name: str) -> TecanTipCarrier:
         127.0,
         127.0,
       ],
+<<<<<<< HEAD
       site_size_y=[
+=======
+      resource_size_y=[
+>>>>>>> upstream/main
         155.0,
         88.5,
         88.5,
@@ -1513,8 +1853,13 @@ def DiTi_Nest_2_W_MCA384_200(name: str) -> TecanTipCarrier:
     size_z=6.0,
     off_x=25.0,
     off_y=11.0,
+<<<<<<< HEAD
     sites=create_carrier_sites(
       klass=CarrierSite,
+=======
+    sites=create_resources(
+      klass=ResourceHolder,
+>>>>>>> upstream/main
       locations=[
         Coordinate(20.0, -41.0, 6.0),
         Coordinate(23.5, 184.0, 6.0),
@@ -1544,7 +1889,11 @@ def DiTi_Nest_2_W_MCA384_200(name: str) -> TecanTipCarrier:
         Coordinate(23.5, 184.0, 146.0),
         Coordinate(23.5, 280.0, 146.0),
       ],
+<<<<<<< HEAD
       site_size_x=[
+=======
+      resource_size_x=[
+>>>>>>> upstream/main
         138.0,
         127.0,
         127.0,
@@ -1573,7 +1922,11 @@ def DiTi_Nest_2_W_MCA384_200(name: str) -> TecanTipCarrier:
         127.0,
         127.0,
       ],
+<<<<<<< HEAD
       site_size_y=[
+=======
+      resource_size_y=[
+>>>>>>> upstream/main
         155.0,
         88.5,
         88.5,
@@ -1616,8 +1969,13 @@ def DiTi_Nest_2_W_MCA384_50(name: str) -> TecanTipCarrier:
     size_z=6.0,
     off_x=25.0,
     off_y=11.0,
+<<<<<<< HEAD
     sites=create_carrier_sites(
       klass=CarrierSite,
+=======
+    sites=create_resources(
+      klass=ResourceHolder,
+>>>>>>> upstream/main
       locations=[
         Coordinate(20.0, -41.0, 6.0),
         Coordinate(23.5, 184.0, 6.0),
@@ -1647,7 +2005,11 @@ def DiTi_Nest_2_W_MCA384_50(name: str) -> TecanTipCarrier:
         Coordinate(23.5, 184.0, 146.0),
         Coordinate(23.5, 280.0, 146.0),
       ],
+<<<<<<< HEAD
       site_size_x=[
+=======
+      resource_size_x=[
+>>>>>>> upstream/main
         138.0,
         127.0,
         127.0,
@@ -1676,7 +2038,11 @@ def DiTi_Nest_2_W_MCA384_50(name: str) -> TecanTipCarrier:
         127.0,
         127.0,
       ],
+<<<<<<< HEAD
       site_size_y=[
+=======
+      resource_size_y=[
+>>>>>>> upstream/main
         155.0,
         88.5,
         88.5,
@@ -1719,8 +2085,13 @@ def DiTi_Waste_station_6_Trough(name: str) -> TecanTipCarrier:
     size_z=6.0,
     off_x=12.5,
     off_y=14.5,
+<<<<<<< HEAD
     sites=create_carrier_sites(
       klass=CarrierSite,
+=======
+    sites=create_resources(
+      klass=ResourceHolder,
+>>>>>>> upstream/main
       locations=[
         Coordinate(0.0, 352.0, 6.0),
         Coordinate(0.0, -15.0, 6.0),
@@ -1731,7 +2102,11 @@ def DiTi_Waste_station_6_Trough(name: str) -> TecanTipCarrier:
         Coordinate(1.0, 182.0, 16.0),
         Coordinate(1.0, 269.4, 16.0),
       ],
+<<<<<<< HEAD
       site_size_x=[
+=======
+      resource_size_x=[
+>>>>>>> upstream/main
         0.0,
         50.0,
         24.0,
@@ -1741,7 +2116,11 @@ def DiTi_Waste_station_6_Trough(name: str) -> TecanTipCarrier:
         24.0,
         24.0,
       ],
+<<<<<<< HEAD
       site_size_y=[
+=======
+      resource_size_y=[
+>>>>>>> upstream/main
         0.0,
         93.0,
         84.0,
@@ -1765,8 +2144,13 @@ def DiTi_Nest_2_W_LiHa_350(name: str) -> TecanTipCarrier:
     size_z=4.5,
     off_x=12.0,
     off_y=11.0,
+<<<<<<< HEAD
     sites=create_carrier_sites(
       klass=CarrierSite,
+=======
+    sites=create_resources(
+      klass=ResourceHolder,
+>>>>>>> upstream/main
       locations=[
         Coordinate(10.5, -137.0, 4.5),
         Coordinate(10.5, -137.0, 4.5),
@@ -1784,7 +2168,11 @@ def DiTi_Nest_2_W_LiHa_350(name: str) -> TecanTipCarrier:
         Coordinate(10.5, 204.0, 120.5),
         Coordinate(10.5, 204.0, 141.5),
       ],
+<<<<<<< HEAD
       site_size_x=[
+=======
+      resource_size_x=[
+>>>>>>> upstream/main
         146.0,
         146.0,
         146.0,
@@ -1801,7 +2189,11 @@ def DiTi_Nest_2_W_LiHa_350(name: str) -> TecanTipCarrier:
         127.0,
         127.0,
       ],
+<<<<<<< HEAD
       site_size_y=[
+=======
+      resource_size_y=[
+>>>>>>> upstream/main
         152.0,
         152.0,
         152.0,
@@ -1832,8 +2224,13 @@ def DiTi_Nest_3_Pos_LiHa_350(name: str) -> TecanTipCarrier:
     size_z=4.5,
     off_x=12.0,
     off_y=11.0,
+<<<<<<< HEAD
     sites=create_homogeneous_carrier_sites(
       klass=CarrierSite,
+=======
+    sites=create_homogeneous_resources(
+      klass=ResourceHolder,
+>>>>>>> upstream/main
       locations=[
         Coordinate(10.5, 12.0, 57.5),
         Coordinate(10.5, 12.0, 78.5),
@@ -1851,8 +2248,13 @@ def DiTi_Nest_3_Pos_LiHa_350(name: str) -> TecanTipCarrier:
         Coordinate(10.5, 204.0, 120.5),
         Coordinate(10.5, 204.0, 141.5),
       ],
+<<<<<<< HEAD
       site_size_x=127.0,
       site_size_y=85.5,
+=======
+      resource_size_x=127.0,
+      resource_size_y=85.5,
+>>>>>>> upstream/main
     ),
     model="DiTi_Nest_3_Pos_LiHa_350",
   )
@@ -1867,8 +2269,13 @@ def DiTi_Nest_3_W_LiHa_350(name: str) -> TecanTipCarrier:
     size_z=4.5,
     off_x=12.5,
     off_y=51.5,
+<<<<<<< HEAD
     sites=create_carrier_sites(
       klass=CarrierSite,
+=======
+    sites=create_resources(
+      klass=ResourceHolder,
+>>>>>>> upstream/main
       locations=[
         Coordinate(10.5, -92.0, 4.5),
         Coordinate(10.5, -92.0, 4.5),
@@ -1891,7 +2298,11 @@ def DiTi_Nest_3_W_LiHa_350(name: str) -> TecanTipCarrier:
         Coordinate(10.5, 291.0, 120.5),
         Coordinate(10.5, 291.0, 141.5),
       ],
+<<<<<<< HEAD
       site_size_x=[
+=======
+      resource_size_x=[
+>>>>>>> upstream/main
         146.0,
         146.0,
         146.0,
@@ -1913,7 +2324,11 @@ def DiTi_Nest_3_W_LiHa_350(name: str) -> TecanTipCarrier:
         127.0,
         127.0,
       ],
+<<<<<<< HEAD
       site_size_y=[
+=======
+      resource_size_y=[
+>>>>>>> upstream/main
         152.0,
         152.0,
         152.0,
@@ -1949,8 +2364,13 @@ def DiTi_Nest_4_Pos_LiHa_350(name: str) -> TecanTipCarrier:
     size_z=4.5,
     off_x=12.5,
     off_y=51.5,
+<<<<<<< HEAD
     sites=create_homogeneous_carrier_sites(
       klass=CarrierSite,
+=======
+    sites=create_homogeneous_resources(
+      klass=ResourceHolder,
+>>>>>>> upstream/main
       locations=[
         Coordinate(10.5, 3.0, 57.5),
         Coordinate(10.5, 3.0, 78.5),
@@ -1973,8 +2393,13 @@ def DiTi_Nest_4_Pos_LiHa_350(name: str) -> TecanTipCarrier:
         Coordinate(10.5, 291.0, 120.5),
         Coordinate(10.5, 291.0, 141.5),
       ],
+<<<<<<< HEAD
       site_size_x=127.0,
       site_size_y=85.5,
+=======
+      resource_size_x=127.0,
+      resource_size_y=85.5,
+>>>>>>> upstream/main
     ),
     model="DiTi_Nest_4_Pos_LiHa_350",
   )
@@ -1989,8 +2414,13 @@ def DiTi_Nest_2_W_LiHa_10(name: str) -> TecanTipCarrier:
     size_z=4.5,
     off_x=12.0,
     off_y=11.0,
+<<<<<<< HEAD
     sites=create_carrier_sites(
       klass=CarrierSite,
+=======
+    sites=create_resources(
+      klass=ResourceHolder,
+>>>>>>> upstream/main
       locations=[
         Coordinate(10.5, -137.0, 4.5),
         Coordinate(10.5, -137.0, 4.5),
@@ -2008,7 +2438,11 @@ def DiTi_Nest_2_W_LiHa_10(name: str) -> TecanTipCarrier:
         Coordinate(10.5, 204.0, 120.5),
         Coordinate(10.5, 204.0, 141.5),
       ],
+<<<<<<< HEAD
       site_size_x=[
+=======
+      resource_size_x=[
+>>>>>>> upstream/main
         146.0,
         146.0,
         146.0,
@@ -2025,7 +2459,11 @@ def DiTi_Nest_2_W_LiHa_10(name: str) -> TecanTipCarrier:
         127.0,
         127.0,
       ],
+<<<<<<< HEAD
       site_size_y=[
+=======
+      resource_size_y=[
+>>>>>>> upstream/main
         152.0,
         152.0,
         152.0,
@@ -2056,8 +2494,13 @@ def DiTi_Nest_2_W_LiHa_10_F(name: str) -> TecanTipCarrier:
     size_z=4.5,
     off_x=12.0,
     off_y=11.0,
+<<<<<<< HEAD
     sites=create_carrier_sites(
       klass=CarrierSite,
+=======
+    sites=create_resources(
+      klass=ResourceHolder,
+>>>>>>> upstream/main
       locations=[
         Coordinate(10.5, -137.0, 4.5),
         Coordinate(10.5, -137.0, 4.5),
@@ -2075,7 +2518,11 @@ def DiTi_Nest_2_W_LiHa_10_F(name: str) -> TecanTipCarrier:
         Coordinate(10.5, 204.0, 120.5),
         Coordinate(10.5, 204.0, 141.5),
       ],
+<<<<<<< HEAD
       site_size_x=[
+=======
+      resource_size_x=[
+>>>>>>> upstream/main
         146.0,
         146.0,
         146.0,
@@ -2092,7 +2539,11 @@ def DiTi_Nest_2_W_LiHa_10_F(name: str) -> TecanTipCarrier:
         127.0,
         127.0,
       ],
+<<<<<<< HEAD
       site_size_y=[
+=======
+      resource_size_y=[
+>>>>>>> upstream/main
         152.0,
         152.0,
         152.0,
@@ -2123,8 +2574,13 @@ def DiTi_Nest_3_Pos_LiHa_10(name: str) -> TecanTipCarrier:
     size_z=4.5,
     off_x=12.0,
     off_y=11.0,
+<<<<<<< HEAD
     sites=create_homogeneous_carrier_sites(
       klass=CarrierSite,
+=======
+    sites=create_homogeneous_resources(
+      klass=ResourceHolder,
+>>>>>>> upstream/main
       locations=[
         Coordinate(10.5, 12.0, 57.5),
         Coordinate(10.5, 12.0, 78.5),
@@ -2142,8 +2598,13 @@ def DiTi_Nest_3_Pos_LiHa_10(name: str) -> TecanTipCarrier:
         Coordinate(10.5, 204.0, 120.5),
         Coordinate(10.5, 204.0, 141.5),
       ],
+<<<<<<< HEAD
       site_size_x=127.0,
       site_size_y=85.5,
+=======
+      resource_size_x=127.0,
+      resource_size_y=85.5,
+>>>>>>> upstream/main
     ),
     model="DiTi_Nest_3_Pos_LiHa_10",
   )
@@ -2158,8 +2619,13 @@ def DiTi_Nest_3_Pos_LiHa_10_F(name: str) -> TecanTipCarrier:
     size_z=4.5,
     off_x=12.0,
     off_y=11.0,
+<<<<<<< HEAD
     sites=create_homogeneous_carrier_sites(
       klass=CarrierSite,
+=======
+    sites=create_homogeneous_resources(
+      klass=ResourceHolder,
+>>>>>>> upstream/main
       locations=[
         Coordinate(10.5, 12.0, 57.5),
         Coordinate(10.5, 12.0, 78.5),
@@ -2177,8 +2643,13 @@ def DiTi_Nest_3_Pos_LiHa_10_F(name: str) -> TecanTipCarrier:
         Coordinate(10.5, 204.0, 120.5),
         Coordinate(10.5, 204.0, 141.5),
       ],
+<<<<<<< HEAD
       site_size_x=127.0,
       site_size_y=85.5,
+=======
+      resource_size_x=127.0,
+      resource_size_y=85.5,
+>>>>>>> upstream/main
     ),
     model="DiTi_Nest_3_Pos_LiHa_10_F",
   )
@@ -2193,8 +2664,13 @@ def DiTi_Nest_3_W_LiHa_10(name: str) -> TecanTipCarrier:
     size_z=4.5,
     off_x=12.5,
     off_y=51.5,
+<<<<<<< HEAD
     sites=create_carrier_sites(
       klass=CarrierSite,
+=======
+    sites=create_resources(
+      klass=ResourceHolder,
+>>>>>>> upstream/main
       locations=[
         Coordinate(10.5, -92.0, 4.5),
         Coordinate(10.5, -92.0, 4.5),
@@ -2217,7 +2693,11 @@ def DiTi_Nest_3_W_LiHa_10(name: str) -> TecanTipCarrier:
         Coordinate(10.5, 291.0, 120.5),
         Coordinate(10.5, 291.0, 141.5),
       ],
+<<<<<<< HEAD
       site_size_x=[
+=======
+      resource_size_x=[
+>>>>>>> upstream/main
         146.0,
         146.0,
         146.0,
@@ -2239,7 +2719,11 @@ def DiTi_Nest_3_W_LiHa_10(name: str) -> TecanTipCarrier:
         127.0,
         127.0,
       ],
+<<<<<<< HEAD
       site_size_y=[
+=======
+      resource_size_y=[
+>>>>>>> upstream/main
         152.0,
         152.0,
         152.0,
@@ -2275,8 +2759,13 @@ def DiTi_Nest_3_W_LiHa_10_F(name: str) -> TecanTipCarrier:
     size_z=4.5,
     off_x=12.5,
     off_y=51.5,
+<<<<<<< HEAD
     sites=create_carrier_sites(
       klass=CarrierSite,
+=======
+    sites=create_resources(
+      klass=ResourceHolder,
+>>>>>>> upstream/main
       locations=[
         Coordinate(10.5, -92.0, 4.5),
         Coordinate(10.5, -92.0, 4.5),
@@ -2299,7 +2788,11 @@ def DiTi_Nest_3_W_LiHa_10_F(name: str) -> TecanTipCarrier:
         Coordinate(10.5, 291.0, 120.5),
         Coordinate(10.5, 291.0, 141.5),
       ],
+<<<<<<< HEAD
       site_size_x=[
+=======
+      resource_size_x=[
+>>>>>>> upstream/main
         146.0,
         146.0,
         146.0,
@@ -2321,7 +2814,11 @@ def DiTi_Nest_3_W_LiHa_10_F(name: str) -> TecanTipCarrier:
         127.0,
         127.0,
       ],
+<<<<<<< HEAD
       site_size_y=[
+=======
+      resource_size_y=[
+>>>>>>> upstream/main
         152.0,
         152.0,
         152.0,
@@ -2357,8 +2854,13 @@ def DiTi_Nest_4_Pos_LiHa_10(name: str) -> TecanTipCarrier:
     size_z=4.5,
     off_x=12.5,
     off_y=51.5,
+<<<<<<< HEAD
     sites=create_homogeneous_carrier_sites(
       klass=CarrierSite,
+=======
+    sites=create_homogeneous_resources(
+      klass=ResourceHolder,
+>>>>>>> upstream/main
       locations=[
         Coordinate(10.5, 3.0, 57.5),
         Coordinate(10.5, 3.0, 78.5),
@@ -2381,8 +2883,13 @@ def DiTi_Nest_4_Pos_LiHa_10(name: str) -> TecanTipCarrier:
         Coordinate(10.5, 291.0, 120.5),
         Coordinate(10.5, 291.0, 141.5),
       ],
+<<<<<<< HEAD
       site_size_x=127.0,
       site_size_y=85.5,
+=======
+      resource_size_x=127.0,
+      resource_size_y=85.5,
+>>>>>>> upstream/main
     ),
     model="DiTi_Nest_4_Pos_LiHa_10",
   )
@@ -2397,8 +2904,13 @@ def DiTi_Nest_4_Pos_LiHa_10_F(name: str) -> TecanTipCarrier:
     size_z=4.5,
     off_x=12.5,
     off_y=51.5,
+<<<<<<< HEAD
     sites=create_homogeneous_carrier_sites(
       klass=CarrierSite,
+=======
+    sites=create_homogeneous_resources(
+      klass=ResourceHolder,
+>>>>>>> upstream/main
       locations=[
         Coordinate(10.5, 3.0, 57.5),
         Coordinate(10.5, 3.0, 78.5),
@@ -2421,8 +2933,13 @@ def DiTi_Nest_4_Pos_LiHa_10_F(name: str) -> TecanTipCarrier:
         Coordinate(10.5, 291.0, 120.5),
         Coordinate(10.5, 291.0, 141.5),
       ],
+<<<<<<< HEAD
       site_size_x=127.0,
       site_size_y=85.5,
+=======
+      resource_size_x=127.0,
+      resource_size_y=85.5,
+>>>>>>> upstream/main
     ),
     model="DiTi_Nest_4_Pos_LiHa_10_F",
   )

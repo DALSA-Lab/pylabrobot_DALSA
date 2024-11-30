@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 """Porvair plates"""
 
 from pylabrobot.resources.plate import Lid, Plate
@@ -11,6 +12,18 @@ from pylabrobot.resources.utils import create_ordered_items_2d
 from pylabrobot.resources.height_volume_functions import (
   calculate_liquid_volume_container_2segments_round_vbottom,
 )
+=======
+from pylabrobot.resources.height_volume_functions import (
+  calculate_liquid_volume_container_2segments_round_vbottom,
+)
+from pylabrobot.resources.plate import Lid, Plate
+from pylabrobot.resources.utils import create_ordered_items_2d
+from pylabrobot.resources.well import (
+  CrossSectionType,
+  Well,
+  WellBottomType,
+)
+>>>>>>> upstream/main
 
 
 def _compute_volume_from_height_Azenta4titudeFrameStar_96_wellplate_200ul_Vb(
@@ -89,9 +102,25 @@ def Azenta4titudeFrameStar_96_wellplate_200ul_Vb(name: str, with_lid: bool = Fal
 
 #: Azenta4titudeFrameStar_96_wellplate_Vb_L
 def Azenta4titudeFrameStar_96_wellplate_200ul_Vb_L(name: str, with_lid: bool = False) -> Plate:
+<<<<<<< HEAD
   return Azenta4titudeFrameStar_96_wellplate_200ul_Vb(name=name, with_lid=with_lid)
+=======
+  # https://github.com/PyLabRobot/pylabrobot/issues/252
+  raise NotImplementedError(
+    "_L and _P definitions are deprecated. Use "
+    "Azenta4titudeFrameStar_96_wellplate_200ul_Vb instead."
+  )
+>>>>>>> upstream/main
 
 
 #: Azenta4titudeFrameStar_96_wellplate_Vb_P
 def Azenta4titudeFrameStar_96_wellplate_200ul_Vb_P(name: str, with_lid: bool = False) -> Plate:
+<<<<<<< HEAD
   return Azenta4titudeFrameStar_96_wellplate_200ul_Vb(name=name, with_lid=with_lid).rotated(z=90)
+=======
+  # https://github.com/PyLabRobot/pylabrobot/issues/252
+  raise NotImplementedError(
+    "_L and _P definitions are deprecated. For portrait, use "
+    "Azenta4titudeFrameStar_96_wellplate_200ul_Vb().rotated(z=90) instead."
+  )
+>>>>>>> upstream/main

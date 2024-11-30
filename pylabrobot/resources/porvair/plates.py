@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 """Porvair plates"""
 
 from typing import Optional
@@ -8,11 +9,24 @@ from pylabrobot.resources.well import (
   CrossSectionType,
 )
 from pylabrobot.resources.utils import create_ordered_items_2d
+=======
+from typing import Optional
+>>>>>>> upstream/main
 
 from pylabrobot.resources.height_volume_functions import (
   calculate_liquid_height_in_container_2segments_square_vbottom,
   calculate_liquid_volume_container_2segments_square_vbottom,
 )
+<<<<<<< HEAD
+=======
+from pylabrobot.resources.plate import Lid, Plate
+from pylabrobot.resources.utils import create_ordered_items_2d
+from pylabrobot.resources.well import (
+  CrossSectionType,
+  Well,
+  WellBottomType,
+)
+>>>>>>> upstream/main
 
 # # # # # # # # # # Porvair_6_reservoir_47ml_Vb # # # # # # # # # #
 
@@ -95,12 +109,26 @@ def Porvair_6_reservoir_47ml_Vb(name: str, with_lid: bool = False) -> Plate:
 
 #: Porvair_6_reservoir_47ml_Vb_L
 def Porvair_6_reservoir_47ml_Vb_L(name: str, with_lid: bool = False) -> Plate:
+<<<<<<< HEAD
   return Porvair_6_reservoir_47ml_Vb(name=name, with_lid=with_lid)
+=======
+  # https://github.com/PyLabRobot/pylabrobot/issues/252
+  raise NotImplementedError(
+    "_L and _P definitions are deprecated. Use " "Porvair_6_reservoir_47ml_Vb instead."
+  )
+>>>>>>> upstream/main
 
 
 #: Porvair_6_reservoir_47ml_Vb_P
 def Porvair_6_reservoir_47ml_Vb_P(name: str, with_lid: bool = False) -> Plate:
+<<<<<<< HEAD
   return Porvair_6_reservoir_47ml_Vb(name=name, with_lid=with_lid).rotated(z=90)
+=======
+  # https://github.com/PyLabRobot/pylabrobot/issues/252
+  raise NotImplementedError(
+    "_L and _P definitions are deprecated. Use " "Porvair_6_reservoir_47ml_Vb.rotated(90) instead."
+  )
+>>>>>>> upstream/main
 
 
 def Porvair_24_wellplate_Vb(name: str, lid: Optional[Lid] = None) -> Plate:

@@ -1,15 +1,26 @@
 import logging
 from typing import List, Optional
 
+<<<<<<< HEAD
 from pylabrobot.resources.resource_holder import ResourceHolder
 from pylabrobot.resources.resource import Resource
 from pylabrobot.resources.coordinate import Coordinate
 from pylabrobot.resources.plate import Plate
+=======
+from pylabrobot.resources.coordinate import Coordinate
+from pylabrobot.resources.plate import Plate
+from pylabrobot.resources.resource import Resource
+from pylabrobot.resources.resource_holder import get_child_location
+>>>>>>> upstream/main
 
 logger = logging.getLogger("pylabrobot")
 
 
+<<<<<<< HEAD
 class ResourceStack(ResourceHolder, Resource):
+=======
+class ResourceStack(Resource):
+>>>>>>> upstream/main
   """ResourceStack represent a group of resources that are stacked together and act as a single
   unit. Stacks can grow be configured to be able to grow in x, y, or z direction. Stacks growing
   in the x direction are from left to right. Stacks growing in the y direction are from front to
@@ -24,11 +35,19 @@ class ResourceStack(ResourceHolder, Resource):
     resources: The resources in the resource group.
 
   Examples:
+<<<<<<< HEAD
     Making a resource group containing a plate on top of a lid:
 
     >>> stack = ResourceStack(“patched_plate”, "z", [
     ...   Resource("lid", size_x=1, size_y=1, size_z=20),
     ...   Resource("plate", size_x=1, size_y=1, size_z=10),
+=======
+    Making a resource group containing two resources:
+
+    >>> stack = ResourceStack(“patched_plate”, "z", [
+    ...   Resource("plate1", size_x=1, size_y=1, size_z=10),
+    ...   Resource("plate2", size_x=1, size_y=1, size_z=10),
+>>>>>>> upstream/main
     ... ])
     >>> stack.get_size_x()
     1
@@ -68,9 +87,12 @@ class ResourceStack(ResourceHolder, Resource):
     for resource in resources:
       self.assign_child_resource(resource)
 
+<<<<<<< HEAD
   def __str__(self) -> str:
     return f"ResourceGroup({self.name})"
 
+=======
+>>>>>>> upstream/main
   def get_size_x(self) -> float:
     """Get local size in the x direction."""
     if len(self.children) == 0:
@@ -116,8 +138,17 @@ class ResourceStack(ResourceHolder, Resource):
 
     return resource_location
 
+<<<<<<< HEAD
   def get_default_child_location(self, resource: Resource) -> Coordinate:
     return super().get_default_child_location(resource) + self.get_resource_stack_edge()
+=======
+  def assign_child_resource(
+    self, resource: Resource, location: Optional[Coordinate] = None, reassign: bool = True
+  ):
+    default_location = get_child_location(resource) + self.get_resource_stack_edge()
+    location = location or default_location
+    return super().assign_child_resource(resource=resource, location=location, reassign=reassign)
+>>>>>>> upstream/main
 
   def unassign_child_resource(self, resource: Resource):
     if self.direction == "z" and resource != self.children[-1]:  # no floating resources

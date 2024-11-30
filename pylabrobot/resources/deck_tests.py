@@ -1,23 +1,44 @@
+<<<<<<< HEAD
 import tempfile
 import os
 import unittest
 
 from pylabrobot.resources import (
   CarrierSite,
+=======
+import os
+import tempfile
+import unittest
+
+from pylabrobot.resources import (
+>>>>>>> upstream/main
   Coordinate,
   Deck,
   Plate,
   PlateCarrier,
+<<<<<<< HEAD
   PlateCarrierSite,
   Resource,
+=======
+  PlateHolder,
+  Resource,
+  ResourceHolder,
+  ResourceNotFoundError,
+>>>>>>> upstream/main
   TipCarrier,
   TipRack,
   TipSpot,
   Well,
+<<<<<<< HEAD
   ResourceNotFoundError,
   create_ordered_items_2d,
   standard_volume_tip_with_filter,
   create_homogeneous_carrier_sites,
+=======
+  create_homogeneous_resources,
+  create_ordered_items_2d,
+  standard_volume_tip_with_filter,
+>>>>>>> upstream/main
 )
 
 
@@ -60,11 +81,19 @@ class DeckTests(unittest.TestCase):
       200,
       200,
       200,
+<<<<<<< HEAD
       sites=create_homogeneous_carrier_sites(
         klass=CarrierSite,
         locations=[Coordinate(10, 20, 30)],
         site_size_x=10,
         site_size_y=10,
+=======
+      sites=create_homogeneous_resources(
+        klass=ResourceHolder,
+        locations=[Coordinate(10, 20, 30)],
+        resource_size_x=10,
+        resource_size_y=10,
+>>>>>>> upstream/main
       ),
     )
 
@@ -92,11 +121,19 @@ class DeckTests(unittest.TestCase):
       100,
       100,
       100,
+<<<<<<< HEAD
       sites=create_homogeneous_carrier_sites(
         klass=PlateCarrierSite,
         locations=[Coordinate(10, 20, 30)],
         site_size_x=10,
         site_size_y=10,
+=======
+      sites=create_homogeneous_resources(
+        klass=PlateHolder,
+        locations=[Coordinate(10, 20, 30)],
+        resource_size_x=10,
+        resource_size_y=10,
+>>>>>>> upstream/main
         pedestal_size_z=0,
       ),
     )

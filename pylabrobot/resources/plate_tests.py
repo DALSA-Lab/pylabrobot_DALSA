@@ -1,7 +1,11 @@
 import unittest
 
 from .coordinate import Coordinate
+<<<<<<< HEAD
 from .plate import Plate, Lid
+=======
+from .plate import Lid, Plate
+>>>>>>> upstream/main
 from .utils import create_ordered_items_2d
 from .well import Well
 

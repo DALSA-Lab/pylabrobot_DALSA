@@ -1,8 +1,13 @@
 from typing import List, Optional, cast
 
 from pylabrobot.machines.machine import Machine, need_setup_finished
+<<<<<<< HEAD
 from pylabrobot.resources import Coordinate, Plate, Resource
 from pylabrobot.plate_reading.backend import PlateReaderBackend
+=======
+from pylabrobot.plate_reading.backend import PlateReaderBackend
+from pylabrobot.resources import Coordinate, Plate, Resource
+>>>>>>> upstream/main
 from pylabrobot.resources.resource_holder import ResourceHolder
 
 

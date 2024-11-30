@@ -1,8 +1,13 @@
 from typing import Optional
 
 from pylabrobot.plate_reading.backend import ImageReaderBackend
+<<<<<<< HEAD
 from pylabrobot.plate_reading.plate_reader import PlateReader
 from pylabrobot.plate_reading.imager import Imager
+=======
+from pylabrobot.plate_reading.imager import Imager
+from pylabrobot.plate_reading.plate_reader import PlateReader
+>>>>>>> upstream/main
 
 
 class ImageReader(PlateReader, Imager):

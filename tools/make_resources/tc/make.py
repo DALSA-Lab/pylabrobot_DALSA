@@ -1,9 +1,15 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> upstream/main
 import re
 
 from pylabrobot.resources import Coordinate
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> upstream/main
 # path = "Carrier_Coley.cfg"
 path = "Carrier.cfg"
 
@@ -33,8 +39,13 @@ def main(pc, tc, p, tr, tcr):
       size_z = float(dim[1][2]) / 10
 
       locations = []
+<<<<<<< HEAD
       site_size_x = []
       site_size_y = []
+=======
+      resource_size_x = []
+      resource_size_y = []
+>>>>>>> upstream/main
       desc = ""
       while i + 1 < len(c) and not RES.match(c[i + 1]):
         i += 1
@@ -47,8 +58,13 @@ def main(pc, tc, p, tr, tcr):
           y = size_y - h - float(site_dim[1][1]) / 10
           z = float(site_dim[1][2]) / 10 + size_z
           locations = [Coordinate(x, y, z)] + locations
+<<<<<<< HEAD
           site_size_x = [w] + site_size_x
           site_size_y = [h] + site_size_y
+=======
+          resource_size_x = [w] + resource_size_x
+          resource_size_y = [h] + resource_size_y
+>>>>>>> upstream/main
 
         if d := DESC.match(c[i]):
           desc = d.group(1)
@@ -76,6 +92,7 @@ def main(pc, tc, p, tr, tcr):
         o.write(f"    size_z={size_z},\n")
         o.write(f"    off_x={off_x},\n")
         o.write(f"    off_y={off_y},\n")
+<<<<<<< HEAD
         if all(x == site_size_x[0] for x in site_size_x) and all(
           y == site_size_y[0] for y in site_size_y
         ):
@@ -97,6 +114,27 @@ def main(pc, tc, p, tr, tcr):
             o.write(f"        {x},\n")
           o.write(f"      ], site_size_y=[\n")
           for y in site_size_y:
+=======
+        if all(x == resource_size_x[0] for x in resource_size_x) and all(
+          y == resource_size_y[0] for y in resource_size_y
+        ):
+          o.write(f"    sites=create_homogeneous_resources(klass=ResourceHolder, locations=[\n")
+          for l in locations:
+            o.write(f"        {repr(l)},\n")
+          o.write(f"      ],\n")
+          o.write(f"      resource_size_x={resource_size_x[0]},\n")
+          o.write(f"      resource_size_y={resource_size_y[0]},\n")
+          o.write(f"    ),\n")
+        else:
+          o.write(f"    sites=create_resources(ResourceHolder, locations=[\n")
+          for l in locations:
+            o.write(f"        {repr(l)},\n")
+          o.write(f"      ], resource_size_x=[\n")
+          for x in resource_size_x:
+            o.write(f"        {x},\n")
+          o.write(f"      ], resource_size_y=[\n")
+          for y in resource_size_y:
+>>>>>>> upstream/main
             o.write(f"        {y},\n")
           o.write(f"    ]),\n")
         o.write(f'    model="{name}"\n')
@@ -127,7 +165,11 @@ def main(pc, tc, p, tr, tcr):
       z_dispense = float(dim[3][2])
       z_max = float(dim[3][0])
       # the best approximation,
+<<<<<<< HEAD
       # https://forums.pylabrobot.org/t/pylabrobot-tecan-error-in-adding-labware-to-carrier/2987
+=======
+      # https://labautomation.io/t/pylabrobot-tecan-error-in-adding-labware-to-carrier/2987
+>>>>>>> upstream/main
       size_z = (z_max - z_start) / 10
 
       if num_x <= 1 or num_y <= 1:
@@ -175,9 +217,13 @@ def main(pc, tc, p, tr, tcr):
           o.write(f"  #   size_x={size_x},\n")
           o.write(f"  #   size_y={size_y},\n")
           o.write("  #   size_z=None,           # measure the total z height\n")
+<<<<<<< HEAD
           o.write(
             "  #   nesting_z_height=None, # measure overlap between lid and plate\n"
           )
+=======
+          o.write("  #   nesting_z_height=None, # measure overlap between lid and plate\n")
+>>>>>>> upstream/main
           o.write(f'  #   model="{lid_name}",\n')
           o.write("  # )\n\n\n")
 
@@ -227,9 +273,13 @@ def main(pc, tc, p, tr, tcr):
             # print a warning, because this parameter is confusing in the file and I don't have
             # have a device to test this on. tbc.
             tcr.write('  print("WARNING: total_tip_length <= 0.")\n')
+<<<<<<< HEAD
             tcr.write(
               '  print("Please get in touch at https://discuss.pylabrobot.org")\n'
             )
+=======
+            tcr.write('  print("Please get in touch at https://discuss.pylabrobot.org")\n')
+>>>>>>> upstream/main
           tcr.write(f"  return TecanTip(\n")
           tcr.write(f"    has_filter={has_filter},\n")
           tcr.write(f"    total_tip_length={total_tip_length},\n")
@@ -260,7 +310,13 @@ def main(pc, tc, p, tr, tcr):
 if __name__ == "__main__":
   with open("plate_carriers.py", "w") as plate_carriers, open(
     "tip_carriers.py", "w"
+<<<<<<< HEAD
   ) as tip_carriers, open("plates.py", "w") as plates, open(
     "tip_racks.py", "w"
   ) as tip_racks, open("tip_creators.py", "w") as tip_creators:
+=======
+  ) as tip_carriers, open("plates.py", "w") as plates, open("tip_racks.py", "w") as tip_racks, open(
+    "tip_creators.py", "w"
+  ) as tip_creators:
+>>>>>>> upstream/main
     main(plate_carriers, tip_carriers, plates, tip_racks, tip_creators)

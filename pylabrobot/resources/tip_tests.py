@@ -1,5 +1,6 @@
 import unittest
 
+<<<<<<< HEAD
 from pylabrobot.resources.tip import Tip
 from pylabrobot.resources.ml_star import (
   HamiltonTip,
@@ -7,6 +8,15 @@ from pylabrobot.resources.ml_star import (
   TipPickupMethod,
 )
 from pylabrobot.serializer import serialize, deserialize
+=======
+from pylabrobot.resources.ml_star import (
+  HamiltonTip,
+  TipPickupMethod,
+  TipSize,
+)
+from pylabrobot.resources.tip import Tip
+from pylabrobot.serializer import deserialize, serialize
+>>>>>>> upstream/main
 
 
 class TipTests(unittest.TestCase):

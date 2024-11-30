@@ -5,9 +5,14 @@ Source of audio: https://simpleguics2pygame.readthedocs.io/en/latest/_static/lin
 
 import functools
 
+<<<<<<< HEAD
 
 try:
   from IPython.display import display, Audio
+=======
+try:
+  from IPython.display import Audio, display
+>>>>>>> upstream/main
 
   USE_AUDIO = True
 except ImportError:

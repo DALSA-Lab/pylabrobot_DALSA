@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 from string import ascii_uppercase as LETTERS
 import typing
+=======
+import typing
+from string import ascii_uppercase as LETTERS
+>>>>>>> upstream/main
 
 
 def string_to_position(

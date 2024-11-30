@@ -2,11 +2,19 @@ import unittest
 
 from .carrier import (
   Carrier,
+<<<<<<< HEAD
   CarrierSite,
   PlateCarrier,
   PlateCarrierSite,
   TipCarrier,
   create_homogeneous_carrier_sites,
+=======
+  PlateCarrier,
+  PlateHolder,
+  ResourceHolder,
+  TipCarrier,
+  create_homogeneous_resources,
+>>>>>>> upstream/main
 )
 from .coordinate import Coordinate
 from .deck import Deck
@@ -30,8 +38,13 @@ class CarrierTests(unittest.TestCase):
       size_x=135.0,
       size_y=497.0,
       size_z=13.0,
+<<<<<<< HEAD
       sites=create_homogeneous_carrier_sites(
         klass=CarrierSite,
+=======
+      sites=create_homogeneous_resources(
+        klass=ResourceHolder,
+>>>>>>> upstream/main
         locations=[
           Coordinate(10, 20, 30),
           Coordinate(10, 50, 30),
@@ -39,8 +52,13 @@ class CarrierTests(unittest.TestCase):
           Coordinate(10, 130, 30),
           Coordinate(10, 160, 30),
         ],
+<<<<<<< HEAD
         site_size_x=10,
         site_size_y=10,
+=======
+        resource_size_x=10,
+        resource_size_y=10,
+>>>>>>> upstream/main
       ),
     )
 
@@ -50,11 +68,19 @@ class CarrierTests(unittest.TestCase):
       size_x=200,
       size_y=200,
       size_z=50,
+<<<<<<< HEAD
       sites=create_homogeneous_carrier_sites(
         klass=CarrierSite,
         locations=[Coordinate(5, 5, 5)],
         site_size_x=10,
         site_size_y=10,
+=======
+      sites=create_homogeneous_resources(
+        klass=ResourceHolder,
+        locations=[Coordinate(5, 5, 5)],
+        resource_size_x=10,
+        resource_size_y=10,
+>>>>>>> upstream/main
       ),
     )
     plate = Resource("plate", size_x=10, size_y=10, size_z=10)
@@ -72,11 +98,19 @@ class CarrierTests(unittest.TestCase):
       size_x=200,
       size_y=200,
       size_z=50,
+<<<<<<< HEAD
       sites=create_homogeneous_carrier_sites(
         klass=CarrierSite,
         locations=[Coordinate(5, 5, 5)],
         site_size_x=10,
         site_size_y=10,
+=======
+      sites=create_homogeneous_resources(
+        klass=ResourceHolder,
+        locations=[Coordinate(5, 5, 5)],
+        resource_size_x=10,
+        resource_size_y=10,
+>>>>>>> upstream/main
       ),
     )
     plate = Resource("plate", size_x=10, size_y=10, size_z=10)
@@ -95,11 +129,19 @@ class CarrierTests(unittest.TestCase):
       size_x=200,
       size_y=200,
       size_z=50,
+<<<<<<< HEAD
       sites=create_homogeneous_carrier_sites(
         klass=CarrierSite,
         locations=[Coordinate(5, 5, 5)],
         site_size_x=10,
         site_size_y=10,
+=======
+      sites=create_homogeneous_resources(
+        klass=ResourceHolder,
+        locations=[Coordinate(5, 5, 5)],
+        resource_size_x=10,
+        resource_size_y=10,
+>>>>>>> upstream/main
       ),
     )
     plate = Resource("plate", size_x=10, size_y=10, size_z=10)
@@ -120,6 +162,7 @@ class CarrierTests(unittest.TestCase):
       size_x=200,
       size_y=200,
       size_z=50,
+<<<<<<< HEAD
       sites=create_homogeneous_carrier_sites(
         klass=CarrierSite,
         locations=[Coordinate(5, 5, 5)],
@@ -129,6 +172,17 @@ class CarrierTests(unittest.TestCase):
     )
     plate = Resource("plate", size_x=10, size_y=10, size_z=10)
     with self.assertRaises(IndexError):
+=======
+      sites=create_homogeneous_resources(
+        klass=ResourceHolder,
+        locations=[Coordinate(5, 5, 5)],
+        resource_size_x=10,
+        resource_size_y=10,
+      ),
+    )
+    plate = Resource("plate", size_x=10, size_y=10, size_z=10)
+    with self.assertRaises(KeyError):
+>>>>>>> upstream/main
       carrier.assign_resource_to_site(plate, spot=3)
 
   def test_absolute_location(self):
@@ -137,11 +191,19 @@ class CarrierTests(unittest.TestCase):
       size_x=200,
       size_y=200,
       size_z=50,
+<<<<<<< HEAD
       sites=create_homogeneous_carrier_sites(
         klass=CarrierSite,
         locations=[Coordinate(5, 5, 5)],
         site_size_x=10,
         site_size_y=10,
+=======
+      sites=create_homogeneous_resources(
+        klass=ResourceHolder,
+        locations=[Coordinate(5, 5, 5)],
+        resource_size_x=10,
+        resource_size_y=10,
+>>>>>>> upstream/main
       ),
     )
     carrier.location = Coordinate(10, 10, 10)
@@ -172,6 +234,7 @@ class CarrierTests(unittest.TestCase):
     self.assertIsNone(self.tip_car[3].resource)
     self.assertIsNone(self.tip_car[4].resource)
 
+<<<<<<< HEAD
   def test_unassign_carrier_site(self):
     pass
 
@@ -190,6 +253,20 @@ class CarrierTests(unittest.TestCase):
     with self.assertRaises(IndexError):
       self.tip_car[-1]
     with self.assertRaises(IndexError):
+=======
+  # few tests for __getitem__ and __setitem__
+
+  def test_illegal_assignment(self):
+    with self.assertRaises(KeyError):
+      self.tip_car[-1] = self.A
+    with self.assertRaises(KeyError):
+      self.tip_car[99999] = self.A
+
+  def test_illegal_get(self):
+    with self.assertRaises(KeyError):
+      self.tip_car[-1]
+    with self.assertRaises(KeyError):
+>>>>>>> upstream/main
       self.tip_car[99999]
 
   def test_nonnone_to_none_assignment(self):
@@ -224,7 +301,11 @@ class CarrierTests(unittest.TestCase):
         "children": [
           {
             "name": "carrier-tip_car-spot-0",
+<<<<<<< HEAD
             "type": "CarrierSite",
+=======
+            "type": "ResourceHolder",
+>>>>>>> upstream/main
             "size_x": 10,
             "size_y": 10,
             "size_z": 0,
@@ -235,14 +316,23 @@ class CarrierTests(unittest.TestCase):
               "z": 30,
             },
             "rotation": {"type": "Rotation", "x": 0, "y": 0, "z": 0},
+<<<<<<< HEAD
             "category": "carrier_site",
+=======
+            "category": "resource_holder",
+            "child_location": {"type": "Coordinate", "x": 0, "y": 0, "z": 0},
+>>>>>>> upstream/main
             "children": [],
             "parent_name": "tip_car",
             "model": None,
           },
           {
             "name": "carrier-tip_car-spot-1",
+<<<<<<< HEAD
             "type": "CarrierSite",
+=======
+            "type": "ResourceHolder",
+>>>>>>> upstream/main
             "size_x": 10,
             "size_y": 10,
             "size_z": 0,
@@ -253,14 +343,23 @@ class CarrierTests(unittest.TestCase):
               "z": 30,
             },
             "rotation": {"type": "Rotation", "x": 0, "y": 0, "z": 0},
+<<<<<<< HEAD
             "category": "carrier_site",
+=======
+            "category": "resource_holder",
+            "child_location": {"type": "Coordinate", "x": 0, "y": 0, "z": 0},
+>>>>>>> upstream/main
             "children": [],
             "parent_name": "tip_car",
             "model": None,
           },
           {
             "name": "carrier-tip_car-spot-2",
+<<<<<<< HEAD
             "type": "CarrierSite",
+=======
+            "type": "ResourceHolder",
+>>>>>>> upstream/main
             "size_x": 10,
             "size_y": 10,
             "size_z": 0,
@@ -271,14 +370,23 @@ class CarrierTests(unittest.TestCase):
               "z": 30,
             },
             "rotation": {"type": "Rotation", "x": 0, "y": 0, "z": 0},
+<<<<<<< HEAD
             "category": "carrier_site",
+=======
+            "category": "resource_holder",
+            "child_location": {"type": "Coordinate", "x": 0, "y": 0, "z": 0},
+>>>>>>> upstream/main
             "children": [],
             "parent_name": "tip_car",
             "model": None,
           },
           {
             "name": "carrier-tip_car-spot-3",
+<<<<<<< HEAD
             "type": "CarrierSite",
+=======
+            "type": "ResourceHolder",
+>>>>>>> upstream/main
             "size_x": 10,
             "size_y": 10,
             "size_z": 0,
@@ -289,14 +397,23 @@ class CarrierTests(unittest.TestCase):
               "z": 30,
             },
             "rotation": {"type": "Rotation", "x": 0, "y": 0, "z": 0},
+<<<<<<< HEAD
             "category": "carrier_site",
+=======
+            "category": "resource_holder",
+            "child_location": {"type": "Coordinate", "x": 0, "y": 0, "z": 0},
+>>>>>>> upstream/main
             "children": [],
             "parent_name": "tip_car",
             "model": None,
           },
           {
             "name": "carrier-tip_car-spot-4",
+<<<<<<< HEAD
             "type": "CarrierSite",
+=======
+            "type": "ResourceHolder",
+>>>>>>> upstream/main
             "size_x": 10,
             "size_y": 10,
             "size_z": 0,
@@ -307,7 +424,12 @@ class CarrierTests(unittest.TestCase):
               "z": 30,
             },
             "rotation": {"type": "Rotation", "x": 0, "y": 0, "z": 0},
+<<<<<<< HEAD
             "category": "carrier_site",
+=======
+            "category": "resource_holder",
+            "child_location": {"type": "Coordinate", "x": 0, "y": 0, "z": 0},
+>>>>>>> upstream/main
             "children": [],
             "parent_name": "tip_car",
             "model": None,
@@ -319,7 +441,11 @@ class CarrierTests(unittest.TestCase):
   def test_deserialization(self):
     self.maxDiff = None
     # sites are not deserialized here)
+<<<<<<< HEAD
     tip_car = TipCarrier("tip_car", size_x=135.0, size_y=497.0, size_z=13.0, sites=[])
+=======
+    tip_car = TipCarrier("tip_car", size_x=135.0, size_y=497.0, size_z=13.0, sites={})
+>>>>>>> upstream/main
     self.assertEqual(tip_car, TipCarrier.deserialize(tip_car.serialize()))
 
   def test_assign_resource_stack(self):
@@ -366,11 +492,19 @@ class CarrierTests(unittest.TestCase):
       size_x=200,
       size_y=200,
       size_z=50,
+<<<<<<< HEAD
       sites=create_homogeneous_carrier_sites(
         klass=PlateCarrierSite,
         locations=[Coordinate(5, 5, 5)],
         site_size_x=10,
         site_size_y=10,
+=======
+      sites=create_homogeneous_resources(
+        klass=PlateHolder,
+        locations=[Coordinate(5, 5, 5)],
+        resource_size_x=10,
+        resource_size_y=10,
+>>>>>>> upstream/main
         pedestal_size_z=10,
       ),
     )
@@ -388,7 +522,11 @@ class CarrierTests(unittest.TestCase):
     self.assertEqual(plate2.location, Coordinate(0, 0, 0))
 
     pcs = carrier[0]
+<<<<<<< HEAD
     assert isinstance(pcs, PlateCarrierSite)
+=======
+    assert isinstance(pcs, PlateHolder)
+>>>>>>> upstream/main
     self.assertIn(
       pcs._update_resource_stack_location,
       resource_stack._did_assign_resource_callbacks,

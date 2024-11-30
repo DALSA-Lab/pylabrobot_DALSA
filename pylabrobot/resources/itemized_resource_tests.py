@@ -1,6 +1,11 @@
 import sys
+<<<<<<< HEAD
 from typing import List
 import unittest
+=======
+import unittest
+from typing import List
+>>>>>>> upstream/main
 
 from pylabrobot.resources import (
   Coordinate,
